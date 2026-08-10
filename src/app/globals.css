@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #0B5EAA;
+  --color-primary-light: #D6E8F7;
+  --color-primary-dark: #0A4F91;
+  --color-primary-50: #EFF6FF;
+  --color-navy: #0D1B2A;
+  --color-navy-light: #1A2B4A;
+  --color-heading: #111827;
+  --color-body: #6B7280;
+  --color-border-custom: #E5E7EB;
+  --color-section-alt: #F9FAFB;
+  --color-success-bg: #DCFCE7;
+  --color-success-text: #166534;
+  --color-danger-bg: #FEE2E2;
+  --color-danger-text: #991B1B;
+  --color-wa-green: #25D366;
+  --color-link-blue: #1D4ED8;
+  --color-link-bg: #BFDBFE;
+  --color-footer-text: #8EA8C3;
+  --color-footer-border: #1E3A5F;
+  --font-poppins: "Poppins", sans-serif;
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-poppins);
+  background: #ffffff;
+  color: #6B7280;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth transitions for interactive elements */
+a, button {
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Delay utilities */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
