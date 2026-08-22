@@ -19,19 +19,19 @@ export default function TentangPage() {
 
   const team = [
     {
-      name: "Bpk. Tirta Kusuma",
-      role: "CHIEF EXECUTIVE OFFICER",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+      name: "Eva",
+      role: "Founder",
+      image: "../Tentang/Placeholder_Profil_Photo.webp",
     },
     {
-      name: "Ibu Marga Putri",
-      role: "CHIEF OPERATIONS OFFICER",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+      name: "Evi Kurnialah",
+      role: "Founder",
+      image: "../Tentang/Placeholder_Profil_Photo.webp",
     },
     {
-      name: "Bpk. Hendra Wijaya",
-      role: "STRATEGIC DIRECTOR",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80",
+      name: " Elsye Liana Dewi ",
+      role: "Founder",
+      image: "../Tentang/Placeholder_Profil_Photo.webp",
     },
   ];
 
@@ -49,17 +49,20 @@ export default function TentangPage() {
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[55vh] flex items-center justify-center bg-[#0D1B2A] overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
+          className="absolute inset-0 bg-cover bg-no-repeat opacity-50"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80')`,
+            backgroundImage: "url('../Tentang/Foto-Hero-Banner.webp')",
+            backgroundPosition: "center 35%",
           }}
         />
-        <div className="absolute inset-0 bg-[#0D1B2A]/70" />
+
+        <div className="absolute inset-0 bg-[#0D1B2A]/50" />
 
         <div className="relative z-10 max-w-4xl text-center px-4 py-20 space-y-4">
           <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">
             TENTANG KAMI
           </span>
+
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
             Tentang Marga Tirta Kencana
           </h1>
@@ -95,7 +98,7 @@ export default function TentangPage() {
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
                 <img
-                  src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80"
+                  src="../Tentang/Kawat_Besi.webp"
                   alt="Konstruksi Bangunan"
                   className="w-full h-full object-cover"
                 />
@@ -121,7 +124,7 @@ export default function TentangPage() {
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-md aspect-[4/5]">
                 <img
-                  src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80"
+                  src="../Tentang/Foto-Kamar-type36.webp"
                   alt="Interior Kamar Tidur Modern"
                   className="w-full h-full object-cover"
                 />
