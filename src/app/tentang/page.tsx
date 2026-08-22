@@ -229,33 +229,6 @@ export default function TentangPage() {
           </div>
         </div>
       </section>
-
-      {/* SECTION 6 — PARTNER */}
-      <section className="bg-[#F9FAFB] py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
-              KERJASAMA
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">
-              Partner kami
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6 max-w-4xl mx-auto">
-            {partners.map((imgUrl, idx) => (
-              <div key={idx} className="rounded-xl overflow-hidden aspect-[4/3] bg-gray-200 shadow-xs">
-                <img
-                  src={imgUrl}
-                  alt={`Partner ${idx + 1}`}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <CTABanner />
     </>
   );

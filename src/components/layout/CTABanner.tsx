@@ -27,7 +27,7 @@ export default function CTABanner() {
               Konsultasikan Hunian Impian Anda Sekarang!
             </h2>
             <p className="mt-3 text-sm sm:text-base text-white/80 max-w-xl leading-relaxed">
-              Tim ahli kami siap membantu Anda memilih lokasi dan tipe rumah yang paling sesuai dengan kebutuhan dan budget Anda.
+              Tim kami siap membantu Anda memilih lokasi dan tipe rumah yang paling sesuai dengan kebutuhan dan budget Anda.
             </p>
           </div>
 

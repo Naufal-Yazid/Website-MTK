@@ -87,7 +87,7 @@ export default function Footer() {
             </h4>
             <div className="flex items-center gap-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/marketing.mtk140?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[#1E3A5F] flex items-center justify-center text-[#8EA8C3] hover:text-white hover:bg-[#0B5EAA] transition-all"
@@ -96,7 +96,7 @@ export default function Footer() {
                 <InstagramIcon className="w-5 h-5" />
               </a>
               <a
-                href="https://tiktok.com"
+                href="https://www.tiktok.com/@rumahmurah.project?is_from_webapp=1&sender_device=pc" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[#1E3A5F] flex items-center justify-center text-[#8EA8C3] hover:text-white hover:bg-[#0B5EAA] transition-all"
@@ -105,7 +105,7 @@ export default function Footer() {
                 <TikTokIcon className="w-5 h-5" />
               </a>
               <a
-                href="https://wa.me/6281234567890"
+                href="https://wa.me/6285759072321"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[#1E3A5F] flex items-center justify-center text-[#8EA8C3] hover:text-white hover:bg-[#25D366] transition-all"
