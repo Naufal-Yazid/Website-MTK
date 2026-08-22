@@ -24,7 +24,7 @@ export default function Home() {
       id: "permata-buah-batu",
       title: "Permata Buah Batu",
       location: "Buah Batu, Bandung",
-      price: "Mulai Rp 600 Jt",
+      price: "Mulai Rp 453 Jt",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
       href: "/produk/permata-buah-batu",
     },

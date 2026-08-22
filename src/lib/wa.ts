@@ -6,7 +6,7 @@ export interface InquiryData {
   pertanyaan?: string;
 }
 
-export function buildWAUrl(data: InquiryData, defaultPhone = "6281234567890"): string {
+export function buildWAUrl(data: InquiryData, defaultPhone = "6285759072321"): string {
   let message = `Halo, saya *${data.nama || "Calon Pembeli"}*`;
   if (data.wa) {
     message += ` (${data.wa})`;
