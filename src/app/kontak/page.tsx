@@ -104,7 +104,7 @@ export default function KontakPage() {
                   <div className="space-y-0.5 border-l-2 border-[#0B5EAA]/40 pl-3">
                     <div className="font-semibold text-[#111827]">Bojongsoang</div>
                     <div className="text-[#6B7280] text-xs">
-                      Jl. Raya Bojongsoang No. 123, Bandung
+                      Jl. Raya Bojongsoang Nomor 196B, Desa Lengkong, Kecamatan Bojongsoang, Kabupaten Bandung, Jawa Barat kode pos 40287.
                     </div>
                   </div>
 
@@ -125,7 +125,7 @@ export default function KontakPage() {
                 <div className="space-y-1 text-xs sm:text-sm">
                   <div className="font-bold text-[#111827]">Telepon & Email</div>
                   <div className="text-[#6B7280]">
-                    Telepon: <a href="tel:+622212345678" className="text-[#0B5EAA] hover:underline">+62 22 1234 5678</a>
+                    Telepon: <a href="tel:+6285759072321" className="text-[#0B5EAA] hover:underline">+62 857 5907 2321</a>
                   </div>
                   <div className="text-[#6B7280]">
                     Email: <a href="mailto:info@margatirtakencana.co.id" className="text-[#0B5EAA] hover:underline">info@margatirtakencana.co.id</a>
@@ -138,7 +138,7 @@ export default function KontakPage() {
                 <div className="text-xs font-semibold text-gray-600 mb-2">Ikuti Kami:</div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="https://tiktok.com"
+                    href="https://www.tiktok.com/@rumahmurah.project?is_from_webapp=1&sender_device=pc"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-[#6B7280] hover:text-[#0B5EAA] hover:bg-[#EFF6FF] transition-all"
@@ -146,7 +146,7 @@ export default function KontakPage() {
                     <TikTokIcon className="w-4 h-4" />
                   </a>
                   <a
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/marketing.mtk140?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-[#6B7280] hover:text-[#0B5EAA] hover:bg-[#EFF6FF] transition-all"
@@ -267,38 +267,44 @@ export default function KontakPage() {
       </section>
 
       {/* SECTION 3 — LOKASI PETA */}
-      <section className="bg-white pb-20">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            {/* Left Description */}
-            <div className="lg:col-span-5 space-y-3">
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">
-                Lokasi Kami
-              </h2>
-              <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed">
-                Kunjungi kantor kami atau hubungi tim pemasaran kami untuk informasi lebih lanjut mengenai proyek residensial eksklusif kami. Kantor pusat kami terletak di lokasi yang sangat strategis dan mudah diakses di pusat Kota Bandung, tepatnya di Jl. BKR No. 140, Cigereleng, Kecamatan Regol. Berada dekat dengan area publik utama seperti kawasan Tegallega, lokasi kantor kami dirancang untuk memberikan kenyamanan penuh bagi Anda yang ingin berkonsultasi langsung mengenai rencana hunian masa depan.
-              </p>
-            </div>
+        <section className="bg-white pb-20">
+          <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-            {/* Right Map Image Preview */}
-            <div className="lg:col-span-7">
-              <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-[#E5E7EB] bg-gray-100 shadow-sm">
-                <img
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1000&q=80"
-                  alt="Peta Lokasi Kantor Pusat Marga Tirta Kencana"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-blue-900/10" />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-xs px-4 py-2.5 rounded-xl shadow-lg border border-gray-200 text-xs font-bold text-[#0B5EAA] flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-red-600 fill-red-600" />
-                  <span>PT. Marga Tirta Kencana</span>
+              {/* Left Description */}
+              <div className="lg:col-span-5 space-y-3">
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">
+                  Lokasi Kami
+                </h2>
+
+                <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed text-justify">
+                  Kunjungi kantor kami atau hubungi tim pemasaran kami untuk informasi
+                  lebih lanjut mengenai proyek residensial eksklusif kami. Kantor pusat
+                  kami terletak di lokasi yang sangat strategis dan mudah diakses di
+                  pusat Kota Bandung. Berada dekat dengan area publik utama seperti
+                  kawasan Tegallega, lokasi kantor kami dirancang untuk memberikan
+                  kenyamanan penuh bagi Anda yang ingin berkonsultasi langsung mengenai
+                  rencana hunian masa depan.
+                </p>
+              </div>
+
+              {/* Right Map */}
+              <div className="lg:col-span-7">
+                <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-[#E5E7EB] bg-gray-100 shadow-sm">
+
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.6064135960983!2d107.60997187504393!3d-6.937553693062415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e88544e89c65%3A0x7a5ae9ae225d33b1!2sPT.%20Marga%20Tirta%20Kencana!5e0!3m2!1sen!2sid!4v1787386759379!5m2!1sen!2sid"
+                    className="w-full h-full border-0"
+                    loading="lazy"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                    title="Lokasi PT. Marga Tirta Kencana"
+                  />
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
+        </section>
       <CTABanner />
     </>
   );

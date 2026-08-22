@@ -232,9 +232,6 @@ export default function TentangPage() {
           </div>
         </div>
       </section>
-
-      
-
       <CTABanner />
     </>
   );
