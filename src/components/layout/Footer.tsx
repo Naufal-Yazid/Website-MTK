@@ -74,7 +74,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/produk/tci" className="text-[#8EA8C3] hover:text-white transition-colors">
-                  TCI Complexes
+                  Taman Cibaduyut Indah
                 </Link>
               </li>
             </ul>

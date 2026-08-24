@@ -13,18 +13,25 @@ export default function ProdukIndexPage() {
             <div className="md:col-span-7 space-y-3">
               {/* Breadcrumb */}
               <nav className="flex items-center gap-2 text-xs sm:text-sm text-[#6B7280]">
-                <Link href="/" className="hover:text-[#0B5EAA] transition-colors">
+                <Link
+                  href="/"
+                  className="hover:text-[#0B5EAA] transition-colors"
+                >
                   Home
                 </Link>
+
                 <ChevronRight className="w-3.5 h-3.5 text-[#0B5EAA]" />
+
                 <span className="text-[#111827] font-medium">Products</span>
               </nav>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#111827] leading-tight">
                 Proyek Kami
               </h1>
+
               <p className="text-sm sm:text-base text-[#6B7280] max-w-xl leading-relaxed">
-                Menghadirkan hunian yang berkualitas dengan desain arsitektur modern dan lingkungan yang asri untuk masa depan keluarga Anda.
+                Menghadirkan hunian yang berkualitas dengan desain arsitektur
+                modern dan lingkungan yang asri untuk masa depan keluarga Anda.
               </p>
             </div>
 
@@ -41,18 +48,20 @@ export default function ProdukIndexPage() {
       <section className="bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-            {/* KARTU 1 — TAMAN CIBADUYUT INDAH (Featured/Active) */}
-            <div className="bg-white border-2 border-[#0B5EAA] rounded-xl overflow-hidden shadow-lg flex flex-col transition-all hover:shadow-2xl">
+            {/* KARTU 1 — TAMAN CIBADUYUT INDAH */}
+            <div className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs flex flex-col transition-all hover:shadow-md hover:border-gray-300">
               <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
                   alt="Taman Cibaduyut Indah"
                   className="w-full h-full object-cover"
                 />
+
                 {/* Badge Left */}
                 <span className="absolute top-3 left-3 bg-[#0B5EAA] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
                   3 Komplek Tersedia
                 </span>
+
                 {/* Badge Right */}
                 <span className="absolute top-3 right-3 bg-[#DCFCE7] text-[#166534] text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
                   Available
@@ -63,18 +72,21 @@ export default function ProdukIndexPage() {
                 <h3 className="text-xl font-bold text-[#0B5EAA]">
                   Taman Cibaduyut Indah
                 </h3>
+
                 <div className="flex items-center gap-1.5 text-xs text-[#6B7280]">
                   <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
                   <span>Cibaduyut, Kota Bandung</span>
                 </div>
+
                 <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">
-                  Pilihan hunian terlengkap dengan berbagai tipe unit di lokasi strategis yang dekat dengan pusat kota.
+                  Pilihan hunian terlengkap dengan berbagai tipe unit di lokasi
+                  strategis yang dekat dengan pusat kota.
                 </p>
 
                 <div className="pt-2">
                   <Link
                     href="/produk/tci"
-                    className="block w-full text-center px-4 py-2.5 rounded-lg bg-[#0B5EAA] text-white text-sm font-semibold hover:bg-[#0A4F91] transition-colors shadow-sm"
+                    className="block w-full rounded-lg bg-[#0B5EAA] px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0A4F91] focus:outline-none focus:ring-2 focus:ring-[#0B5EAA] focus:ring-offset-2"
                   >
                     Lihat Detail
                   </Link>
@@ -90,6 +102,7 @@ export default function ProdukIndexPage() {
                   alt="Rancamanyar Indah"
                   className="w-full h-full object-cover"
                 />
+
                 {/* Badge Right */}
                 <span className="absolute top-3 right-3 bg-[#DCFCE7] text-[#166534] text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
                   Available
@@ -100,18 +113,21 @@ export default function ProdukIndexPage() {
                 <h3 className="text-xl font-bold text-[#111827]">
                   Rancamanyar Indah
                 </h3>
+
                 <div className="flex items-center gap-1.5 text-xs text-[#6B7280]">
                   <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
                   <span>Baleendah, Kabupaten Bandung</span>
                 </div>
+
                 <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">
-                  Komplek perumahan eksklusif dengan sistem keamanan satu pintu dan akses mudah ke berbagai fasilitas.
+                  Komplek perumahan eksklusif dengan sistem keamanan satu pintu
+                  dan akses mudah ke berbagai fasilitas.
                 </p>
 
                 <div className="pt-2">
                   <Link
                     href="/produk/rancamanyar-indah"
-                    className="block w-full text-center px-4 py-2.5 rounded-lg border-1.5 border-[#0B5EAA] text-[#0B5EAA] text-sm font-semibold hover:bg-[#EFF6FF] transition-colors"
+                    className="block w-full rounded-lg bg-[#0B5EAA] px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0A4F91] focus:outline-none focus:ring-2 focus:ring-[#0B5EAA] focus:ring-offset-2"
                   >
                     Lihat Detail
                   </Link>
@@ -127,6 +143,7 @@ export default function ProdukIndexPage() {
                   alt="Permata Buah Batu"
                   className="w-full h-full object-cover"
                 />
+
                 {/* Badge Right */}
                 <span className="absolute top-3 right-3 bg-[#FEE2E2] text-[#991B1B] text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
                   Sold Out
@@ -137,18 +154,21 @@ export default function ProdukIndexPage() {
                 <h3 className="text-xl font-bold text-[#111827]">
                   Permata Buah Batu
                 </h3>
+
                 <div className="flex items-center gap-1.5 text-xs text-[#6B7280]">
                   <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
                   <span>Bojongsoang, Bandung</span>
                 </div>
+
                 <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">
-                  Gaya hidup urban yang modern menyatu dengan kenyamanan lingkungan perumahan yang tertata rapi.
+                  Gaya hidup urban yang modern menyatu dengan kenyamanan
+                  lingkungan perumahan yang tertata rapi.
                 </p>
 
                 <div className="pt-2">
                   <Link
                     href="/produk/permata-buah-batu"
-                    className="block w-full text-center px-4 py-2.5 rounded-lg border-1.5 border-[#0B5EAA] text-[#0B5EAA] text-sm font-semibold hover:bg-[#EFF6FF] transition-colors"
+                    className="block w-full rounded-lg bg-[#0B5EAA] px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0A4F91] focus:outline-none focus:ring-2 focus:ring-[#0B5EAA] focus:ring-offset-2"
                   >
                     Lihat Detail
                   </Link>
