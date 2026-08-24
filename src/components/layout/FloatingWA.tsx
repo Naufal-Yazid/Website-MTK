@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import Image from "next/image";
 import { buildWAUrl } from "@/lib/wa";
 
 export default function FloatingWA() {
@@ -17,7 +17,15 @@ export default function FloatingWA() {
       aria-label="Chat WhatsApp"
       title="Hubungi kami via WhatsApp"
     >
-      <MessageCircle className="w-8 h-8 fill-white text-[#25D366]" />
+      <div className="relative w-8 h-8 flex items-center justify-center">
+        <Image
+          src="/WhatsApp.svg.webp" // Sesuaikan nama file gambar Anda di folder public/ (misal: /whatsapp.svg atau /whatsapp.png)
+          alt="WhatsApp Logo"
+          width={32}
+          height={32}
+          className="object-contain w-full h-full"
+        />
+      </div>
     </a>
   );
 }
