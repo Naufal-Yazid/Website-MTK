@@ -1,33 +1,56 @@
 import Link from "next/link";
-import { MapPin, ChevronRight } from "lucide-react";
+import { MapPin } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 
 export default function ProdukIndexPage() {
   return (
     <>
-      {/* HEADER HALAMAN */}
-      <section className="relative bg-white pt-33 pb-12 overflow-hidden border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            {/* Left Content */}
-            <div className="md:col-span-7 space-y-3">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#111827] leading-tight">Proyek Kami</h1>
+      {/* SECTION 1 — HERO */}
+      <section className="relative min-h-[55vh] flex items-center justify-center bg-[#0D1B2A] overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 transition-transform duration-1000 scale-105"
+          style={{
+            backgroundImage: "url('/hero image.webp')",
+          }}
+        />
 
-              <p className="text-sm sm:text-base text-[#6B7280] max-w-xl leading-relaxed">Menghadirkan hunian yang berkualitas dengan desain arsitektur modern dan lingkungan yang asri untuk masa depan keluarga Anda.</p>
-            </div>
+        <div className="absolute inset-0 bg-[#0D1B2A]/55" />
 
-            {/* Right Decorative Geometric Elements */}
-            <div className="md:col-span-5 relative hidden md:block min-h-[160px]">
-              <div className="absolute right-0 top-0 w-48 h-48 bg-[#D6E8F7]/40 rounded-3xl transform rotate-12" />
-              <div className="absolute right-20 top-8 w-32 h-32 bg-[#0B5EAA]/10 rounded-2xl transform -rotate-6" />
-            </div>
-          </div>
+        <div className="relative z-10 max-w-4xl text-center px-4 py-20 space-y-4">
+          <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">
+            PROYEK KAMI
+          </span>
+
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+            Hunian untuk Masa Depan Anda
+          </h1>
+
+          <p className="text-sm sm:text-base text-white/80 max-w-2xl mx-auto leading-relaxed">
+            Menghadirkan hunian berkualitas dengan desain arsitektur modern dan
+            lingkungan yang asri untuk masa depan keluarga Anda.
+          </p>
         </div>
       </section>
 
       {/* GRID PROYEK */}
       <section className="bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
+              PILIHAN HUNIAN
+            </span>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#111827]">
+              Temukan Proyek Impian Anda
+            </h2>
+
+            <p className="text-sm text-[#6B7280] leading-relaxed">
+              Jelajahi pilihan kawasan hunian yang dirancang untuk mendukung
+              kenyamanan dan masa depan keluarga Anda.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
             {/* KARTU 1 — TAMAN CIBADUYUT INDAH */}
             <div className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs flex flex-col transition-all hover:shadow-md hover:border-gray-300">
