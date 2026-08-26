@@ -13,7 +13,7 @@ export default function TCIOverviewPage() {
       description:
         "Komunitas yang telah mapan dengan lingkungan hijau yang rindang dan keamanan 24 jam yang ketat.",
       buttonClass: "bg-[#0B5EAA] text-white hover:bg-[#0A4F91]",
-      href: "/produk/tci/tci-3", // nav link
+      href: "/produk/tci/tci-1",
     },
     {
       id: "tci-2",
@@ -23,7 +23,7 @@ export default function TCIOverviewPage() {
       description:
         "Konsep hunian minimalis modern yang mengedepankan efisiensi ruang dan pencahayaan alami maksimal.",
       buttonClass: "bg-[#0B5EAA] text-white hover:bg-[#0A4F91]",
-      href: "/produk/tci/tci-3",
+      href: "/produk/tci/tci-2",
     },
     {
       id: "tci-3",

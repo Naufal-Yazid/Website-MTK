@@ -35,15 +35,6 @@ export default function TentangPage() {
     },
   ];
 
-  const partners = [
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80",
-  ];
-
   return (
     <>
       {/* SECTION 1 — HERO */}
@@ -51,7 +42,7 @@ export default function TentangPage() {
         <div
           className="absolute inset-0 bg-cover bg-no-repeat opacity-50"
           style={{
-            backgroundImage: "url('../Tentang/Foto-Hero-Banner.webp')",
+            backgroundImage: "url('/hero image.webp')",
             backgroundPosition: "center 35%",
           }}
         />
@@ -66,6 +57,10 @@ export default function TentangPage() {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
             Tentang Marga Tirta Kencana
           </h1>
+
+          <p className="text-sm sm:text-base text-white/80 max-w-2xl mx-auto leading-relaxed">
+            PT Marga Tirta Kencana hadir untuk menjawab kebutuhan akan rumah yang terjangkau dan memiliki lokasi strategis tanpa mengorbankan kualitas bangunan.
+          </p>
         </div>
       </section>
 
