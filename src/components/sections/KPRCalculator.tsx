@@ -37,17 +37,11 @@ export default function KPRCalculator({ initialHarga = 500000000 }: KPRCalculato
           {/* Left Description Column */}
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
-                KPR
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#111827] mt-1">
-                Simulasi KPR
-              </h2>
+              <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">KPR</span>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827] mt-1">Simulasi KPR</h2>
             </div>
 
-            <p className="text-sm text-[#6B7280] leading-relaxed">
-              Hitung estimasi cicilan bulanan Anda dengan kalkulator pintar kami. Rencanakan keuangan Anda dengan lebih baik bersama Marga Tirta Kencana.
-            </p>
+            <p className="text-sm text-[#6B7280] leading-relaxed">Hitung estimasi cicilan bulanan Anda dengan kalkulator pintar kami. Rencanakan keuangan Anda dengan lebih baik bersama Marga Tirta Kencana.</p>
 
             <div className="space-y-3 pt-2">
               <div className="flex items-center gap-3 text-sm text-[#111827] font-medium">
@@ -66,15 +60,8 @@ export default function KPRCalculator({ initialHarga = 500000000 }: KPRCalculato
             <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 sm:p-8 shadow-sm space-y-5">
               {/* Field 1: Property Price */}
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                  Harga Properti (IDR)
-                </label>
-                <input
-                  type="text"
-                  readOnly
-                  value={harga.toLocaleString("id-ID")}
-                  className="w-full h-11 px-3.5 rounded-lg border border-[#E5E7EB] text-sm text-[#111827] bg-[#F9FAFB] font-semibold cursor-not-allowed outline-none"
-                />
+                <label className="block text-xs font-semibold text-gray-700 mb-1.5">Harga Properti (IDR)</label>
+                <input type="text" readOnly value={harga.toLocaleString("id-ID")} className="w-full h-11 px-3.5 rounded-lg border border-[#E5E7EB] text-sm text-[#111827] bg-[#F9FAFB] font-semibold cursor-not-allowed outline-none" />
               </div>
 
               {/* Field 2: Down Payment (DP) */}
@@ -85,22 +72,12 @@ export default function KPRCalculator({ initialHarga = 500000000 }: KPRCalculato
                     {formatRupiah(dpNominal)} ({dpPercent}%)
                   </span>
                 </div>
-                <input
-                  type="range"
-                  min="5"
-                  max="50"
-                  step="5"
-                  value={dpPercent}
-                  onChange={(e) => setDpPercent(Number(e.target.value))}
-                  className="w-full accent-[#0B5EAA] cursor-pointer"
-                />
+                <input type="range" min="5" max="50" step="5" value={dpPercent} onChange={(e) => setDpPercent(Number(e.target.value))} className="w-full accent-[#0B5EAA] cursor-pointer" />
               </div>
 
               {/* Field 3: Bank Select */}
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                  Pilih Bank
-                </label>
+                <label className="block text-xs font-semibold text-gray-700 mb-1.5">Pilih Bank</label>
                 <select
                   value={bank}
                   onChange={(e) => setBank(e.target.value)}
@@ -115,9 +92,7 @@ export default function KPRCalculator({ initialHarga = 500000000 }: KPRCalculato
 
               {/* Field 4: Tenor */}
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                  Tenor (Tahun)
-                </label>
+                <label className="block text-xs font-semibold text-gray-700 mb-1.5">Tenor (Tahun)</label>
                 <select
                   value={tenor}
                   onChange={(e) => setTenor(Number(e.target.value))}
@@ -136,14 +111,10 @@ export default function KPRCalculator({ initialHarga = 500000000 }: KPRCalculato
               <div className="border-t border-[#E5E7EB] pt-4">
                 <div className="text-xs text-[#6B7280]">Estimasi Cicilan Bulanan</div>
                 <div className="flex items-baseline gap-2 mt-1">
-                  <span className="text-2xl sm:text-3xl font-bold text-[#0B5EAA]">
-                    {formatRupiah(cicilanPerBulan)}
-                  </span>
+                  <span className="text-2xl sm:text-3xl font-bold text-[#0B5EAA]">{formatRupiah(cicilanPerBulan)}</span>
                   <span className="text-sm text-[#6B7280]">/ bulan*</span>
                 </div>
-                <p className="text-[11px] italic text-[#6B7280] mt-2">
-                  *Hanya estimasi, suku bunga dapat berubah sewaktu-waktu sesuai ketentuan bank.
-                </p>
+                <p className="text-[11px] italic text-[#6B7280] mt-2">*Hanya estimasi, suku bunga dapat berubah sewaktu-waktu sesuai ketentuan bank.</p>
               </div>
             </div>
           </div>

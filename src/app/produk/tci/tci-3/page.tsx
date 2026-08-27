@@ -87,9 +87,9 @@ export default function TCI3OverviewPage() {
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">Taman Cibaduyut Indah 3</h1>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">Taman Cibaduyut Indah 3</h1>
 
-            <div className="flex items-center gap-2 text-sm sm:text-base text-white/80">
+            <div className="flex items-center gap-2 text-sm sm:text-base text-white/50">
               <MapPin className="w-4 h-4 text-white" />
               <span>Cibaduyut, Kota Bandung</span>
             </div>
@@ -105,7 +105,7 @@ export default function TCI3OverviewPage() {
             <div className="lg:col-span-7 space-y-6">
               <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">TAMAN CIBADUYUT INDAH</span>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111827]">Konsep Hunian Modern & Masa Depan</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#111827]">Konsep Hunian Modern & Masa Depan</h2>
 
               <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">
                 Taman Cibaduyut Indah 3 menghadirkan standar baru dalam pengembangan kawasan hunian terpadu. Didesain dengan filosofi fleksibilitas ruang, setiap unit di TCI 3 memungkinkan penghuni untuk menyesuaikan tata letak seiring
@@ -147,7 +147,7 @@ export default function TCI3OverviewPage() {
           <div className="text-center max-w-xl mx-auto mb-8 space-y-2">
             <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">TIPE RUMAH</span>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">Pilih Tipe Bangunan Anda</h2>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">Pilih Tipe Bangunan Anda</h2>
 
             <p className="text-sm text-[#6B7280]">Investasi cerdas untuk kenyamanan keluarga jangka panjang</p>
 
@@ -181,7 +181,7 @@ export default function TCI3OverviewPage() {
                   </div>
 
                   <div className="p-5 flex flex-col flex-grow space-y-3">
-                    <h3 className="text-lg font-bold text-[#0B5EAA]">{item.title}</h3>
+                    <h3 className="text-lg font-semibold text-[#0B5EAA]">{item.title}</h3>
 
                     <p className="text-xs text-[#6B7280] leading-relaxed flex-grow">{item.description}</p>
 
@@ -190,7 +190,7 @@ export default function TCI3OverviewPage() {
 
                       <div className="text-base font-bold text-[#0B5EAA] mb-3">{item.price}</div>
 
-                      <Link href={item.href} className="inline-flex items-center justify-center gap-1.5 w-full py-2 rounded-lg text-xs font-semibold bg-[#0B5EAA] text-white hover:bg-[#0A4F91] transition-colors">
+                      <Link href={item.href} className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 rounded-lg text-xs font-regular bg-[#0B5EAA] text-white hover:bg-[#0A4F91] transition-colors">
                         <span>Lihat Detail</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
@@ -208,7 +208,7 @@ export default function TCI3OverviewPage() {
                   </div>
 
                   <div className="p-5 flex flex-col flex-grow space-y-3">
-                    <h3 className="text-lg font-bold text-[#0B5EAA]">{item.title}</h3>
+                    <h3 className="text-lg font-semibold text-[#0B5EAA]">{item.title}</h3>
 
                     <p className="text-xs text-[#6B7280] leading-relaxed flex-grow">{item.description}</p>
 
@@ -217,7 +217,7 @@ export default function TCI3OverviewPage() {
 
                       <div className="text-base font-bold text-[#0B5EAA] mb-3">{item.price}</div>
 
-                      <Link href={item.href} className="inline-flex items-center justify-center gap-1.5 w-full py-2 rounded-lg text-xs font-semibold bg-[#0B5EAA] text-white hover:bg-[#0A4F91] transition-colors">
+                      <Link href={item.href} className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 rounded-lg text-xs font-regular bg-[#0B5EAA] text-white hover:bg-[#0A4F91] transition-colors">
                         <span>Lihat Detail</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
@@ -236,7 +236,7 @@ export default function TCI3OverviewPage() {
           <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
             <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">SPESIFIKASI</span>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">Spesifikasi Unit</h2>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">Spesifikasi Unit</h2>
           </div>
 
           <div className="max-w-[900px] mx-auto rounded-xl overflow-x-auto border border-[#E5E7EB] bg-white shadow-sm">
@@ -276,7 +276,7 @@ export default function TCI3OverviewPage() {
             <div className="lg:col-span-5 space-y-4">
               <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">LOKASI KAMI</span>
 
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">Lokasi Strategis</h2>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">Lokasi Strategis</h2>
 
               <p className="text-sm text-[#6B7280] leading-relaxed">TCI 3 terletak di jantung area berkembang Cibaduyut, memberikan akses cepat ke pusat kota Bandung dan fasilitas umum utama.</p>
 

@@ -48,9 +48,9 @@ export default function TCIOverviewPage() {
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">Taman Cibaduyut Indah</h1>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">Taman Cibaduyut Indah</h1>
 
-            <p className="text-sm sm:text-base text-white/80 max-w-xl leading-relaxed">Pengembangan kawasan hunian terpadu yang menggabungkan kenyamanan modern dengan lingkungan asri yang harmonis.</p>
+            <p className="text-sm sm:text-base text-white/50 max-w-xl leading-relaxed">Pengembangan kawasan hunian terpadu yang menggabungkan kenyamanan modern dengan lingkungan asri yang harmonis.</p>
           </div>
         </div>
       </section>
@@ -63,7 +63,7 @@ export default function TCIOverviewPage() {
             <div className="lg:col-span-7 space-y-6">
               <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">TAMAN CIBADUYUT INDAH</span>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111827]">Visi Kawasan Terintegrasi</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#111827]">Visi Kawasan Terintegrasi</h2>
 
               <div className="space-y-4 text-sm sm:text-base text-[#6B7280] leading-relaxed text-justify">
                 <p>
@@ -80,13 +80,13 @@ export default function TCIOverviewPage() {
               {/* Stats */}
               <div className="grid grid-cols-2 gap-6 pt-4 border-t border-gray-100">
                 <div className="border-l-3 border-[#0B5EAA] pl-4">
-                  <div className="text-3xl sm:text-4xl font-bold text-[#0B5EAA]">500+</div>
+                  <div className="text-2xl sm:text-2xl font-bold text-[#0B5EAA]">500+</div>
 
                   <div className="text-xs font-semibold uppercase text-gray-500 tracking-wider mt-0.5">UNIT TERHUNI</div>
                 </div>
 
                 <div className="border-l-3 border-[#0B5EAA] pl-4">
-                  <div className="text-3xl sm:text-4xl font-bold text-[#0B5EAA]">?? Ha</div>
+                  <div className="text-2xl sm:text-2xl font-bold text-[#0B5EAA]">?? Ha</div>
 
                   <div className="text-xs font-semibold uppercase text-gray-500 tracking-wider mt-0.5">TOTAL AREA</div>
                 </div>
@@ -109,7 +109,7 @@ export default function TCIOverviewPage() {
           <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
             <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">PROYEK KAMI</span>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">Eksplorasi Fase Pengembangan</h2>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">Eksplorasi Fase Pengembangan</h2>
 
             <p className="text-sm text-[#6B7280]">Pilih komplek yang sesuai dengan gaya hidup dan kebutuhan masa depan Anda.</p>
           </div>
@@ -124,7 +124,7 @@ export default function TCIOverviewPage() {
                 </div>
 
                 <div className="p-6 flex flex-col flex-grow space-y-3">
-                  <h3 className="text-lg font-bold text-[#111827]">{phase.title}</h3>
+                  <h3 className="text-lg font-semibold text-[#111827]">{phase.title}</h3>
 
                   <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed flex-grow">{phase.description}</p>
 

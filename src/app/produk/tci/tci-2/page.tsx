@@ -21,9 +21,9 @@ export default function TCI2OverviewPage() {
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">Taman Cibaduyut Indah 2</h1>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">Taman Cibaduyut Indah 2</h1>
 
-            <div className="flex items-center gap-2 text-sm sm:text-base text-white/80">
+            <div className="flex items-center gap-2 text-sm sm:text-base text-white/50">
               <MapPin className="w-4 h-4 text-white" />
               <span>Cibaduyut, Kota Bandung</span>
             </div>
@@ -39,7 +39,7 @@ export default function TCI2OverviewPage() {
             <div className="lg:col-span-7 space-y-6">
               <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">TAMAN CIBADUYUT INDAH</span>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111827]">Hunian Minimalis untuk Keluarga Modern</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#111827]">Hunian Minimalis untuk Keluarga Modern</h2>
 
               <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">
                 Taman Cibaduyut Indah 2 dikembangkan dengan konsep hunian minimalis modern yang mengutamakan efisiensi ruang dan kenyamanan keluarga. Perencanaan bangunan yang fungsional serta pemanfaatan pencahayaan alami menciptakan
@@ -83,7 +83,7 @@ export default function TCI2OverviewPage() {
             <div className="lg:col-span-5 space-y-4">
               <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">LOKASI KAMI</span>
 
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">Lokasi Strategis</h2>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">Lokasi Strategis</h2>
 
               <p className="text-sm text-[#6B7280] leading-relaxed">TCI 2 berada di kawasan Cibaduyut dengan akses yang mendukung mobilitas penghuni menuju pusat aktivitas dan berbagai fasilitas umum di Bandung dan sekitarnya.</p>
 
