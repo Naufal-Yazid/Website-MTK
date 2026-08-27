@@ -50,40 +50,9 @@ export default function TCI3Tipe36Page() {
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-xs sm:text-sm text-white/60">
-              <Link href="/" className="hover:text-white transition-colors">
-                Beranda
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <Link href="/produk" className="hover:text-white transition-colors">
-                Proyek
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <Link href="/produk/tci" className="hover:text-white transition-colors">
-                TCI
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <Link href="/produk/tci/tci-3" className="hover:text-white transition-colors">
-                TCI 3
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <span className="text-white font-medium">Tipe 36</span>
-            </nav>
-
             <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">PREMIUM RESIDENTIAL</span>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">TCI 3 — Tipe 36</h1>
-
-            <p className="text-sm sm:text-base text-white/80 max-w-xl leading-relaxed">Hunian modern minimalis yang dirancang dengan efisiensi ruang maksimal dan estetika kontemporer untuk kenyamanan keluarga Anda.</p>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
