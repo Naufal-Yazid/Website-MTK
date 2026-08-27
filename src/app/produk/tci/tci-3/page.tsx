@@ -14,7 +14,9 @@ import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
 
 export default function TCI3OverviewPage() {
-  const [activeTab, setActiveTab] = useState<"rumah" | "ruko">("rumah");
+  const [activeTab, setActiveTab] = useState<
+    "cluster" | "non-cluster" | "ruko"
+  >("cluster");
 
   const rumahTypes = [
     {
@@ -43,6 +45,18 @@ export default function TCI3OverviewPage() {
       image:
         "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80",
       href: "/produk/tci/tci-3/tipe-50",
+    },
+  ];
+
+  const nonClusterTypes = [
+    {
+      title: "Tipe 50",
+      description:
+        "Hunian non-cluster dengan tata ruang fungsional dan akses langsung untuk kenyamanan keluarga.",
+      price: "Rp 800jt an",
+      image:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+      href: "/produk/tci/tci-3/non-cluster/tipe-50",
     },
   ];
 
@@ -224,17 +238,29 @@ export default function TCI3OverviewPage() {
             </p>
 
             {/* Tab Toggle */}
-            <div className="flex items-center justify-center gap-2 pt-4">
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
               <button
                 type="button"
-                onClick={() => setActiveTab("rumah")}
+                onClick={() => setActiveTab("cluster")}
                 className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all ${
-                  activeTab === "rumah"
+                  activeTab === "cluster"
                     ? "bg-[#0B5EAA] text-white shadow-sm"
                     : "bg-white border border-[#E5E7EB] text-[#6B7280] hover:bg-gray-50"
                 }`}
               >
-                Rumah
+                Cluster
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveTab("non-cluster")}
+                className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all ${
+                  activeTab === "non-cluster"
+                    ? "bg-[#0B5EAA] text-white shadow-sm"
+                    : "bg-white border border-[#E5E7EB] text-[#6B7280] hover:bg-gray-50"
+                }`}
+              >
+                Non-Cluster
               </button>
 
               <button
@@ -252,7 +278,7 @@ export default function TCI3OverviewPage() {
           </div>
 
           {/* Cards Display */}
-          {activeTab === "rumah" ? (
+          {activeTab === "cluster" ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {rumahTypes.map((item) => (
                 <div
@@ -263,6 +289,51 @@ export default function TCI3OverviewPage() {
                     <img
                       src={item.image}
                       alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <div className="p-5 flex flex-col flex-grow space-y-3">
+                    <h3 className="text-lg font-bold text-[#0B5EAA]">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-xs text-[#6B7280] leading-relaxed flex-grow">
+                      {item.description}
+                    </p>
+
+                    <div className="pt-2">
+                      <div className="text-[11px] text-[#6B7280]">
+                        Mulai dari
+                      </div>
+
+                      <div className="text-base font-bold text-[#0B5EAA] mb-3">
+                        {item.price}
+                      </div>
+
+                      <Link
+                        href={item.href}
+                        className="inline-flex items-center justify-center gap-1.5 w-full py-2 rounded-lg text-xs font-semibold bg-[#0B5EAA] text-white hover:bg-[#0A4F91] transition-colors"
+                      >
+                        <span>Lihat Detail</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : activeTab === "non-cluster" ? (
+            <div className="max-w-sm mx-auto">
+              {nonClusterTypes.map((item) => (
+                <div
+                  key={item.title}
+                  className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col"
+                >
+                  <div className="aspect-[16/10] bg-gray-100 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={`${item.title} Non-Cluster`}
                       className="w-full h-full object-cover"
                     />
                   </div>
