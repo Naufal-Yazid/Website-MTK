@@ -82,11 +82,6 @@ export default function TentangPage() {
               <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">
                 Kami hadir untuk menjawab kebutuhan akan rumah yang nyaman, aman, dan memiliki lokasi strategis tanpa mengorbankan kualitas bangunan. Dengan pengalaman dalam mengembangkan kawasan perumahan, kami berkomitmen membangun lingkungan hunian yang rapi, fungsional, dan mendukung kualitas hidup penghuni.
               </p>
-              <div className="pt-2">
-                <span className="inline-block bg-[#0B5EAA] text-white text-xs font-semibold px-4 py-2 rounded-md tracking-wider uppercase">
-                  25+ TAHUN PENGALAMAN
-                </span>
-              </div>
             </div>
 
             {/* Right Image */}

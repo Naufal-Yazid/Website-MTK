@@ -49,8 +49,9 @@ export default function TCI3OverviewPage() {
       title: "Terranova Arcade",
       description: "The ultimate expression of luxury and space for the elite commercial activities.",
       price: "Rp 800jt an",
-      image: "/terranova-arcade.jpg", // Taruh file di folder public/terranova-arcade.jpg
-      href: "/produk/tci/tci-3/tipe-36",
+      image:
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80",
+      href: "/produk/tci/tci-3/ruko/teranova",
     },
   ];
 
