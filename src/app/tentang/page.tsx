@@ -13,7 +13,7 @@ export default function TentangPage() {
     },
     {
       title: "Permata Buah Batu",
-      description: "Hunian nyaman di kawasan Rancamanyar yang didukung akses mudah, lingkungan berkembang, dan fasilitas umum yang lengkap.",
+      description: "Hunian nyaman di kawasan Buah Batu yang didukung akses mudah, lingkungan berkembang, dan fasilitas umum.",
     },
   ];
 
@@ -33,6 +33,15 @@ export default function TentangPage() {
       role: "Founder",
       image: "../Tentang/Placeholder_Profil_Photo.webp",
     },
+  ];
+
+  const partners = [
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80",
   ];
 
   return (
@@ -57,10 +66,6 @@ export default function TentangPage() {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
             Tentang Marga Tirta Kencana
           </h1>
-
-          <p className="text-sm sm:text-base text-white/80 max-w-2xl mx-auto leading-relaxed">
-            PT Marga Tirta Kencana hadir untuk menjawab kebutuhan akan rumah yang terjangkau dan memiliki lokasi strategis tanpa mengorbankan kualitas bangunan.
-          </p>
         </div>
       </section>
 
@@ -82,6 +87,9 @@ export default function TentangPage() {
               <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">
                 Kami hadir untuk menjawab kebutuhan akan rumah yang nyaman, aman, dan memiliki lokasi strategis tanpa mengorbankan kualitas bangunan. Dengan pengalaman dalam mengembangkan kawasan perumahan, kami berkomitmen membangun lingkungan hunian yang rapi, fungsional, dan mendukung kualitas hidup penghuni.
               </p>
+              <div className="pt-2">
+                
+              </div>
             </div>
 
             {/* Right Image */}
@@ -94,13 +102,7 @@ export default function TentangPage() {
                 />
               </div>
 
-              {/* Overlapping Badge */}
-              <div className="absolute -bottom-5 -right-3 sm:right-4 bg-[#0B5EAA] text-white rounded-xl p-5 shadow-xl text-center min-w-[150px]">
-                <div className="text-3xl font-bold">25+</div>
-                <div className="text-[10px] font-semibold tracking-wider uppercase text-white/90 mt-0.5">
-                  TAHUN PENGALAMAN
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -114,7 +116,7 @@ export default function TentangPage() {
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-md aspect-[4/5]">
                 <img
-                  src="../Tentang/Foto-Kamar-type36.webp"
+                  src="/Foto_Visi_Misi_GateTCI3.webp"
                   alt="Interior Kamar Tidur Modern"
                   className="w-full h-full object-cover"
                 />
@@ -160,31 +162,7 @@ export default function TentangPage() {
         </div>
       </section>
 
-      {/* SECTION 4 — PROYEK KAMI */}
-      <section className="bg-[#1A2B4A] py-20 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
-            <span className="text-xs uppercase tracking-widest font-semibold text-white/70">
-              PROYEK
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold">Proyek Kami</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {projects.map((proj, idx) => (
-              <div
-                key={idx}
-                className="bg-[#0D2140] border border-white/10 rounded-xl p-7 space-y-3 shadow-md hover:border-white/20 transition-all"
-              >
-                <h3 className="text-lg font-bold text-white">{proj.title}</h3>
-                <p className="text-xs sm:text-sm text-[#8EA8C3] leading-relaxed">
-                  {proj.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* SECTION 5 — TIM MANAJEMEN */}
       <section className="bg-white py-20">
@@ -222,6 +200,9 @@ export default function TentangPage() {
           </div>
         </div>
       </section>
+
+      
+
       <CTABanner />
     </>
   );
