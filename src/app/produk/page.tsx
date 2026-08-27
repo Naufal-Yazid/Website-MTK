@@ -17,18 +17,9 @@ export default function ProdukIndexPage() {
         <div className="absolute inset-0 bg-[#0D1B2A]/55" />
 
         <div className="relative z-10 max-w-4xl text-center px-4 py-20 space-y-4">
-          <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">
-            PROYEK KAMI
-          </span>
+          <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">PROYEK KAMI</span>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-            Hunian untuk Masa Depan Anda
-          </h1>
-
-          <p className="text-sm sm:text-base text-white/80 max-w-2xl mx-auto leading-relaxed">
-            Menghadirkan hunian berkualitas dengan desain arsitektur modern dan
-            lingkungan yang asri untuk masa depan keluarga Anda.
-          </p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">Hunian untuk Masa Depan Anda</h1>
         </div>
       </section>
 
@@ -37,18 +28,11 @@ export default function ProdukIndexPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
-              PILIHAN HUNIAN
-            </span>
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">PILIHAN HUNIAN</span>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#111827]">
-              Temukan Proyek Impian Anda
-            </h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#111827]">Temukan Proyek Impian Anda</h2>
 
-            <p className="text-sm text-[#6B7280] leading-relaxed">
-              Jelajahi pilihan kawasan hunian yang dirancang untuk mendukung
-              kenyamanan dan masa depan keluarga Anda.
-            </p>
+            <p className="text-sm text-[#6B7280] leading-relaxed">Jelajahi pilihan kawasan hunian yang dirancang untuk mendukung kenyamanan dan masa depan keluarga Anda.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
