@@ -9,12 +9,12 @@ export default function CTABanner() {
   });
 
   return (
-    <section className="relative overflow-hidden bg-[#0D1B2A] py-16 md:py-20">
-      {/* Background Image Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none"
+    <section className="relative overflow-hidden bg-[#0D1B2A] py-24 md:py-32">
+      {/* Background Image Overlay dari Public */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-25 pointer-events-none"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80')`,
+          backgroundImage: `url('/cta-bg.webp')`, // Taruh file di folder public/cta-bg.jpg
         }}
       />
       <div className="absolute inset-0 bg-[#0D1B2A]/80 backdrop-blur-[1px] pointer-events-none" />
@@ -23,12 +23,8 @@ export default function CTABanner() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Left Text Content */}
           <div className="max-w-2xl">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight tracking-tight">
-              Konsultasikan Hunian Impian Anda Sekarang!
-            </h2>
-            <p className="mt-3 text-sm sm:text-base text-white/80 max-w-xl leading-relaxed">
-              Tim kami siap membantu Anda memilih lokasi dan tipe rumah yang paling sesuai dengan kebutuhan dan budget Anda.
-            </p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight">Konsultasikan Hunian Impian Anda Sekarang!</h2>
+            <p className="mt-3 text-sm sm:text-base font-normal text-white/70 max-w-xl leading-relaxed">Tim kami siap membantu Anda memilih lokasi dan tipe rumah yang paling sesuai dengan kebutuhan dan budget Anda.</p>
           </div>
 
           {/* Right Button */}
