@@ -50,40 +50,9 @@ export default function TCI3Tipe36Page() {
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-xs sm:text-sm text-white/60">
-              <Link href="/" className="hover:text-white transition-colors">
-                Beranda
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <Link href="/produk" className="hover:text-white transition-colors">
-                Proyek
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <Link href="/produk/tci" className="hover:text-white transition-colors">
-                TCI
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <Link href="/produk/tci/tci-3" className="hover:text-white transition-colors">
-                TCI 3
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <span className="text-white font-medium">Tipe 36</span>
-            </nav>
-
             <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">PREMIUM RESIDENTIAL</span>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">TCI 3 — Tipe 36</h1>
-
-            <p className="text-sm sm:text-base text-white/80 max-w-xl leading-relaxed">Hunian modern minimalis yang dirancang dengan efisiensi ruang maksimal dan estetika kontemporer untuk kenyamanan keluarga Anda.</p>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -110,9 +79,7 @@ export default function TCI3Tipe36Page() {
               <div>
                 <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">SPESIFIKASI</span>
 
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#111827] mt-1">Spesifikasi Eksklusif</h2>
-
-                <p className="text-sm text-[#6B7280] mt-2">Tipe 36 di TCI 3 dirancang untuk memberikan kenyamanan maksimal dengan pemanfaatan lahan yang cerdas dan material bangunan kelas satu.</p>
+                <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827] mt-1">Spesifikasi Eksklusif</h2>
               </div>
 
               {/* 2x3 Grid Specs */}
@@ -156,7 +123,7 @@ export default function TCI3Tipe36Page() {
           <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
             <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">GAMBARAN RUMAH</span>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">Denah Rumah</h2>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">Denah Rumah</h2>
 
             <p className="text-sm text-[#6B7280]">Visualisasi tata ruang yang efisien, mengoptimalkan setiap meter persegi untuk mendukung aktivitas harian Anda.</p>
           </div>
@@ -174,7 +141,7 @@ export default function TCI3Tipe36Page() {
                   <div className="w-8 h-8 rounded-full bg-[#0B5EAA] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-sm">{step.num}</div>
 
                   <div className="space-y-1">
-                    <h3 className="text-base font-bold text-[#111827]">{step.title}</h3>
+                    <h3 className="text-base font-semibold text-[#111827]">{step.title}</h3>
 
                     <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed">{step.description}</p>
                   </div>
