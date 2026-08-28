@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { ChevronRight, Download, MapPin, Ruler, Home as HomeIcon, BedDouble, Bath, Car, Zap } from "lucide-react";
+import { Download, MapPin, Ruler, Home as HomeIcon, BedDouble, Bath, Car, Zap } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
 import KPRCalculator from "@/components/sections/KPRCalculator";
@@ -53,12 +52,21 @@ export default function TCI3Tipe50Page() {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <a href="#brosur" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors">
+              <a
+                href="/brosur/brosur-cluster-tci.pdf"
+                download="brosur-cluster-tci.pdf"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors"
+              >
                 <Download className="w-4 h-4" />
                 <span>Download Brosur</span>
               </a>
 
-              <a href="#lokasi" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors">
+              <a
+                href="https://maps.app.goo.gl/vswkS5vy8ATpDWPt5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors"
+              >
                 <MapPin className="w-4 h-4" />
                 <span>Lihat Lokasi</span>
               </a>
