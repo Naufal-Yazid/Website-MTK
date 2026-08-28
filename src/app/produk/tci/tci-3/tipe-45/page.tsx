@@ -39,7 +39,7 @@ export default function TCI3Tipe45Page() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80')",
+            backgroundImage: "url('/Tipe45_Depannn.webp')", 
           }}
         />
 
@@ -99,7 +99,7 @@ export default function TCI3Tipe45Page() {
             {/* Right Column Image */}
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gray-100">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="TCI 3 Tipe 45 Eksterior" className="w-full h-full object-cover" />
+                <img src="/Tipe45_DepanSamping.webp" alt="TCI 3 Tipe 45 Eksterior" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>

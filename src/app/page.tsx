@@ -34,17 +34,17 @@ export default function Home() {
     {
       icon: HomeIcon,
       title: "Sarana Ibadah dan Olahraga",
-      description: "Area bermain anak yang aman dan edukatif untuk tumbuh kembang buah hati Anda di lingkungan yang sehat.",
+      description: "Tersedia sarana ibadah dan area olahraga yang dapat digunakan oleh penghuni untuk mendukung kebutuhan sehari-hari.",
     },
     {
       icon: Shield,
       title: "24/7 Security",
-      description: "Sistem keamanan satu pintu (One Gate System) lengkap dengan CCTV dan penjagaan ketat 24 jam penuh.",
+      description: "Keamanan lingkungan didukung oleh CCTV dan petugas keamanan yang berjaga selama 24 jam.",
     },
     {
       icon: Zap,
-      title: "Instalasi Listrik",
-      description: "Akses jalan lebar dan rapi menggunakan material paving block berkualitas untuk drainase lingkungan yang optimal.",
+      title: "Instalasi Listrik & Air",
+      description: "Setiap unit dilengkapi dengan instalasi listrik dan air untuk memenuhi kebutuhan dasar penghuni.",
     },
   ];
 
