@@ -7,8 +7,6 @@ export default function TCIOverviewPage() {
   const phases = [
     {
       id: "tci-1",
-      badge: "Established Community",
-      badgeClass: "bg-white/90 text-[#111827]",
       title: "Taman Cibaduyut Indah 1",
       description: "Komunitas yang telah mapan dengan lingkungan hijau yang rindang dan keamanan 24 jam yang ketat.",
       buttonClass: "bg-[#0B5EAA] text-white hover:bg-[#0A4F91]",
@@ -16,8 +14,6 @@ export default function TCIOverviewPage() {
     },
     {
       id: "tci-2",
-      badge: "Modern Development",
-      badgeClass: "bg-[#0B5EAA] text-white",
       title: "Taman Cibaduyut Indah 2",
       description: "Konsep hunian minimalis modern yang mengedepankan efisiensi ruang dan pencahayaan alami maksimal.",
       buttonClass: "bg-[#0B5EAA] text-white hover:bg-[#0A4F91]",
@@ -25,8 +21,6 @@ export default function TCIOverviewPage() {
     },
     {
       id: "tci-3",
-      badge: "3 Tipe Rumah Tersedia",
-      badgeClass: "bg-[#0B5EAA] text-white",
       title: "Taman Cibaduyut Indah 3",
       description: "Fase terbaru dengan desain arsitektur kontemporer dan integrasi smart home system yang cerdas.",
       buttonClass: "bg-[#0B5EAA] text-white hover:bg-[#0A4F91]",
@@ -120,7 +114,6 @@ export default function TCIOverviewPage() {
                 <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                   <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt={phase.title} className="w-full h-full object-cover" />
 
-                  <span className={`absolute top-3 left-3 text-xs font-semibold px-3 py-1 rounded-full shadow-sm ${phase.badgeClass}`}>{phase.badge}</span>
                 </div>
 
                 <div className="p-6 flex flex-col flex-grow space-y-3">
