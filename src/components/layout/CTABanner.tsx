@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import Image from "next/image";
 import { buildWAUrl } from "@/lib/wa";
 
 export default function CTABanner() {
@@ -14,7 +14,7 @@ export default function CTABanner() {
       <div
         className="absolute inset-0 bg-cover bg-center opacity-25 pointer-events-none"
         style={{
-          backgroundImage: `url('/cta-bg.webp')`, // Taruh file di folder public/cta-bg.jpg
+          backgroundImage: `url('/cta-bg.webp')`,
         }}
       />
       <div className="absolute inset-0 bg-[#0D1B2A]/80 backdrop-blur-[1px] pointer-events-none" />
@@ -35,7 +35,8 @@ export default function CTABanner() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 w-full md:w-auto px-8 py-3.5 rounded-full bg-white text-[#0B5EAA] font-semibold text-sm sm:text-base hover:bg-sky-50 shadow-lg hover:shadow-xl transition-all active:scale-95"
             >
-              <MessageCircle className="w-5 h-5 text-[#25D366] fill-[#25D366]" />
+              {/* Gambar Custom dari Public (Ganti wa-icon.png sesuai nama file Anda) */}
+              <Image src="/WhatsApp.svg.webp" alt="WhatsApp Icon" width={20} height={20} className="w-8 h-8 object-contain" />
               <span>WhatsApp Kami</span>
             </a>
           </div>
