@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Download, MapPin, Ruler, Home as HomeIcon, BedDouble, Bath, Car, Zap } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
@@ -38,7 +39,7 @@ export default function TCI3Tipe45Page() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{
-            backgroundImage: "url('/Tipe45_Depannn.webp')", 
+            backgroundImage: "url('/Tipe45_Depannn.webp')",
           }}
         />
 
@@ -150,10 +151,50 @@ export default function TCI3Tipe45Page() {
         </div>
       </section>
 
-      {/* SECTION 4 — KALKULATOR KPR */}
+      {/* SECTION 4 — GALERI UNIT */}
+      <section className="bg-white py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl mb-10 space-y-2">
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">UNIT TIPE 45</span>
+
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">Galeri Unit</h2>
+
+            <p className="text-sm text-[#6B7280]">Intip setiap sudut hunian impian Anda.</p>
+          </div>
+
+          {/* Grid Galeri dengan items-stretch agar tinggi kiri dan kanan otomatis sama persis */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
+            {/* Foto 1: Ruang Tamu (Kiri - Mengikuti tinggi total kolom kanan) */}
+            <div className="lg:col-span-7 rounded-2xl overflow-hidden shadow-sm bg-gray-100 relative group min-h-[300px] h-full">
+              <Image src="/Tipe_45_Interior/Foto_Interior_tipe45_Dapur.webp" alt="Dapur" fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1024px) 100vw, 60vw" />
+
+              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">Dapur</div>
+            </div>
+
+            {/* Kolom Kanan: 2 Foto Ditumpuk */}
+            <div className="lg:col-span-5 grid grid-cols-1 gap-4 sm:gap-6">
+              {/* Foto 2: Kamar Tidur Utama */}
+              <div className="rounded-2xl overflow-hidden shadow-sm aspect-[16/10] bg-gray-100 relative group">
+                <Image src="/Tipe_45_Interior/Foto_Interior_tipe45_Kamar2.webp" alt="Kamar Tidur Utama" fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1024px) 100vw, 40vw" />
+
+                <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">Kamar Tidur Utama</div>
+              </div>
+
+              {/* Foto 3: Kamar Anak */}
+              <div className="rounded-2xl overflow-hidden shadow-sm aspect-[16/10] bg-gray-100 relative group">
+                <Image src="/Tipe_45_Interior/Foto_Interior_tipe45_Kamar1.webp" alt="Kamar Anak" fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1024px) 100vw, 40vw" />
+
+                <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">Kamar Anak</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5 — KALKULATOR KPR */}
       <KPRCalculator key="tci-3-tipe-45-650jt" initialHarga={650000000} />
 
-      {/* SECTION 5 — FORMULIR INQUIRY */}
+      {/* SECTION 6 — FORMULIR INQUIRY */}
       <InquiryForm defaultProyek="TCI 3" defaultTipe="Tipe 45" />
 
       <CTABanner />

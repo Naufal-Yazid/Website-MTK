@@ -15,21 +15,21 @@ export default function TCI3OverviewPage() {
       title: "Tipe 36",
       description: "Compact, efficient, and beautifully designed for young couples.",
       price: "Rp 500jt an",
-      image: "/tci3-tipe-36.webp", // Taruh file di folder public/tci3-tipe-36.jpg
+      image: "/tci3-tipe-36.webp",
       href: "/produk/tci/tci-3/tipe-36",
     },
     {
       title: "Tipe 45",
       description: "Extra space for growing families with premium finishes.",
       price: "Rp 650jt an",
-      image: "/tci3-tipe-45.webp", // Taruh file di folder public/tci3-tipe-45.jpg
+      image: "/Tipe45_Depannn.webp",
       href: "/produk/tci/tci-3/tipe-45",
     },
     {
       title: "Tipe 50",
       description: "The ultimate expression of luxury and space for the elite.",
       price: "Rp 800jt an",
-      image: "/tci3-tipe-50.webp", // Taruh file di folder public/tci3-tipe-50.jpg
+      image: "/tci3-tipe-50.webp",
       href: "/produk/tci/tci-3/tipe-50",
     },
   ];
@@ -49,8 +49,7 @@ export default function TCI3OverviewPage() {
       title: "Terranova Arcade",
       description: "The ultimate expression of luxury and space for the elite commercial activities.",
       price: "Rp 800jt an",
-      image:
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80",
       href: "/produk/tci/tci-3/ruko/teranova",
     },
   ];
@@ -276,36 +275,49 @@ export default function TCI3OverviewPage() {
         </div>
       </section>
 
-      {/* SECTION 4 — TABEL SPESIFIKASI */}
+      {/* SECTION 4 — TABEL SPESIFIKASI RESPONSIVE */}
+      {/* SECTION 4 — SPESIFIKASI (PAS DI HP TANPA SCROLL) */}
       <section className="bg-[#F9FAFB] py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
+          <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10 space-y-2">
             <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">SPESIFIKASI</span>
 
             <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">Spesifikasi Unit</h2>
           </div>
 
-          <div className="max-w-[900px] mx-auto rounded-xl overflow-x-auto border border-[#E5E7EB] bg-white shadow-sm">
-            <table className="w-full min-w-[640px] text-left border-collapse">
+          <div className="max-w-[900px] mx-auto rounded-xl overflow-hidden border border-[#E5E7EB] bg-white shadow-sm">
+            {/* 
+              - table-fixed: Memaksa tabel mengikuti persentase kolom yang ditentukan 
+              - w-full: Memenuhi 100% lebar layar (tidak akan overflow)
+            */}
+            <table className="w-full table-fixed text-left border-collapse">
+              <colgroup>
+                {/* 
+                  Kategori 34%, sisa 3 kolom masing-masing 22% 
+                  Total = 100% (Muat sempurna di HP tanpa scroll)
+                */}
+                <col className="w-[34%] sm:w-[31%]" />
+                <col className="w-[22%] sm:w-[23%]" />
+                <col className="w-[22%] sm:w-[23%]" />
+                <col className="w-[22%] sm:w-[23%]" />
+              </colgroup>
+
               <thead>
-                <tr className="bg-[#0B5EAA] text-white text-xs sm:text-sm font-semibold">
-                  <th className="py-4 px-6">Kategori</th>
-                  <th className="py-4 px-6 text-center">Tipe 36</th>
-                  <th className="py-4 px-6 text-center">Tipe 45</th>
-                  <th className="py-4 px-6 text-center">Tipe 50</th>
+                <tr className="bg-[#0B5EAA] text-white text-[11px] sm:text-sm font-semibold">
+                  <th className="py-3 px-2 sm:py-4 sm:px-6">Kategori</th>
+                  <th className="py-3 px-1.5 sm:py-4 sm:px-6 text-center">Tipe 36</th>
+                  <th className="py-3 px-1.5 sm:py-4 sm:px-6 text-center">Tipe 45</th>
+                  <th className="py-3 px-1.5 sm:py-4 sm:px-6 text-center">Tipe 50</th>
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-gray-200 text-xs sm:text-sm">
+              <tbody className="divide-y divide-gray-200 text-[11px] sm:text-sm">
                 {specRows.map((row, index) => (
                   <tr key={row.label} className={index % 2 === 0 ? "bg-white" : "bg-[#F9FAFB]"}>
-                    <td className="py-4 px-6 font-semibold text-[#111827]">{row.label}</td>
-
-                    <td className="py-4 px-6 text-center text-[#6B7280]">{row.t36}</td>
-
-                    <td className="py-4 px-6 text-center text-[#6B7280]">{row.t45}</td>
-
-                    <td className="py-4 px-6 text-center text-[#6B7280]">{row.t50}</td>
+                    <td className="py-3 px-2 sm:py-4 sm:px-6 font-semibold text-[#111827] leading-tight break-words">{row.label}</td>
+                    <td className="py-3 px-1.5 sm:py-4 sm:px-6 text-center text-[#6B7280]">{row.t36}</td>
+                    <td className="py-3 px-1.5 sm:py-4 sm:px-6 text-center text-[#6B7280]">{row.t45}</td>
+                    <td className="py-3 px-1.5 sm:py-4 sm:px-6 text-center text-[#6B7280]">{row.t50}</td>
                   </tr>
                 ))}
               </tbody>

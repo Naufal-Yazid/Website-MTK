@@ -199,10 +199,10 @@ export default function Navbar() {
                       <Link href="/produk/tci" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs font-medium text-[#0B5EAA] hover:bg-[#EFF6FF]">
                         Overview TCI
                       </Link>
-                      <Link href="/produk/tci/tci-3" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
+                      <Link href="/produk/tci/tci-1" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
                         Taman Cibaduyut Indah 1
                       </Link>
-                      <Link href="/produk/tci/tci-3" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
+                      <Link href="/produk/tci/tci-2" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
                         Taman Cibaduyut Indah 2
                       </Link>
                       <Link href="/produk/tci/tci-3" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
