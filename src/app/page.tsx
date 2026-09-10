@@ -10,7 +10,7 @@ export default function Home() {
       location: "Cibaduyut, Bandung",
       price: "Mulai Rp 400 Jt",
       image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
-      href: "/produk/tci",
+      href: "/proyek/tci",
     },
     {
       id: "rancamanyar",
@@ -18,7 +18,7 @@ export default function Home() {
       location: "Kabupaten Bandung",
       price: "Mulai Rp 200 Jt",
       image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
-      href: "/produk/rancamanyar-indah",
+      href: "/proyek/rancamanyar-indah",
     },
     {
       id: "permata-buah-batu",
@@ -26,7 +26,7 @@ export default function Home() {
       location: "Buah Batu, Bandung",
       price: "Mulai Rp 450 Jt",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-      href: "/produk/permata-buah-batu",
+      href: "/proyek/permata-buah-batu",
     },
   ];
 
@@ -67,7 +67,7 @@ export default function Home() {
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-tight tracking-tight">Hunian Berkualitas di Bandung & Sekitarnya</h1>
             <p className="text-base sm:text-lg font-normal text-white/50 max-w-xl leading-relaxed">Wujudkan impian memiliki rumah dengan desain arsitektur modern, lingkungan asri, dan aksesibilitas terbaik untuk keluarga Anda.</p>
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Link href="/produk" className="inline-flex items-center justify-center px-7 py-3 rounded-lg bg-[#0B5EAA] text-white font-normal text-sm sm:text-base hover:bg-[#0A4F91] transition-all shadow-lg active:scale-95">
+              <Link href="/proyek" className="inline-flex items-center justify-center px-7 py-3 rounded-lg bg-[#0B5EAA] text-white font-normal text-sm sm:text-base hover:bg-[#0A4F91] transition-all shadow-lg active:scale-95">
                 Lihat Proyek
               </Link>
               <Link href="/kontak" className="inline-flex items-center justify-center px-7 py-3 rounded-lg border border-white text-white font-normal text-sm sm:text-base hover:bg-white/10 backdrop-blur-xs transition-all active:scale-95">
