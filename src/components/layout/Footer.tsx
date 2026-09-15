@@ -63,17 +63,17 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/produk/rancamanyar-indah" className="text-[#8EA8C3] hover:text-white transition-colors">
+                <Link href="/proyek/rancamanyar-indah" className="text-[#8EA8C3] hover:text-white transition-colors">
                   Rancamanyar Indah
                 </Link>
               </li>
               <li>
-                <Link href="/produk/permata-buah-batu" className="text-[#8EA8C3] hover:text-white transition-colors">
+                <Link href="/proyek/permata-buah-batu" className="text-[#8EA8C3] hover:text-white transition-colors">
                   Permata Buah Batu
                 </Link>
               </li>
               <li>
-                <Link href="/produk/tci" className="text-[#8EA8C3] hover:text-white transition-colors">
+                <Link href="/proyek/tci" className="text-[#8EA8C3] hover:text-white transition-colors">
                   Taman Cibaduyut Indah
                 </Link>
               </li>

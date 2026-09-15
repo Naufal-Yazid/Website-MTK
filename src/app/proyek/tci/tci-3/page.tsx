@@ -16,21 +16,21 @@ export default function TCI3OverviewPage() {
       description: "Compact, efficient, and beautifully designed for young couples.",
       price: "Rp 500jt an",
       image: "/tci3-tipe-36.webp",
-      href: "/produk/tci/tci-3/tipe-36",
+      href: "/proyek/tci/tci-3/tipe-36",
     },
     {
       title: "Tipe 45",
       description: "Extra space for growing families with premium finishes.",
       price: "Rp 650jt an",
       image: "/Tipe45_Depannn.webp",
-      href: "/produk/tci/tci-3/tipe-45",
+      href: "/proyek/tci/tci-3/tipe-45",
     },
     {
       title: "Tipe 50",
       description: "The ultimate expression of luxury and space for the elite.",
       price: "Rp 800jt an",
       image: "/tci3-tipe-50.webp",
-      href: "/produk/tci/tci-3/tipe-50",
+      href: "/proyek/tci/tci-3/tipe-50",
     },
   ];
 
@@ -40,7 +40,7 @@ export default function TCI3OverviewPage() {
       description: "Hunian non-cluster dengan tata ruang fungsional dan akses langsung untuk kenyamanan keluarga.",
       price: "Rp 800jt an",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-      href: "/produk/tci/tci-3/non-cluster/tipe-50",
+      href: "/proyek/tci/tci-3/non-cluster/tipe-50",
     },
   ];
 
@@ -50,7 +50,7 @@ export default function TCI3OverviewPage() {
       description: "The ultimate expression of luxury and space for the elite commercial activities.",
       price: "Rp 800jt an",
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80",
-      href: "/produk/tci/tci-3/ruko/teranova",
+      href: "/proyek/tci/tci-3/ruko/teranova",
     },
   ];
 

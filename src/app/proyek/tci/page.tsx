@@ -10,21 +10,21 @@ export default function TCIOverviewPage() {
       title: "Taman Cibaduyut Indah 1",
       description: "Komunitas yang telah mapan dengan lingkungan hijau yang rindang dan keamanan 24 jam yang ketat.",
       buttonClass: "bg-[#0B5EAA] text-white hover:bg-[#0A4F91]",
-      href: "/produk/tci/tci-1",
+      href: "/proyek/tci/tci-1",
     },
     {
       id: "tci-2",
       title: "Taman Cibaduyut Indah 2",
       description: "Konsep hunian minimalis modern yang mengedepankan efisiensi ruang dan pencahayaan alami maksimal.",
       buttonClass: "bg-[#0B5EAA] text-white hover:bg-[#0A4F91]",
-      href: "/produk/tci/tci-2",
+      href: "/proyek/tci/tci-2",
     },
     {
       id: "tci-3",
       title: "Taman Cibaduyut Indah 3",
       description: "Fase terbaru dengan desain arsitektur kontemporer dan integrasi smart home system yang cerdas.",
       buttonClass: "bg-[#0B5EAA] text-white hover:bg-[#0A4F91]",
-      href: "/produk/tci/tci-3",
+      href: "/proyek/tci/tci-3",
     },
   ];
 
@@ -80,7 +80,7 @@ export default function TCIOverviewPage() {
                 </div>
 
                 <div className="border-l-3 border-[#0B5EAA] pl-4">
-                  <div className="text-2xl sm:text-2xl font-bold text-[#0B5EAA]">?? Ha</div>
+                  <div className="text-2xl sm:text-2xl font-bold text-[#0B5EAA]">55 Ha</div>
 
                   <div className="text-xs font-semibold uppercase text-gray-500 tracking-wider mt-0.5">TOTAL AREA</div>
                 </div>

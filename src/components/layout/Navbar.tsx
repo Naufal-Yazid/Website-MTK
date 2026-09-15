@@ -85,12 +85,12 @@ export default function Navbar() {
             }}
           >
             <Link
-              href="/produk"
-              className={`inline-flex items-center gap-1.5 text-sm font-normal transition-colors ${isActive("/produk") ? "text-[#0B5EAA]" : useDarkContent ? "text-[#4B5563] hover:text-[#0B5EAA]" : "text-white/90 hover:text-[#0B5EAA]"}`}
+              href="/proyek"
+              className={`inline-flex items-center gap-1.5 text-sm font-normal transition-colors ${isActive("/proyek") ? "text-[#0B5EAA]" : useDarkContent ? "text-[#4B5563] hover:text-[#0B5EAA]" : "text-white/90 hover:text-[#0B5EAA]"}`}
             >
               <span>Proyek</span>
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${desktopDropdownOpen ? "rotate-180" : ""}`} />
-              {isActive("/produk") && <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#0B5EAA] rounded-full" />}
+              {isActive("/proyek") && <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#0B5EAA] rounded-full" />}
             </Link>
 
             {/* Panel Dropdown Menyatu */}
@@ -101,7 +101,7 @@ export default function Navbar() {
                   <div className="w-56 flex flex-col gap-0.5">
                     {/* Item TCI */}
                     <Link
-                      href="/produk/tci"
+                      href="/proyek/tci"
                       onMouseEnter={() => setHoveredSubmenu("tci")}
                       className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm transition-colors ${hoveredSubmenu === "tci" ? "bg-[#EFF6FF] text-[#0B5EAA] font-medium" : "text-[#111827] hover:bg-gray-50"}`}
                     >
@@ -110,12 +110,12 @@ export default function Navbar() {
                     </Link>
 
                     {/* Rancamanyar */}
-                    <Link href="/produk/rancamanyar-indah" onMouseEnter={() => setHoveredSubmenu(null)} className="px-3.5 py-2.5 rounded-xl text-sm text-[#111827] hover:bg-gray-50 hover:text-[#0B5EAA] transition-colors">
+                    <Link href="/proyek/rancamanyar-indah" onMouseEnter={() => setHoveredSubmenu(null)} className="px-3.5 py-2.5 rounded-xl text-sm text-[#111827] hover:bg-gray-50 hover:text-[#0B5EAA] transition-colors">
                       Rancamanyar Indah
                     </Link>
 
                     {/* Permata Buah Batu */}
-                    <Link href="/produk/permata-buah-batu" onMouseEnter={() => setHoveredSubmenu(null)} className="px-3.5 py-2.5 rounded-xl text-sm text-[#111827] hover:bg-gray-50 hover:text-[#0B5EAA] transition-colors">
+                    <Link href="/proyek/permata-buah-batu" onMouseEnter={() => setHoveredSubmenu(null)} className="px-3.5 py-2.5 rounded-xl text-sm text-[#111827] hover:bg-gray-50 hover:text-[#0B5EAA] transition-colors">
                       Permata Buah Batu
                     </Link>
                   </div>
@@ -123,13 +123,13 @@ export default function Navbar() {
                   {/* Kolom Kanan: Hanya Muncul Ketika TCI di-hover */}
                   {hoveredSubmenu === "tci" && (
                     <div className="w-56 flex flex-col gap-0.5 pl-1.5 ml-1.5 border-l border-gray-100 animate-in fade-in duration-150">
-                      <Link href="/produk/tci/tci-1" className="px-3.5 py-2.5 rounded-xl text-sm text-[#111827] hover:bg-[#EFF6FF] hover:text-[#0B5EAA] transition-colors">
+                      <Link href="/proyek/tci/tci-1" className="px-3.5 py-2.5 rounded-xl text-sm text-[#111827] hover:bg-[#EFF6FF] hover:text-[#0B5EAA] transition-colors">
                         Taman Cibaduyut Indah 1
                       </Link>
-                      <Link href="/produk/tci/tci-2" className="px-3.5 py-2.5 rounded-xl text-sm text-[#111827] hover:bg-[#EFF6FF] hover:text-[#0B5EAA] transition-colors">
+                      <Link href="/proyek/tci/tci-2" className="px-3.5 py-2.5 rounded-xl text-sm text-[#111827] hover:bg-[#EFF6FF] hover:text-[#0B5EAA] transition-colors">
                         Taman Cibaduyut Indah 2
                       </Link>
-                      <Link href="/produk/tci/tci-3" className="px-3.5 py-2.5 rounded-xl text-sm text-[#111827] hover:bg-[#EFF6FF] hover:text-[#0B5EAA] transition-colors">
+                      <Link href="/proyek/tci/tci-3" className="px-3.5 py-2.5 rounded-xl text-sm text-[#111827] hover:bg-[#EFF6FF] hover:text-[#0B5EAA] transition-colors">
                         Taman Cibaduyut Indah 3
                       </Link>
                     </div>
@@ -183,7 +183,7 @@ export default function Navbar() {
 
             {mobileProyekOpen && (
               <div className="px-3 pb-3 space-y-1 bg-white border-t border-gray-100">
-                <Link href="/produk" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-xs font-semibold uppercase tracking-wider text-[#0B5EAA] hover:underline">
+                <Link href="/proyek" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-xs font-semibold uppercase tracking-wider text-[#0B5EAA] hover:underline">
                   Lihat Semua Proyek &rarr;
                 </Link>
 
@@ -196,27 +196,27 @@ export default function Navbar() {
 
                   {mobileTciOpen && (
                     <div className="pl-3 pr-2 py-1.5 space-y-1 bg-white border-t border-gray-100">
-                      <Link href="/produk/tci" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs font-medium text-[#0B5EAA] hover:bg-[#EFF6FF]">
+                      <Link href="/proyek/tci" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs font-medium text-[#0B5EAA] hover:bg-[#EFF6FF]">
                         Overview TCI
                       </Link>
-                      <Link href="/produk/tci/tci-1" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
+                      <Link href="/proyek/tci/tci-1" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
                         Taman Cibaduyut Indah 1
                       </Link>
-                      <Link href="/produk/tci/tci-2" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
+                      <Link href="/proyek/tci/tci-2" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
                         Taman Cibaduyut Indah 2
                       </Link>
-                      <Link href="/produk/tci/tci-3" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
+                      <Link href="/proyek/tci/tci-3" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
                         Taman Cibaduyut Indah 3
                       </Link>
                     </div>
                   )}
                 </div>
 
-                <Link href="/produk/rancamanyar-indah" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-sm text-gray-700 hover:bg-gray-50">
+                <Link href="/proyek/rancamanyar-indah" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-sm text-gray-700 hover:bg-gray-50">
                   Rancamanyar Indah
                 </Link>
 
-                <Link href="/produk/permata-buah-batu" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-sm text-gray-700 hover:bg-gray-50">
+                <Link href="/proyek/permata-buah-batu" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-sm text-gray-700 hover:bg-gray-50">
                   Permata Buah Batu
                 </Link>
               </div>

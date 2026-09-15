@@ -4,12 +4,12 @@ import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
 import { buildWAUrl } from "@/lib/wa";
 
-export default function RancamanyarIndahPage() {
+export default function PermataBuahBatuPage() {
   const waUrl = buildWAUrl({
     nama: "Calon Pembeli",
     wa: "",
-    proyek: "Rancamanyar Indah",
-    pertanyaan: "Halo, saya tertarik dengan Rancamanyar Indah. Mohon informasi mengenai ketersediaan unit dan pricelist terbaru.",
+    proyek: "Permata Buah Batu",
+    pertanyaan: "Halo, saya ingin menanyakan info mengenai Permata Buah Batu (waiting list / unit second / proyek fase berikutnya).",
   });
 
   return (
@@ -19,7 +19,7 @@ export default function RancamanyarIndahPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-35"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80')`,
           }}
         />
         <div className="absolute inset-0 bg-[#0D1B2A]/65" />
@@ -32,19 +32,19 @@ export default function RancamanyarIndahPage() {
                 Beranda
               </Link>
               <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-              <Link href="/produk" className="hover:text-white transition-colors">
-                Produk
+              <Link href="/proyek" className="hover:text-white transition-colors">
+                Proyek
               </Link>
               <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-              <span className="text-white font-medium">Rancamanyar Indah</span>
+              <span className="text-white font-medium">Permata Buah Batu</span>
             </nav>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-              Rancamanyar Indah
+              Permata Buah Batu
             </h1>
             <div className="flex items-center gap-2 text-sm sm:text-base text-white/80">
               <MapPin className="w-4 h-4 text-white" />
-              <span>Baleendah, Kabupaten Bandung</span>
+              <span>Bojongsoang, Bandung</span>
             </div>
           </div>
         </div>
@@ -55,21 +55,21 @@ export default function RancamanyarIndahPage() {
         <div className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           {/* Status Badge */}
           <div>
-            <span className="inline-block bg-[#DCFCE7] text-[#166534] text-xs font-semibold px-4 py-1.5 rounded-full shadow-xs">
-              Available
+            <span className="inline-block bg-[#FEE2E2] text-[#991B1B] text-xs font-semibold px-4 py-1.5 rounded-full shadow-xs">
+              Sold Out
             </span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">
-            Rancamanyar Indah
+            Permata Buah Batu
           </h2>
 
           <div className="text-xl sm:text-2xl font-bold text-[#0B5EAA]">
-            Mulai dari Rp 200 Jt
+            Mulai dari Rp 600 Jt
           </div>
 
           <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed max-w-xl mx-auto">
-            Komplek perumahan eksklusif dengan sistem keamanan satu pintu dan akses mudah ke berbagai fasilitas di sekitarnya.
+            Gaya hidup urban yang modern menyatu dengan kenyamanan lingkungan perumahan yang tertata rapi di kawasan Bojongsoang, Bandung.
           </p>
 
           <hr className="border-gray-200 my-8" />
@@ -80,7 +80,7 @@ export default function RancamanyarIndahPage() {
               Tertarik dengan Proyek Ini?
             </h3>
             <p className="text-xs sm:text-sm text-[#6B7280] max-w-md mx-auto">
-              Hubungi tim kami untuk informasi lengkap mengenai spesifikasi, harga, dan ketersediaan unit.
+              Seluruh unit pada fase ini telah habis terjual (Sold Out). Hubungi kami untuk bergabung di waiting list atau info proyek terbaru di sekitarnya.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-3">
@@ -112,7 +112,7 @@ export default function RancamanyarIndahPage() {
       </section>
 
       {/* SECTION 3 — FORMULIR INQUIRY */}
-      <InquiryForm defaultProyek="Rancamanyar Indah" />
+      <InquiryForm defaultProyek="Permata Buah Batu" />
 
       <CTABanner />
     </>

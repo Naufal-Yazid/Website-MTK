@@ -17,23 +17,6 @@ export default function TentangPage() {
     },
   ];
 
-  const team = [
-    {
-      name: "Eva",
-      role: "Founder",
-      image: "../Tentang/Placeholder_Profil_Photo.webp",
-    },
-    {
-      name: "Evi Kurnialah",
-      role: "Founder",
-      image: "../Tentang/Placeholder_Profil_Photo.webp",
-    },
-    {
-      name: " Elsye Liana Dewi ",
-      role: "Founder",
-      image: "../Tentang/Placeholder_Profil_Photo.webp",
-    },
-  ];
 
   const partners = [
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
@@ -164,42 +147,6 @@ export default function TentangPage() {
 
       
 
-      {/* SECTION 5 — TIM MANAJEMEN */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
-              MEET OUR TEAM
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">
-              Tim Manajemen
-            </h2>
-            <p className="text-sm text-[#6B7280]">
-              Dipimpin oleh para profesional berpengalaman yang berdedikasi untuk menciptakan standar baru dalam properti.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {team.map((member, idx) => (
-              <div key={idx} className="text-center space-y-3 group">
-                <div className="aspect-square rounded-2xl overflow-hidden bg-gray-100 shadow-sm mx-auto">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-[#111827]">{member.name}</h3>
-                  <div className="text-[11px] font-semibold text-[#0B5EAA] tracking-wider uppercase mt-0.5">
-                    {member.role}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       
 

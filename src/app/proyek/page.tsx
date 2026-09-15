@@ -2,7 +2,7 @@ import Link from "next/link";
 import { MapPin } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 
-export default function ProdukIndexPage() {
+export default function ProyekIndexPage() {
   return (
     <>
       {/* SECTION 1 — HERO */}
@@ -54,7 +54,7 @@ export default function ProdukIndexPage() {
 
                 <div className="pt-2">
                   <Link
-                    href="/produk/tci"
+                    href="/proyek/tci"
                     className="block w-full rounded-lg bg-[#0B5EAA] px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0A4F91] focus:outline-none focus:ring-2 focus:ring-[#0B5EAA] focus:ring-offset-2"
                   >
                     Lihat Detail
@@ -81,7 +81,7 @@ export default function ProdukIndexPage() {
 
                 <div className="pt-2">
                   <Link
-                    href="/produk/rancamanyar-indah"
+                    href="/proyek/rancamanyar-indah"
                     className="block w-full rounded-lg bg-[#0B5EAA] px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0A4F91] focus:outline-none focus:ring-2 focus:ring-[#0B5EAA] focus:ring-offset-2"
                   >
                     Lihat Detail
@@ -108,7 +108,7 @@ export default function ProdukIndexPage() {
 
                 <div className="pt-2">
                   <Link
-                    href="/produk/permata-buah-batu"
+                    href="/proyek/permata-buah-batu"
                     className="block w-full rounded-lg bg-[#0B5EAA] px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0A4F91] focus:outline-none focus:ring-2 focus:ring-[#0B5EAA] focus:ring-offset-2"
                   >
                     Lihat Detail

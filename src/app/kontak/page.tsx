@@ -102,13 +102,6 @@ export default function KontakPage() {
                   </div>
 
                   <div className="space-y-0.5 border-l-2 border-[#0B5EAA]/40 pl-3">
-                    <div className="font-semibold text-[#111827]">Bojongsoang</div>
-                    <div className="text-[#6B7280] text-xs">
-                      Jl. Raya Bojongsoang Nomor 196B, Desa Lengkong, Kecamatan Bojongsoang, Kabupaten Bandung, Jawa Barat kode pos 40287.
-                    </div>
-                  </div>
-
-                  <div className="space-y-0.5 border-l-2 border-[#0B5EAA]/40 pl-3">
                     <div className="font-semibold text-[#111827]">Rancamanyar</div>
                     <div className="text-[#6B7280] text-xs">
                       Rancamanyar, Kec. Baleendah, Kab. Bandung, Jawa Barat 40375
@@ -128,7 +121,7 @@ export default function KontakPage() {
                     Telepon: <a href="tel:+6285759072321" className="text-[#0B5EAA] hover:underline">+62 857 5907 2321</a>
                   </div>
                   <div className="text-[#6B7280]">
-                    Email: <a href="mailto:info@margatirtakencana.co.id" className="text-[#0B5EAA] hover:underline">info@margatirtakencana.co.id</a>
+                    Email: <a href="mailto:marketingmtk140@gmail.com" className="text-[#0B5EAA] hover:underline">marketingmtk140@gmail.com</a>
                   </div>
                 </div>
               </div>
