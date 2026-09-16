@@ -13,7 +13,7 @@ export default function TCI2OverviewPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-35"
           style={{
-            backgroundImage: "url('/gerbangTCI2_HeroBanner.webp')",
+            backgroundImage: "url('/images/proyek/tci/tci-2/gerbangTCI2_HeroBanner.webp')",
           }}
         />
 

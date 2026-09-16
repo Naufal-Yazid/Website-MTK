@@ -15,21 +15,21 @@ export default function TCI3OverviewPage() {
       title: "Tipe 36",
       description: "Compact, efficient, and beautifully designed for young couples.",
       price: "Rp 500jt an",
-      image: "/tci3-tipe-36.webp",
+      image: "/images/proyek/tci/tci-3/cluster/tipe-36/tci3-tipe-36.webp",
       href: "/proyek/tci/tci-3/tipe-36",
     },
     {
       title: "Tipe 45",
       description: "Extra space for growing families with premium finishes.",
       price: "Rp 650jt an",
-      image: "/Tipe45_Depannn.webp",
+      image: "/images/proyek/tci/tci-3/cluster/tipe-45/Tipe45_Depannn.webp",
       href: "/proyek/tci/tci-3/tipe-45",
     },
     {
       title: "Tipe 50",
       description: "The ultimate expression of luxury and space for the elite.",
       price: "Rp 800jt an",
-      image: "/tci3-tipe-50.webp",
+      image: "/images/proyek/tci/tci-3/cluster/tipe-50/tci3-tipe-50.webp",
       href: "/proyek/tci/tci-3/tipe-50",
     },
   ];
@@ -39,7 +39,7 @@ export default function TCI3OverviewPage() {
       title: "Tipe 50",
       description: "Hunian non-cluster dengan tata ruang fungsional dan akses langsung untuk kenyamanan keluarga.",
       price: "Rp 800jt an",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+      image: "/images/proyek/tci/tci-3/non-cluster/tci3-t50-nc-detail.webp",
       href: "/proyek/tci/tci-3/non-cluster/tipe-50",
     },
   ];
@@ -49,7 +49,7 @@ export default function TCI3OverviewPage() {
       title: "Terranova Arcade",
       description: "The ultimate expression of luxury and space for the elite commercial activities.",
       price: "Rp 800jt an",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80",
+      image: "/images/proyek/tci/tci-3/ruko/tci3-ruko-ta-card.webp",
       href: "/proyek/tci/tci-3/ruko/teranova",
     },
   ];
@@ -90,7 +90,7 @@ export default function TCI3OverviewPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-35"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80')",
+            backgroundImage: "url('/images/proyek/tci/tci-3/tci3-gate-banner.webp')",
           }}
         />
         <div className="absolute inset-0 bg-[#0D1B2A]/65" />
@@ -222,7 +222,7 @@ export default function TCI3OverviewPage() {
               {nonClusterTypes.map((item) => (
                 <div key={item.title} className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col">
                   <div className="aspect-[16/10] bg-gray-100 overflow-hidden">
-                    <img src={item.image} alt={`${item.title} Non-Cluster`} className="w-full h-full object-cover" />
+                    <img key={item.image} src={item.image} alt="Rumah merah TCI 3 Tipe 50 Non-Cluster" className="w-full h-full object-cover" />
                   </div>
 
                   <div className="p-5 flex flex-col flex-grow space-y-3">
@@ -249,7 +249,7 @@ export default function TCI3OverviewPage() {
               {rukoTypes.map((item) => (
                 <div key={item.title} className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col group">
                   <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                    <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 400px" />
+                    <img key={item.image} src={item.image} alt="Deretan ruko Terranova Arcade TCI 3" className="w-full h-full object-cover object-[center_65%] group-hover:scale-105 transition-transform duration-500" />
                   </div>
 
                   <div className="p-5 flex flex-col flex-grow space-y-3">

@@ -10,7 +10,7 @@ export default function ProyekIndexPage() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 transition-transform duration-1000 scale-105"
           style={{
-            backgroundImage: "url('/hero image.webp')",
+            backgroundImage: "url('/images/shared/hero image.webp')",
           }}
         />
 
@@ -39,7 +39,7 @@ export default function ProyekIndexPage() {
             {/* KARTU 1 — TAMAN CIBADUYUT INDAH */}
             <div className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs flex flex-col transition-all hover:shadow-md hover:border-gray-300">
               <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Taman Cibaduyut Indah" className="w-full h-full object-cover" />
+                <img src="/images/proyek/tci/tci-icon-banner.webp" alt="Taman Cibaduyut Indah" className="w-full h-full object-cover" />
               </div>
 
               <div className="p-6 flex flex-col flex-grow space-y-3">
@@ -93,7 +93,7 @@ export default function ProyekIndexPage() {
             {/* KARTU 3 — PERMATA BUAH BATU */}
             <div className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs flex flex-col transition-all hover:shadow-md hover:border-gray-300">
               <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Permata Buah Batu" className="w-full h-full object-cover" />
+                <img src="/images/proyek/permata-buah-batu/permatabb-gate-banner.webp" alt="Permata Buah Batu" className="w-full h-full object-cover" />
               </div>
 
               <div className="p-6 flex flex-col flex-grow space-y-3">

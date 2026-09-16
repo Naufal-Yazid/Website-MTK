@@ -40,7 +40,7 @@ export default function TCI3Tipe36Page() {
         <div
           className="absolute inset-0 bg-cover opacity-40"
           style={{
-            backgroundImage: "url('/tci3-tipe36-hero.webp')",
+            backgroundImage: "url('/images/proyek/tci/tci-3/cluster/tipe-36/tci3-tipe36-hero.webp')",
             backgroundPosition: "center 70%", // Atur angka 60%-80% untuk menentukan seberapa turun posisinya
           }}
         />
@@ -112,7 +112,7 @@ export default function TCI3Tipe36Page() {
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gray-100">
                 <Image
-                  src="/tci3-tipe36-spesifikasi.webp" // Taruh file di folder public/tci3-tipe36-spesifikasi.jpg
+                  src="/images/proyek/tci/tci-3/cluster/tipe-36/tci3-tipe36-spesifikasi.webp" // Taruh file di folder public/tci3-tipe36-spesifikasi.jpg
                   alt="TCI 3 Tipe 36 Spesifikasi"
                   fill
                   className="object-cover"
@@ -139,7 +139,7 @@ export default function TCI3Tipe36Page() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-5xl mx-auto">
             {/* Left Floor Plan Image */}
             <div className="lg:col-span-6 bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-sm aspect-square flex items-center justify-center overflow-hidden relative">
-              <Image src="/floor-plan/36-72.webp" alt="Denah rumah TCI 3 Tipe 36" fill className="object-contain p-4" />
+              <Image src="/images/proyek/tci/tci-3/denah/36-72.webp" alt="Denah rumah TCI 3 Tipe 36" fill className="object-contain p-4" />
             </div>
 
             {/* Right Numbered Points */}
@@ -176,7 +176,7 @@ export default function TCI3Tipe36Page() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
             {/* Foto 1: Ruang Tamu (Kiri - Mengikuti tinggi total kolom kanan) */}
             <div className="lg:col-span-7 rounded-2xl overflow-hidden shadow-sm bg-gray-100 relative group min-h-[300px] h-full">
-              <Image src="/tci3-tipe36-hero.webp" alt="Ruang Tamu Tipe 36" fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1024px) 100vw, 60vw" />
+              <Image src="/images/proyek/tci/tci-3/cluster/tipe-36/tci3-tipe36-hero.webp" alt="Ruang Tamu Tipe 36" fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1024px) 100vw, 60vw" />
 
               <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">Ruang Tamu</div>
             </div>
@@ -185,14 +185,14 @@ export default function TCI3Tipe36Page() {
             <div className="lg:col-span-5 grid grid-cols-1 gap-4 sm:gap-6">
               {/* Foto 2: Kamar Tidur Utama */}
               <div className="rounded-2xl overflow-hidden shadow-sm aspect-[16/10] bg-gray-100 relative group">
-                <Image src="/tci3-tipe36-kamar-utama.webp" alt="Kamar Tidur Utama" fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1024px) 100vw, 40vw" />
+                <Image src="/images/proyek/tci/tci-3/cluster/tipe-36/tci3-tipe36-kamar-utama.webp" alt="Kamar Tidur Utama" fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1024px) 100vw, 40vw" />
 
                 <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">Kamar Tidur Utama</div>
               </div>
 
               {/* Foto 3: Kamar Anak */}
               <div className="rounded-2xl overflow-hidden shadow-sm aspect-[16/10] bg-gray-100 relative group">
-                <Image src="/tci3-tipe36-kamar-anak.webp" alt="Kamar Anak" fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1024px) 100vw, 40vw" />
+                <Image src="/images/proyek/tci/tci-3/cluster/tipe-36/tci3-tipe36-kamar-anak.webp" alt="Kamar Anak" fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1024px) 100vw, 40vw" />
 
                 <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">Kamar Anak</div>
               </div>

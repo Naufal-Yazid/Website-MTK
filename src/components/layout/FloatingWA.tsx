@@ -19,7 +19,7 @@ export default function FloatingWA() {
     >
       <div className="relative w-8 h-8 flex items-center justify-center">
         <Image
-          src="/WhatsApp.svg.webp" // Sesuaikan nama file gambar Anda di folder public/ (misal: /whatsapp.svg atau /whatsapp.png)
+          src="/images/icons/WhatsApp.svg.webp" // Sesuaikan nama file gambar Anda di folder public/ (misal: /whatsapp.svg atau /whatsapp.png)
           alt="WhatsApp Logo"
           width={32}
           height={32}

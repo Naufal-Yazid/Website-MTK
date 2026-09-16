@@ -47,8 +47,8 @@ export default function Navbar() {
             <div
               className={`w-full h-full transition-all duration-300 group-hover:scale-105 ${useDarkContent ? "bg-[#0B5EAA]" : "bg-white"}`}
               style={{
-                maskImage: 'url("/mtk logo 1.png")',
-                WebkitMaskImage: 'url("/mtk logo 1.png")',
+                maskImage: 'url("/images/brand/mtk logo 1.png")',
+                WebkitMaskImage: 'url("/images/brand/mtk logo 1.png")',
                 maskSize: "contain",
                 WebkitMaskSize: "contain",
                 maskRepeat: "no-repeat",

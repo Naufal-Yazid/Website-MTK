@@ -53,7 +53,7 @@ export default function TCI3NonClusterTipe50Page() {
           className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80')",
+              "url('/images/proyek/tci/tci-3/non-cluster/tci3-t50-nc-detail.webp')",
           }}
         />
 
@@ -176,7 +176,7 @@ export default function TCI3NonClusterTipe50Page() {
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gray-100">
                 <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                  src="/images/proyek/tci/tci-3/non-cluster/tci3-t50-nc-detail.webp"
                   alt="TCI 3 Non-Cluster Tipe 50 Eksterior"
                   className="w-full h-full object-cover"
                 />
@@ -207,7 +207,7 @@ export default function TCI3NonClusterTipe50Page() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-5xl mx-auto">
             <div className="lg:col-span-6 bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-sm aspect-square flex items-center justify-center overflow-hidden">
               <img
-                src="/floor-plan/50-90.webp"
+                src="/images/proyek/tci/tci-3/denah/50-90.webp"
                 alt="Denah rumah TCI 3 Non-Cluster Tipe 50"
                 className="w-full h-full object-contain"
               />

@@ -128,7 +128,7 @@ export default function TCI3Tipe50Page() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-5xl mx-auto">
             {/* Left Floor Plan Image */}
             <div className="lg:col-span-6 bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-sm aspect-square flex items-center justify-center overflow-hidden">
-              <img src="/floor-plan/50-90.webp" alt="Denah rumah TCI 3 Tipe 50" className="w-full h-full object-contain" />
+              <img src="/images/proyek/tci/tci-3/denah/50-90.webp" alt="Denah rumah TCI 3 Tipe 50" className="w-full h-full object-contain" />
             </div>
 
             {/* Right Numbered Points */}
