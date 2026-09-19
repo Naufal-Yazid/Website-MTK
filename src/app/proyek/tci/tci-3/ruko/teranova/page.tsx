@@ -48,10 +48,10 @@ export default function TerranovaArcadePage() {
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[60vh] flex items-end justify-start bg-[#0D1B2A] overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-40"
+          className="absolute inset-0 bg-cover bg-[center_65%] opacity-40"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80')",
+              "url('/images/proyek/tci/tci-3/ruko/tci3-ruko-ta-card.webp')",
           }}
         />
 
@@ -135,9 +135,9 @@ export default function TerranovaArcadePage() {
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gray-100">
                 <img
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+                  src="/images/proyek/tci/tci-3/ruko/tci3-ruko-ta-card.webp"
                   alt="Eksterior Terranova Arcade TCI 3"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-[center_65%]"
                 />
               </div>
             </div>
@@ -150,11 +150,11 @@ export default function TerranovaArcadePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
             <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
-              GAMBARAN RUKO
+              DENAH RUKO
             </span>
 
             <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">
-              Ruang Usaha yang Adaptif
+              Denah Terranova Arcade
             </h2>
 
             <p className="text-sm text-[#6B7280] leading-relaxed">
@@ -165,11 +165,11 @@ export default function TerranovaArcadePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-5xl mx-auto">
             <div className="lg:col-span-6 bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 shadow-sm aspect-square overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80"
-                alt="Gambaran ruang usaha Terranova Arcade"
-                className="w-full h-full object-cover rounded-xl"
-              />
+              <div className="w-full h-full flex flex-col items-center justify-center text-center gap-4 rounded-xl bg-[#F9FAFB] p-6">
+                <LayoutGrid className="w-12 h-12 text-[#0B5EAA]" aria-hidden="true" />
+                <h3 className="text-lg font-semibold text-[#111827]">Denah ruko belum tersedia</h3>
+                <p className="text-sm text-[#6B7280] leading-relaxed">Hubungi tim pemasaran untuk mendapatkan denah resmi Terranova Arcade.</p>
+              </div>
             </div>
 
             <div className="lg:col-span-6 space-y-6">

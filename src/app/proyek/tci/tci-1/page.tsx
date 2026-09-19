@@ -13,7 +13,7 @@ export default function TCI1OverviewPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-35"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80')",
+            backgroundImage: "url('/images/proyek/tci/tci-1/tci1-house-card.webp')",
           }}
         />
 
@@ -68,7 +68,7 @@ export default function TCI1OverviewPage() {
             {/* Right Image */}
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-gray-100">
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Lingkungan hunian Taman Cibaduyut Indah 1" className="w-full h-full object-cover" />
+                <img src="/images/proyek/tci/tci-1/tci1-house-card.webp" alt="Lingkungan hunian Taman Cibaduyut Indah 1" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>

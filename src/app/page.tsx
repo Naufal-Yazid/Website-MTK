@@ -9,7 +9,7 @@ export default function Home() {
       title: "Taman Cibaduyut Indah",
       location: "Cibaduyut, Bandung",
       price: "Mulai Rp 400 Jt",
-      image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+      image: "/images/proyek/tci/tci-icon-banner.webp",
       href: "/proyek/tci",
     },
     {
@@ -25,7 +25,7 @@ export default function Home() {
       title: "Permata Buah Batu",
       location: "Buah Batu, Bandung",
       price: "Mulai Rp 450 Jt",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+      image: "/images/proyek/permata-buah-batu/permatabb-gate-banner.webp",
       href: "/proyek/permata-buah-batu",
     },
   ];
@@ -56,7 +56,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
           style={{
-            backgroundImage: `url('/hero image.webp')`,
+            backgroundImage: `url('/images/shared/hero image.webp')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B2A] via-[#0D1B2A]/75 to-[#0D1B2A]/30" />
@@ -85,7 +85,7 @@ export default function Home() {
             {/* Left Column: Image with Overlapping Badge */}
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
-                <img src="/IMG_1664 1.webp" alt="Interior Ruang Tamu Modern" className="w-full h-full object-cover" />
+                <img src="/images/shared/IMG_1664 1.webp" alt="Interior Ruang Tamu Modern" className="w-full h-full object-cover" />
               </div>
             </div>
 

@@ -19,7 +19,7 @@ export default function PermataBuahBatuPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-35"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80')`,
+            backgroundImage: `url('/images/proyek/permata-buah-batu/permatabb-gate-banner.webp')`,
           }}
         />
         <div className="absolute inset-0 bg-[#0D1B2A]/65" />

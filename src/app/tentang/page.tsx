@@ -34,7 +34,7 @@ export default function TentangPage() {
         <div
           className="absolute inset-0 bg-cover bg-no-repeat opacity-50"
           style={{
-            backgroundImage: "url('/hero image.webp')",
+            backgroundImage: "url('/images/shared/hero image.webp')",
             backgroundPosition: "center 35%",
           }}
         />
@@ -79,7 +79,7 @@ export default function TentangPage() {
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
                 <img
-                  src="../Tentang/Kawat_Besi.webp"
+                  src="/images/tentang/Kawat_Besi.webp"
                   alt="Konstruksi Bangunan"
                   className="w-full h-full object-cover"
                 />
@@ -99,7 +99,7 @@ export default function TentangPage() {
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-md aspect-[4/5]">
                 <img
-                  src="/Foto_Visi_Misi_GateTCI3.webp"
+                  src="/images/tentang/Foto_Visi_Misi_GateTCI3.webp"
                   alt="Interior Kamar Tidur Modern"
                   className="w-full h-full object-cover"
                 />
