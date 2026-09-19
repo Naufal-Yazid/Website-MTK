@@ -19,7 +19,8 @@ export default function RancamanyarIndahPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-35"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80')`,
+            backgroundImage:
+              "url('/images/proyek/rancamanyar/rancamanyar-banner.webp')",
           }}
         />
         <div className="absolute inset-0 bg-[#0D1B2A]/65" />

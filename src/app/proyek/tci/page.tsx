@@ -7,7 +7,7 @@ export default function TCIOverviewPage() {
   const phases = [
     {
       id: "tci-1",
-      image: "/images/proyek/tci/tci-1/tci1-house-card.webp",
+      image: "/images/proyek/tci/tci-1/tci1-gate.webp",
       title: "Taman Cibaduyut Indah 1",
       description: "Komunitas yang telah mapan dengan lingkungan hijau yang rindang dan keamanan 24 jam yang ketat.",
       buttonClass: "bg-[#0B5EAA] text-white hover:bg-[#0A4F91]",

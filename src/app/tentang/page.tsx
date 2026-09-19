@@ -79,7 +79,7 @@ export default function TentangPage() {
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
                 <img
-                  src="/images/tentang/Kawat_Besi.webp"
+                  src="/images/tentang/about1.webp"
                   alt="Konstruksi Bangunan"
                   className="w-full h-full object-cover"
                 />
@@ -99,8 +99,8 @@ export default function TentangPage() {
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-md aspect-[4/5]">
                 <img
-                  src="/images/tentang/Foto_Visi_Misi_GateTCI3.webp"
-                  alt="Interior Kamar Tidur Modern"
+                  src="/images/tentang/about2.webp"
+                  alt="Tim Marga Tirta Kencana"
                   className="w-full h-full object-cover"
                 />
               </div>
