@@ -93,7 +93,7 @@ export default function TCIOverviewPage() {
             {/* Right Column */}
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gray-100">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Interior Mewah Ruang Tamu" className="w-full h-full object-cover" />
+                <img src="/images/proyek/tci/KantorPemasaran_TCI.jpg" alt="Interior Mewah Ruang Tamu" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>

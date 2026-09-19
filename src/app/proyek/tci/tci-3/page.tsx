@@ -144,7 +144,7 @@ export default function TCI3OverviewPage() {
             {/* Right Image */}
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-gray-100">
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Interior Ruang Tamu Modern Clean" className="w-full h-full object-cover" />
+                <img src="/images/proyek/tci/tci-3/Rumah-TCI3.jpg" alt="Interior Ruang Tamu Modern Clean" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
