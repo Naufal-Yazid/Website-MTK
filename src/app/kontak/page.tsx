@@ -40,7 +40,7 @@ export default function KontakPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80')`,
+            backgroundImage: `url('../images/shared/hero image.webp')`,
           }}
         />
         <div className="absolute inset-0 bg-[#0D1B2A]/65" />

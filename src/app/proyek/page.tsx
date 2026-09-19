@@ -66,7 +66,7 @@ export default function ProyekIndexPage() {
             {/* KARTU 2 — RANCAMANYAR INDAH */}
             <div className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs flex flex-col transition-all hover:shadow-md hover:border-gray-300">
               <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Rancamanyar Indah" className="w-full h-full object-cover" />
+                <img src="/images/proyek/rancamanyar/rancamanyar-banner.webp" alt="Rancamanyar Indah" className="w-full h-full object-cover" />
               </div>
 
               <div className="p-6 flex flex-col flex-grow space-y-3">

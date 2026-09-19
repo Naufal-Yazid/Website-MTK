@@ -13,7 +13,7 @@ export default function TCI1OverviewPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-35"
           style={{
-            backgroundImage: "url('/images/proyek/tci/tci-1/tci1-house-card.webp')",
+            backgroundImage: "url('/images/proyek/tci/tci-1/tci1-gate.webp')",
           }}
         />
 
