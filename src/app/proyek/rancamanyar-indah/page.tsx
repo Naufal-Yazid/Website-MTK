@@ -1,16 +1,14 @@
-import Link from "next/link";
-import { ChevronRight, MapPin, MessageCircle, Mail, Clock } from "lucide-react";
+import { Home as HomeIcon, MapPin, ShieldCheck, Trees } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
-import { buildWAUrl } from "@/lib/wa";
 
 export default function RancamanyarIndahPage() {
-  const waUrl = buildWAUrl({
-    nama: "Calon Pembeli",
-    wa: "",
-    proyek: "Rancamanyar Indah",
-    pertanyaan: "Halo, saya tertarik dengan Rancamanyar Indah. Mohon informasi mengenai ketersediaan unit dan pricelist terbaru.",
-  });
+  const strategicPoints = [
+    "Terhubung ke Baleendah dan Bojongsoang",
+    "Dekat dengan fasilitas pendidikan",
+    "Akses menuju fasilitas kesehatan",
+    "Dekat dengan kebutuhan harian keluarga",
+  ];
 
   return (
     <>
@@ -23,84 +21,125 @@ export default function RancamanyarIndahPage() {
               "url('/images/proyek/rancamanyar/rancamanyar-banner.webp')",
           }}
         />
+
         <div className="absolute inset-0 bg-[#0D1B2A]/65" />
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">
               Rancamanyar Indah
             </h1>
-            <div className="flex items-center gap-2 text-sm sm:text-base text-white/80">
+
+            <div className="flex items-center gap-2 text-sm sm:text-base text-white/50">
               <MapPin className="w-4 h-4 text-white" />
               <span>Baleendah, Kabupaten Bandung</span>
             </div>
-            <p className="text-sm sm:text-base text-[rgb(246,247,248)] line-clamp-2 leading-relaxed flex-grow">Fondasi utama dalam pembangunan kawasan hunian terpadu dengan harga yang terjangkau.</p>
+            <p className="text-sm sm:text-base text-[rgb(246,247,248)] line-clamp-2 leading-relaxed flex-grow">Kawasan hunian dengan harga terjangkau dan lokasi strategis untuk keluarga anda.</p>
           </div>
         </div>
       </section>
 
-      {/* SECTION 2 — INFO TERBATAS */}
-      <section className="bg-white py-20">
-        <div className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          {/* Status Badge */}
-          <div>
-            <span className="inline-block bg-[#DCFCE7] text-[#166534] text-xs font-semibold px-4 py-1.5 rounded-full shadow-xs">
-              Available
-            </span>
-          </div>
+      {/* SECTION 2 — INTRO KOMPLEK */}
+      <section className="bg-white py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
+                RANCAMANYAR INDAH
+              </span>
 
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">
-            Rancamanyar Indah
-          </h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#111827]">
+                Hunian Terjangkau di Kawasan Berkembang
+              </h2>
 
-          <div className="text-xl sm:text-2xl font-bold text-[#0B5EAA]">
-            Mulai dari Rp 200 Jt
-          </div>
+              <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">
+                Rancamanyar Indah adalah kawasan perumahan seluas 15 hektar
+                yang dirancang untuk mendukung kebutuhan keluarga. Lingkungan
+                yang tertata, akses praktis, dan pilihan hunian yang terjangkau
+                menjadikannya tempat tinggal yang nyaman untuk bertumbuh.
+              </p>
 
-          <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed max-w-xl mx-auto">
-            Komplek perumahan seluas 15 hektar dengan sistem keamanan satu pintu dan akses mudah ke berbagai fasilitas di sekitarnya.
-          </p>
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <span className="inline-flex items-center gap-2 bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-semibold px-4 py-2 rounded-full">
+                  <HomeIcon className="w-3.5 h-3.5" />
+                  <span>Kawasan 15 Hektar</span>
+                </span>
 
-          <hr className="border-gray-200 my-8" />
+                <span className="inline-flex items-center gap-2 bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-semibold px-4 py-2 rounded-full">
+                  <Trees className="w-3.5 h-3.5" />
+                  <span>Lingkungan Tertata</span>
+                </span>
 
-          {/* Contact Actions */}
-          <div className="space-y-4 pt-2">
-            <h3 className="text-lg font-bold text-[#111827]">
-              Tertarik dengan Proyek Ini?
-            </h3>
-            <p className="text-xs sm:text-sm text-[#6B7280] max-w-md mx-auto">
-              Hubungi tim kami untuk informasi lengkap mengenai spesifikasi, harga, dan ketersediaan unit.
-            </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-3">
-              <a
-                href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-7 py-3 rounded-lg bg-[#25D366] text-white font-semibold text-sm hover:bg-emerald-600 transition-colors shadow-sm active:scale-95"
-              >
-                <MessageCircle className="w-5 h-5 fill-white text-[#25D366]" />
-                <span>Hubungi via WhatsApp</span>
-              </a>
-
-              <Link
-                href="/kontak"
-                className="inline-flex items-center gap-2.5 px-7 py-3 rounded-lg bg-[#0B5EAA] text-white font-semibold text-sm hover:bg-[#0A4F91] transition-colors shadow-sm active:scale-95"
-              >
-                <Mail className="w-5 h-5" />
-                <span>Kirim Pesan</span>
-              </Link>
+                <span className="inline-flex items-center gap-2 bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-semibold px-4 py-2 rounded-full">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>Keamanan 24/7</span>
+                </span>
+              </div>
             </div>
 
-            <div className="flex items-center justify-center gap-2 text-xs italic text-[#6B7280] pt-2">
-              <Clock className="w-4 h-4 text-gray-400" />
-              <span>Tim kami akan merespons dalam 1×24 jam</span>
+            <div className="lg:col-span-5">
+              <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-gray-100">
+                <img
+                  src="/images/proyek/rancamanyar/rancamanyar-detail.webp"
+                  alt="Lingkungan Rancamanyar Indah"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3 — FORMULIR INQUIRY */}
+      {/* SECTION 3 — LOKASI */}
+      <section className="bg-white py-16 md:py-20 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            <div className="lg:col-span-5 space-y-4">
+              <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
+                LOKASI KAMI
+              </span>
+
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">
+                Lokasi Strategis
+              </h2>
+
+              <p className="text-sm text-[#6B7280] leading-relaxed">
+                Rancamanyar Indah berada di Baleendah, Kabupaten Bandung,
+                dengan akses yang mendukung aktivitas keluarga menuju berbagai
+                fasilitas di sekitarnya.
+              </p>
+
+              <ul className="space-y-3 pt-2">
+                {strategicPoints.map((point) => (
+                  <li
+                    key={point}
+                    className="flex items-center gap-3 text-sm text-gray-700"
+                  >
+                    <MapPin className="w-4 h-4 text-[#0B5EAA] shrink-0" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="lg:col-span-7">
+              <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-[#E5E7EB] bg-gray-100 shadow-sm">
+                <iframe
+                  src="https://www.google.com/maps?q=Rancamanyar%20Indah%2C%20Baleendah%2C%20Bandung&output=embed"
+                  title="Lokasi Rancamanyar Indah"
+                  className="absolute inset-0 w-full h-full"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4 — FORMULIR INQUIRY */}
       <InquiryForm defaultProyek="Rancamanyar Indah" />
 
       <CTABanner />

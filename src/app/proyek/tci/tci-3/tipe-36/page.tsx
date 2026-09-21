@@ -36,12 +36,11 @@ export default function TCI3Tipe36Page() {
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[60vh] flex items-end justify-start bg-[#0D1B2A] overflow-hidden">
-        {/* Background Image Hero dari Public */}
         <div
           className="absolute inset-0 bg-cover opacity-40"
           style={{
             backgroundImage: "url('/images/proyek/tci/tci-3/cluster/tipe-36/tci3-tipe36-hero.webp')",
-            backgroundPosition: "center 70%", // Atur angka 60%-80% untuk menentukan seberapa turun posisinya
+            backgroundPosition: "center 70%", 
           }}
         />
 
@@ -52,6 +51,10 @@ export default function TCI3Tipe36Page() {
             <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">PREMIUM RESIDENTIAL</span>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">TCI 3 — Tipe 36</h1>
+
+            <p className="text-sm sm:text-base text-white/80 max-w-xl leading-relaxed">
+              Tipe 36 dirancang sebagai hunian modern dengan tata ruang efisien, memaksimalkan setiap meter persegi untuk kenyamanan dan fungsionalitas.
+            </p>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -160,7 +163,6 @@ export default function TCI3Tipe36Page() {
         </div>
       </section>
 
-      {/* SECTION 4 — GALERI UNIT */}
       {/* SECTION 4 — GALERI UNIT */}
       <section className="bg-white py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

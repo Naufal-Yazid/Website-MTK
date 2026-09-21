@@ -61,7 +61,7 @@ export default function TerranovaArcadePage() {
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
             <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">
-              COMMERCIAL ARCADE
+              Commercial Space
             </span>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
@@ -101,7 +101,7 @@ export default function TerranovaArcadePage() {
             <div className="lg:col-span-7 space-y-6">
               <div>
                 <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
-                  SPESIFIKASI
+                  Spesifikasi
                 </span>
 
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#111827] mt-1">
@@ -146,12 +146,12 @@ export default function TerranovaArcadePage() {
         </div>
       </section>
 
-      {/* SECTION 3 — GAMBARAN RUKO */}
+      {/* SECTION 3 — DENAH RUKO */}
       <section className="bg-[#F9FAFB] py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
             <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
-              DENAH RUKO
+              Denah Ruko
             </span>
 
             <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">
