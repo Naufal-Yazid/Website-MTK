@@ -27,6 +27,7 @@ export default function TCI2OverviewPage() {
               <MapPin className="w-4 h-4 text-white" />
               <span>Cibaduyut, Kota Bandung</span>
             </div>
+            <p className="text-sm sm:text-base text-[rgb(246,247,248)] line-clamp-2 leading-relaxed flex-grow">Pengembangan kawasan hunian modern yang menawarkan harga yang terjangkau.</p>
           </div>
         </div>
       </section>

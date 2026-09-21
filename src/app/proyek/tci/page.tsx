@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight, MapPin } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
 
@@ -47,7 +47,12 @@ export default function TCIOverviewPage() {
           <div className="max-w-2xl space-y-4">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">Taman Cibaduyut Indah</h1>
 
-            <p className="text-sm sm:text-base text-white/50 max-w-xl leading-relaxed">Pengembangan kawasan hunian terpadu yang menggabungkan kenyamanan modern dengan lingkungan asri yang harmonis.</p>
+            <div className="flex items-center gap-2 text-sm sm:text-base text-white/50">
+              <MapPin className="w-4 h-4 text-white" />
+              <span>Cibaduyut, Kota Bandung</span>
+            </div>
+
+            <p className="text-sm sm:text-base text-[rgb(246,247,248)] line-clamp-2 leading-relaxed flex-grow">Pengembangan kawasan hunian terpadu yang menggabungkan kenyamanan modern dengan lingkungan asri yang harmonis.</p>
           </div>
         </div>
       </section>

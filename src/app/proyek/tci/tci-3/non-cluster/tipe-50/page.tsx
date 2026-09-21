@@ -61,44 +61,6 @@ export default function TCI3NonClusterTipe50Page() {
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
-            {/* Breadcrumb */}
-            <nav className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-white/60">
-              <Link href="/" className="hover:text-white transition-colors">
-                Beranda
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <Link
-                href="/proyek"
-                className="hover:text-white transition-colors"
-              >
-                Proyek
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <Link
-                href="/proyek/tci/tci-3"
-                className="hover:text-white transition-colors"
-              >
-                TCI 3
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <Link
-                href="/proyek/tci/tci-3"
-                className="hover:text-white transition-colors"
-              >
-                Non-Cluster
-              </Link>
-
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-
-              <span className="text-white font-medium">Tipe 50</span>
-            </nav>
-
             <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">
               NON-CLUSTER RESIDENTIAL
             </span>
