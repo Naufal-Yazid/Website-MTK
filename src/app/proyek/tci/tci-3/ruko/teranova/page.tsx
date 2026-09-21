@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Download,
   MapPin,
@@ -164,12 +165,15 @@ export default function TerranovaArcadePage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-5xl mx-auto">
-            <div className="lg:col-span-6 bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 shadow-sm aspect-square overflow-hidden">
-              <div className="w-full h-full flex flex-col items-center justify-center text-center gap-4 rounded-xl bg-[#F9FAFB] p-6">
-                <LayoutGrid className="w-12 h-12 text-[#0B5EAA]" aria-hidden="true" />
-                <h3 className="text-lg font-semibold text-[#111827]">Denah ruko belum tersedia</h3>
-                <p className="text-sm text-[#6B7280] leading-relaxed">Hubungi tim pemasaran untuk mendapatkan denah resmi Terranova Arcade.</p>
-              </div>
+            {/* GAMBAR DENAH RUKO (REPLACE PLACEHOLDER) */}
+            <div className="lg:col-span-6 bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 shadow-sm aspect-square relative flex items-center justify-center overflow-hidden">
+              <Image
+                src="/floor-plan/fp_terranova.webp" // Ganti sesuai nama file gambarmu di folder public
+                alt="Denah Terranova Arcade TCI 3"
+                fill
+                className="object-contain p-2"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
 
             <div className="lg:col-span-6 space-y-6">
