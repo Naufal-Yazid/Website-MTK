@@ -50,7 +50,7 @@ export default function ProyekIndexPage() {
                   <span>Cibaduyut, Kota Bandung</span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">Pilihan hunian terlengkap dengan berbagai tipe unit di lokasi strategis yang dekat dengan pusat kota.</p>
+                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">Pilihan hunian terlengkap dengan berbagai tipe unit di pusat kota.</p>
 
                 <div className="pt-2">
                   <Link
@@ -77,7 +77,7 @@ export default function ProyekIndexPage() {
                   <span>Baleendah, Kabupaten Bandung</span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">Komplek perumahan eksklusif dengan sistem keamanan satu pintu dan akses mudah ke berbagai fasilitas.</p>
+                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">Komplek perumahan dengan harga terjangkau dan berbagai pilihan unit.</p>
 
                 <div className="pt-2">
                   <Link
@@ -104,7 +104,7 @@ export default function ProyekIndexPage() {
                   <span>Bojongsoang, Bandung</span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">Gaya hidup urban yang modern menyatu dengan kenyamanan lingkungan perumahan yang tertata rapi.</p>
+                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">Gaya hidup urban modern ditengah kota dengan harga terjangkau.</p>
 
                 <div className="pt-2">
                   <Link

@@ -197,7 +197,7 @@ export default function Navbar() {
                   {mobileTciOpen && (
                     <div className="pl-3 pr-2 py-1.5 space-y-1 bg-white border-t border-gray-100">
                       <Link href="/proyek/tci" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs font-medium text-[#0B5EAA] hover:bg-[#EFF6FF]">
-                        Overview TCI
+                        Tentang TCI
                       </Link>
                       <Link href="/proyek/tci/tci-1" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-lg text-xs text-gray-600 hover:text-[#0B5EAA] hover:bg-[#EFF6FF]">
                         Taman Cibaduyut Indah 1

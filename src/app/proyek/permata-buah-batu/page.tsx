@@ -26,26 +26,14 @@ export default function PermataBuahBatuPage() {
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-xs sm:text-sm text-white/70">
-              <Link href="/" className="hover:text-white transition-colors">
-                Beranda
-              </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-              <Link href="/proyek" className="hover:text-white transition-colors">
-                Proyek
-              </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-[#D6E8F7]" />
-              <span className="text-white font-medium">Permata Buah Batu</span>
-            </nav>
-
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
               Permata Buah Batu
             </h1>
             <div className="flex items-center gap-2 text-sm sm:text-base text-white/80">
               <MapPin className="w-4 h-4 text-white" />
-              <span>Bojongsoang, Bandung</span>
+              <span>Bojongsoang, Kota Bandung</span>
             </div>
+            <p className="text-sm sm:text-base text-[rgb(246,247,248)] line-clamp-2 leading-relaxed flex-grow">Gaya hidup urban modern di tengah kota dengan harga terjangkau dan lokasi yang nyaman.</p>
           </div>
         </div>
       </section>

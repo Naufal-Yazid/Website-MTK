@@ -47,7 +47,7 @@ export default function TentangPage() {
           </span>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-            Tentang Marga Tirta Kencana
+            Membangun hunian berkualitas, terjangkau, dan strategis
           </h1>
         </div>
       </section>

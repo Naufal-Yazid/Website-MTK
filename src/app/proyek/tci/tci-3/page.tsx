@@ -101,8 +101,9 @@ export default function TCI3OverviewPage() {
 
             <div className="flex items-center gap-2 text-sm sm:text-base text-white/50">
               <MapPin className="w-4 h-4 text-white" />
-              <span>Cibaduyut, Kota Bandung</span>
+              <span>Cibaduyut, Kota Bandung</span>  
             </div>
+            <p className="text-sm sm:text-base text-[rgb(246,247,248)] line-clamp-2 leading-relaxed flex-grow">Konsep hunian cluster terbaru yang terjangkau dan nyaman dengan desain modern.</p>
           </div>
         </div>
       </section>
