@@ -51,6 +51,10 @@ export default function TCI3Tipe45Page() {
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">TCI 3 — Tipe 45</h1>
 
+            <p className="text-sm sm:text-base text-white/80 max-w-xl leading-relaxed">
+              Tipe 45 dirancang sebagai hunian modern yang dirancang untuk keluarga anda, dengan tata ruang yang efisien dan fungsional.
+            </p>
+
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <a

@@ -60,7 +60,7 @@ export default function TerranovaArcadePage() {
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
             <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">
-              COMMERCIAL ARCADE
+              Commercial Space
             </span>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
@@ -100,7 +100,7 @@ export default function TerranovaArcadePage() {
             <div className="lg:col-span-7 space-y-6">
               <div>
                 <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
-                  SPESIFIKASI
+                  Spesifikasi
                 </span>
 
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#111827] mt-1">
@@ -145,12 +145,12 @@ export default function TerranovaArcadePage() {
         </div>
       </section>
 
-      {/* SECTION 3 — GAMBARAN RUKO */}
+      {/* SECTION 3 — DENAH RUKO */}
       <section className="bg-[#F9FAFB] py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
             <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
-              DENAH RUKO
+              Denah Ruko
             </span>
 
             <h2 className="text-2xl sm:text-3xl font-bold text-[#111827]">
@@ -165,11 +165,11 @@ export default function TerranovaArcadePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-5xl mx-auto">
             <div className="lg:col-span-6 bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 shadow-sm aspect-square overflow-hidden">
-              <div className="w-full h-full flex flex-col items-center justify-center text-center gap-4 rounded-xl bg-[#F9FAFB] p-6">
-                <LayoutGrid className="w-12 h-12 text-[#0B5EAA]" aria-hidden="true" />
-                <h3 className="text-lg font-semibold text-[#111827]">Denah ruko belum tersedia</h3>
-                <p className="text-sm text-[#6B7280] leading-relaxed">Hubungi tim pemasaran untuk mendapatkan denah resmi Terranova Arcade.</p>
-              </div>
+              <img
+                src="/images/proyek/tci/tci-3/denah/ruko-plan.webp"
+                alt="Denah Ruko Terranova Arcade"
+                className="w-full h-full object-contain rounded-xl"
+              />
             </div>
 
             <div className="lg:col-span-6 space-y-6">
