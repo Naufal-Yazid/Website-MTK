@@ -258,7 +258,7 @@ export default function TCI3NonClusterTipe50Page() {
       {/* SECTION 5 — SIMULASI KPR */}
      <section className="bg-[#F8FAFC] py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <KPRCalculator initialHarga={800000000} />
+        <KPRCalculator initialHarga={500000000} />
       </div>
     </section>
 

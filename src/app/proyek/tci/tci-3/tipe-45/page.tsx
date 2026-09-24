@@ -196,7 +196,7 @@ export default function TCI3Tipe45Page() {
       </section>
 
       {/* SECTION 5 — KALKULATOR KPR */}
-      <KPRCalculator key="tci-3-tipe-45-650jt" initialHarga={650000000} />
+      <KPRCalculator key="tci-3-tipe-45-650jt" initialHarga={500000000} />
 
       {/* SECTION 6 — FORMULIR INQUIRY */}
       <InquiryForm defaultProyek="TCI 3" defaultTipe="Tipe 45" />

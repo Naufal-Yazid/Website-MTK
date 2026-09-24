@@ -136,7 +136,7 @@ export default function TerranovaArcadePage() {
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gray-100">
                 <img
-                  src="/images/proyek/tci/tci-3/ruko/tci3-ruko-ta-card.webp"
+                  src="/images/proyek/tci/tci-3/ruko/ruko-hall2.webp"
                   alt="Eksterior Terranova Arcade TCI 3"
                   className="w-full h-full object-cover object-[center_65%]"
                 />
@@ -168,7 +168,7 @@ export default function TerranovaArcadePage() {
             {/* GAMBAR DENAH RUKO (REPLACE PLACEHOLDER) */}
             <div className="lg:col-span-6 bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 shadow-sm aspect-square relative flex items-center justify-center overflow-hidden">
               <Image
-                src="/floor-plan/fp_terranova.webp" // Ganti sesuai nama file gambarmu di folder public
+                src="/floor-plan/fp_terranova.webp"
                 alt="Denah Terranova Arcade TCI 3"
                 fill
                 className="object-contain p-2"
@@ -199,13 +199,65 @@ export default function TerranovaArcadePage() {
         </div>
       </section>
 
-      {/* SECTION 4 — KALKULATOR KPR */}
+      {/* SECTION 4 — GALERI UNIT */}
+      <section className="bg-white py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl mb-10 space-y-2">
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
+              TERRANOVA ARCADE
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">
+              Galeri Unit
+            </h2>
+            <p className="text-sm text-[#6B7280]">
+              Jelajahi ruang utama, teras, dan area dapur ruko Terranova Arcade.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
+            <div className="lg:col-span-7 rounded-2xl overflow-hidden shadow-sm bg-[#F3F1ED] relative min-h-[300px] h-full">
+              <Image
+                src="/images/proyek/tci/tci-3/ruko/ruko-hall.webp"
+                alt="Ruang utama ruko Terranova Arcade"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 60vw"
+              />
+              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">
+                Ruang Utama
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 grid grid-cols-1 gap-4 sm:gap-6">
+              {[
+                { label: "Teras Ruko", src: "/images/proyek/tci/tci-3/ruko/ruko-porch.webp" },
+                { label: "Area Dapur", src: "/images/proyek/tci/tci-3/ruko/ruko-kitchen.webp" },
+              ].map(({ label, src }) => (
+                <div key={label} className="rounded-2xl overflow-hidden shadow-sm aspect-[16/10] bg-[#F3F1ED] relative">
+                  <Image
+                    src={src}
+                    alt={`${label} Terranova Arcade`}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                  />
+                  <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">
+                    {label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5 — KALKULATOR KPR */}
       <KPRCalculator
         key="tci-3-terranova-arcade-800jt"
         initialHarga={800000000}
       />
 
-      {/* SECTION 5 — FORMULIR INQUIRY */}
+      {/* SECTION 6 — FORMULIR INQUIRY */}
       <InquiryForm defaultProyek="TCI 3" defaultTipe="Terranova Arcade" />
 
       <CTABanner />
