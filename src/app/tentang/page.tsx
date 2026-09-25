@@ -1,5 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
+import InstagramSection from "@/components/sections/InstagramSection";
 
 export default function TentangPage() {
   const projects = [
@@ -134,12 +135,7 @@ export default function TentangPage() {
           </div>
         </div>
       </section>
-
-      
-
-
-      
-
+      <InstagramSection />
       <CTABanner />
     </>
   );

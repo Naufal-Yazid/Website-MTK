@@ -91,56 +91,7 @@ export default function RancamanyarIndahPage() {
         </div>
       </section>
 
-      {/* SECTION 3 — LOKASI */}
-      <section className="bg-white py-16 md:py-20 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            <div className="lg:col-span-5 space-y-4">
-              <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
-                LOKASI KAMI
-              </span>
-
-              <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">
-                Lokasi Strategis
-              </h2>
-
-              <p className="text-sm text-[#6B7280] leading-relaxed">
-                Rancamanyar Indah berada di Baleendah, Kabupaten Bandung,
-                dengan akses yang mendukung aktivitas keluarga menuju berbagai
-                fasilitas di sekitarnya.
-              </p>
-
-              <ul className="space-y-3 pt-2">
-                {strategicPoints.map((point) => (
-                  <li
-                    key={point}
-                    className="flex items-center gap-3 text-sm text-gray-700"
-                  >
-                    <MapPin className="w-4 h-4 text-[#0B5EAA] shrink-0" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="lg:col-span-7">
-              <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-[#E5E7EB] bg-gray-100 shadow-sm">
-                <iframe
-                  src="https://www.google.com/maps?q=Rancamanyar%20Indah%2C%20Baleendah%2C%20Bandung&output=embed"
-                  title="Lokasi Rancamanyar Indah"
-                  className="absolute inset-0 w-full h-full"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="strict-origin-when-cross-origin"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4 — GALERI UNIT */}
+      {/* SECTION 3 — GALERI UNIT */}
       <section className="bg-white py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl mb-10 space-y-2">
@@ -187,6 +138,55 @@ export default function RancamanyarIndahPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4 — LOKASI */}
+      <section className="bg-white py-16 md:py-20 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            <div className="lg:col-span-5 space-y-4">
+              <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
+                LOKASI KAMI
+              </span>
+
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">
+                Lokasi Strategis
+              </h2>
+
+              <p className="text-sm text-[#6B7280] leading-relaxed">
+                Rancamanyar Indah berada di Baleendah, Kabupaten Bandung,
+                dengan akses yang mendukung aktivitas keluarga menuju berbagai
+                fasilitas di sekitarnya.
+              </p>
+
+              <ul className="space-y-3 pt-2">
+                {strategicPoints.map((point) => (
+                  <li
+                    key={point}
+                    className="flex items-center gap-3 text-sm text-gray-700"
+                  >
+                    <MapPin className="w-4 h-4 text-[#0B5EAA] shrink-0" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="lg:col-span-7">
+              <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-[#E5E7EB] bg-gray-100 shadow-sm">
+                <iframe
+                  src="https://www.google.com/maps?q=Rancamanyar%20Indah%2C%20Baleendah%2C%20Bandung&output=embed"
+                  title="Lokasi Rancamanyar Indah"
+                  className="absolute inset-0 w-full h-full"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
             </div>
           </div>
         </div>
