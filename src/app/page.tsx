@@ -85,7 +85,7 @@ export default function Home() {
             {/* Left Column: Image with Overlapping Badge */}
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
-                <img src="/images/shared/IMG_1664 1.webp" alt="Interior Ruang Tamu Modern" className="w-full h-full object-cover" />
+                <img src="/images/shared/home1.webp" alt="TCI MAIN" className="w-full h-full object-cover" />
               </div>
             </div>
 

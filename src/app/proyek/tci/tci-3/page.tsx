@@ -14,21 +14,21 @@ export default function TCI3OverviewPage() {
     {
       title: "Tipe 36",
       description: "Compact, efficient, and beautifully designed for young couples.",
-      price: "Rp 500jt an",
+      price: "Rp 450jt an",
       image: "/images/proyek/tci/tci-3/cluster/tipe-36/tci3-tipe-36.webp",
       href: "/proyek/tci/tci-3/tipe-36",
     },
     {
       title: "Tipe 45",
       description: "Extra space for growing families with premium finishes.",
-      price: "Rp 650jt an",
+      price: "Rp 500jt an",
       image: "/images/proyek/tci/tci-3/cluster/tipe-45/Tipe45_Depannn.webp",
       href: "/proyek/tci/tci-3/tipe-45",
     },
     {
       title: "Tipe 50",
       description: "The ultimate expression of luxury and space for the elite.",
-      price: "Rp 800jt an",
+      price: "Rp 560jt an",
       image: "/images/proyek/tci/tci-3/cluster/tipe-50/tci3-tipe-50.webp",
       href: "/proyek/tci/tci-3/tipe-50",
     },
@@ -38,7 +38,7 @@ export default function TCI3OverviewPage() {
     {
       title: "Tipe 50",
       description: "Hunian non-cluster dengan tata ruang fungsional dan akses langsung untuk kenyamanan keluarga.",
-      price: "Rp 800jt an",
+      price: "Rp 500jt an",
       image: "/images/proyek/tci/tci-3/non-cluster/tci3-t50-nc-detail.webp",
       href: "/proyek/tci/tci-3/non-cluster/tipe-50",
     },

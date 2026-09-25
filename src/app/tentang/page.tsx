@@ -17,16 +17,6 @@ export default function TentangPage() {
     },
   ];
 
-
-  const partners = [
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80",
-  ];
-
   return (
     <>
       {/* SECTION 1 — HERO */}
@@ -97,7 +87,7 @@ export default function TentangPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Image */}
             <div className="lg:col-span-5">
-              <div className="rounded-2xl overflow-hidden shadow-md aspect-[4/5]">
+              <div className="rounded-2xl overflow-hidden shadow-md aspect-[4/3]">
                 <img
                   src="/images/tentang/about2.webp"
                   alt="Tim Marga Tirta Kencana"
