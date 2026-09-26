@@ -1,9 +1,16 @@
-import Link from "next/link";
-import { ChevronRight, Home as HomeIcon, MapPin, ShieldCheck, Trees } from "lucide-react";
+import Image from "next/image";
+import { ImageIcon, Home as HomeIcon, MapPin, ShieldCheck, Trees } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
 
 export default function TCI1OverviewPage() {
+  // Path gambar relatif terhadap folder public.
+  const unitGallery = [
+    { label: "Ruang Tamu", src: "/images/proyek/tci/tci-1/tci1-living.webp", alt: "Ruang tamu unit TCI 1" },
+    { label: "Kamar Tidur", src: "/images/proyek/tci/tci-1/tci1-bed.webp", alt: "Kamar tidur unit TCI 1" },
+    { label: "Dapur", src: "/images/proyek/tci/tci-1/tci1-kitchen.webp", alt: "Dapur unit TCI 1" },
+  ];
+
   const strategicPoints = ["Terhubung dengan kawasan Cibaduyut", "Akses menuju pusat Kota Bandung", "Dekat dengan fasilitas pendidikan", "Dekat dengan fasilitas kesehatan"];
 
   return (
@@ -76,7 +83,51 @@ export default function TCI1OverviewPage() {
         </div>
       </section>
 
-      {/* SECTION 3 — LOKASI */}
+      {/* SECTION 3 — GALERI UNIT */}
+      <section className="bg-white py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl mb-10 space-y-2">
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
+              TAMAN CIBADUYUT INDAH 1
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">Galeri Unit</h2>
+            <p className="text-sm text-[#6B7280]">Intip setiap sudut hunian di Taman Cibaduyut Indah 1.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
+            {unitGallery.map((item, index) => (
+              <div
+                key={item.label}
+                className={`relative rounded-2xl overflow-hidden shadow-sm bg-gray-100 ${
+                  index === 0
+                    ? "lg:col-span-7 lg:row-span-2 min-h-[300px]"
+                    : "lg:col-span-5 aspect-[16/10]"
+                }`}
+              >
+                {item.src ? (
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-cover object-center"
+                    sizes={index === 0 ? "(max-width: 1024px) 100vw, 60vw" : "(max-width: 1024px) 100vw, 40vw"}
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
+                    <ImageIcon className="w-12 h-12 text-[#0B5EAA]/40" aria-hidden="true" />
+                    <p className="text-sm text-[#6B7280]">Foto segera hadir</p>
+                  </div>
+                )}
+                <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4 — LOKASI */}
       <section className="bg-white py-16 md:py-20 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -116,7 +167,7 @@ export default function TCI1OverviewPage() {
         </div>
       </section>
 
-      {/* SECTION 4 — FORMULIR INQUIRY */}
+      {/* SECTION 5 — FORMULIR INQUIRY */}
       <InquiryForm defaultProyek="TCI 1" />
 
       <CTABanner />

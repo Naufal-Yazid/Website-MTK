@@ -1,4 +1,4 @@
-import { Download, ImageIcon, MapPin, Ruler, Home as HomeIcon, BedDouble, Bath, Car, Zap } from "lucide-react";
+import { Download, MapPin, Ruler, Home as HomeIcon, BedDouble, Bath, Car, Zap } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
 import KPRCalculator from "@/components/sections/KPRCalculator";
@@ -154,53 +154,10 @@ export default function TCI3Tipe50Page() {
         </div>
       </section>
 
-      {/* SECTION 4 — GALERI UNIT */}
-      <section className="bg-white py-20 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl mb-10 space-y-2">
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
-              UNIT CLUSTER TIPE 50
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">
-              Galeri Unit
-            </h2>
-            <p className="text-sm text-[#6B7280]">
-              Foto unit Cluster Tipe 50 TCI 3 akan segera hadir.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
-            <div className="lg:col-span-7 rounded-2xl overflow-hidden shadow-sm bg-gray-100 relative min-h-[300px] h-full">
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
-                <ImageIcon className="w-12 h-12 text-[#0B5EAA]/40" aria-hidden="true" />
-                <p className="text-sm text-[#6B7280]">Foto segera hadir</p>
-              </div>
-              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">
-                Ruang Tamu
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 grid grid-cols-1 gap-4 sm:gap-6">
-              {["Kamar Tidur Utama", "Kamar Anak"].map((label) => (
-                <div key={label} className="rounded-2xl overflow-hidden shadow-sm aspect-[16/10] bg-gray-100 relative">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
-                    <ImageIcon className="w-10 h-10 text-[#0B5EAA]/40" aria-hidden="true" />
-                    <p className="text-sm text-[#6B7280]">Foto segera hadir</p>
-                  </div>
-                  <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">
-                    {label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 5 — KALKULATOR KPR */}
+      {/* SECTION 4 — KALKULATOR KPR */}
       <KPRCalculator initialHarga={560000000} />
 
-      {/* SECTION 6 — FORMULIR INQUIRY */}
+      {/* SECTION 5 — FORMULIR INQUIRY */}
       <InquiryForm defaultProyek="TCI 3" defaultTipe="Tipe 50" />
 
       <CTABanner />
