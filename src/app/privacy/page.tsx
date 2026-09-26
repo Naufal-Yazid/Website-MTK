@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 export default function KebijakanPrivasi() {
   return (
@@ -56,10 +55,10 @@ export default function KebijakanPrivasi() {
                 <strong>Akun</strong> berarti akun unik yang dibuat untuk Anda agar dapat mengakses Layanan Kami atau bagian dari Layanan Kami.
               </li>
               <li>
-                <strong>Afiliasi</strong> berarti entitas yang mengendalikan, dikendalikan oleh, atau berada di bawah pengendalian bersama dengan suatu pihak, di mana "pengendalian" berarti kepemilikan 50% atau lebih dari saham, kepentingan ekuitas, atau efek lainnya yang memiliki hak suara untuk pemilihan direktur atau otoritas pengelola lainnya.
+                <strong>Afiliasi</strong> berarti entitas yang mengendalikan, dikendalikan oleh, atau berada di bawah pengendalian bersama dengan suatu pihak, di mana &quot;pengendalian&quot; berarti kepemilikan 50% atau lebih dari saham, kepentingan ekuitas, atau efek lainnya yang memiliki hak suara untuk pemilihan direktur atau otoritas pengelola lainnya.
               </li>
               <li>
-                <strong>Perusahaan</strong> (dirujuk sebagai "Perusahaan", "Kami", atau "Milik Kami" dalam Kebijakan Privasi ini) mengacu pada PT Marga Tirta Kencana, Jl. BKR No.140, Cigereleng, Kec. Regol, Kota Bandung, Jawa Barat 40253.
+                <strong>Perusahaan</strong> (dirujuk sebagai &quot;Perusahaan&quot;, &quot;Kami&quot;, atau &quot;Milik Kami&quot; dalam Kebijakan Privasi ini) mengacu pada PT Marga Tirta Kencana, Jl. BKR No.140, Cigereleng, Kec. Regol, Kota Bandung, Jawa Barat 40253.
               </li>
               <li>
                 <strong>Cookie</strong> adalah berkas kecil yang ditempatkan di komputer, perangkat seluler, atau perangkat Anda lainnya oleh situs web, yang berisi rincian riwayat penjelajahan Anda di situs web tersebut, di antara banyak kegunaannya.
@@ -71,9 +70,9 @@ export default function KebijakanPrivasi() {
                 <strong>Perangkat</strong> berarti perangkat apa pun yang dapat mengakses Layanan, seperti komputer, telepon seluler, atau tablet digital.
               </li>
               <li>
-                <strong>Data Pribadi</strong> (atau "Informasi Pribadi") adalah setiap informasi yang berkaitan dengan individu yang teridentifikasi atau dapat diidentifikasi.
+                <strong>Data Pribadi</strong> (atau &quot;Informasi Pribadi&quot;) adalah setiap informasi yang berkaitan dengan individu yang teridentifikasi atau dapat diidentifikasi.
                 <br />
-                Kami menggunakan istilah "Data Pribadi" dan "Informasi Pribadi" secara bergantian kecuali jika hukum menggunakan istilah tertentu.
+                Kami menggunakan istilah &quot;Data Pribadi&quot; dan &quot;Informasi Pribadi&quot; secara bergantian kecuali jika hukum menggunakan istilah tertentu.
               </li>
               <li>
                 <strong>Layanan</strong> mengacu pada Situs Web.
