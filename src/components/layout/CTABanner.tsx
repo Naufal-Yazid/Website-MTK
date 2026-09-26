@@ -1,12 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import { buildWAUrl } from "@/lib/wa";
+import { useContactSettings } from "@/hooks/use-contact-settings";
 
 export default function CTABanner() {
+  const contactSettings = useContactSettings();
   const waUrl = buildWAUrl({
     nama: "Pengunjung Website",
     wa: "",
     pertanyaan: "Halo, saya ingin berkonsultasi mengenai hunian impian di Marga Tirta Kencana.",
-  });
+  }, contactSettings.waNumber);
 
   return (
     <section className="relative overflow-hidden bg-[#0D1B2A] py-24 md:py-32">
