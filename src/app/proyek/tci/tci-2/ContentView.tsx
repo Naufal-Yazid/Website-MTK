@@ -1,0 +1,174 @@
+import type { ContentBundle } from "@/lib/content/values";
+import Image from "next/image";
+import { ImageIcon, MapPin, Sun, Users, Zap } from "lucide-react";
+import CTABanner from "@/components/layout/CTABanner";
+import InquiryForm from "@/components/sections/InquiryForm";
+
+export default function TCI2OverviewPage({ content }: { content: ContentBundle }) {
+  const text = (key: string) => content["tci-2"][key];
+
+  // Path gambar relatif terhadap folder public.
+  const unitGallery = [
+    { label: text("unitGallery.0.label"), src: "/images/proyek/tci/tci-2/tci2-living.webp", alt: "Ruang tamu unit TCI 2" },
+    { label: text("unitGallery.1.label"), src: "/images/proyek/tci/tci-2/tci2-bed.webp", alt: "Kamar tidur unit TCI 2" },
+    { label: text("unitGallery.2.label"), src: "/images/proyek/tci/tci-2/tci2-kitchen.webp", alt: "Dapur unit TCI 2" },
+  ];
+
+  const strategicPoints = [text("strategicPoints.0"), text("strategicPoints.1"), text("strategicPoints.2"), text("strategicPoints.3")];
+
+  return (
+    <>
+      {/* SECTION 1 — HERO */}
+      <section className="relative min-h-[60vh] flex items-end justify-start bg-[#0D1B2A] overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-35"
+          style={{
+            backgroundImage: "url('/images/proyek/tci/tci-2/gerbangTCI2_HeroBanner.webp')",
+          }}
+        />
+
+        <div className="absolute inset-0 bg-[#0D1B2A]/65" />
+
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
+          <div className="max-w-2xl space-y-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">{text("hero.title")}</h1>
+
+            <div className="flex items-center gap-2 text-sm sm:text-base text-white/50">
+              <MapPin className="w-4 h-4 text-white" />
+              <span>{text("hero.text")}</span>
+            </div>
+            <p className="text-sm sm:text-base text-[rgb(246,247,248)] line-clamp-2 leading-relaxed flex-grow">{text("hero.description")}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2 — INTRO KOMPLEK */}
+      <section className="bg-white py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-6">
+              <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">{text("section2.text")}</span>
+
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#111827]">{text("section2.heading")}</h2>
+
+              <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">{text("section2.description")}</p>
+
+              {/* Feature Badges */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <span className="inline-flex items-center gap-2 bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-semibold px-4 py-2 rounded-full">
+                  <Zap className="w-3.5 h-3.5" />
+                  <span>{text("section2.text2")}</span>
+                </span>
+
+                <span className="inline-flex items-center gap-2 bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-semibold px-4 py-2 rounded-full">
+                  <Sun className="w-3.5 h-3.5" />
+                  <span>{text("section2.text3")}</span>
+                </span>
+
+                <span className="inline-flex items-center gap-2 bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-semibold px-4 py-2 rounded-full">
+                  <Users className="w-3.5 h-3.5" />
+                  <span>{text("section2.text4")}</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="lg:col-span-5">
+              <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-gray-100">
+                <img src="/images/proyek/tci/tci-2/Rumah-TCI2.jpg" alt="Interior hunian Taman Cibaduyut Indah 2" className="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3 — GALERI UNIT */}
+      <section className="bg-white py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl mb-10 space-y-2">
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">{text("section3.text")}</span>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">{text("section3.heading")}</h2>
+            <p className="text-sm text-[#6B7280]">{text("section3.description")}</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
+            {unitGallery.map((item, index) => (
+              <div
+                key={item.label}
+                className={`relative rounded-2xl overflow-hidden shadow-sm bg-gray-100 ${
+                  index === 0
+                    ? "lg:col-span-7 lg:row-span-2 min-h-[300px]"
+                    : "lg:col-span-5 aspect-[16/10]"
+                }`}
+              >
+                {item.src ? (
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-cover object-center"
+                    sizes={index === 0 ? "(max-width: 1024px) 100vw, 60vw" : "(max-width: 1024px) 100vw, 40vw"}
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
+                    <ImageIcon className="w-12 h-12 text-[#0B5EAA]/40" aria-hidden="true" />
+                    <p className="text-sm text-[#6B7280]">Foto segera hadir</p>
+                  </div>
+                )}
+                <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-xs text-white text-xs font-medium px-3 py-1.5 rounded-lg z-10">
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4 — LOKASI */}
+      <section className="bg-white py-16 md:py-20 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            {/* Left Description */}
+            <div className="lg:col-span-5 space-y-4">
+              <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">{text("section4.text")}</span>
+
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827]">{text("section4.heading")}</h2>
+
+              <p className="text-sm text-[#6B7280] leading-relaxed">{text("section4.description")}</p>
+
+              <ul className="space-y-3 pt-2">
+                {strategicPoints.map((point) => (
+                  <li key={point} className="flex items-center gap-3 text-sm text-gray-700">
+                    <MapPin className="w-4 h-4 text-[#0B5EAA] shrink-0" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Google Maps Embed */}
+            <div className="lg:col-span-7">
+              <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-[#E5E7EB] bg-gray-100 shadow-sm">
+                <iframe
+                  src="https://www.google.com/maps?q=Taman%20Cibaduyut%20Indah%20II&output=embed"
+                  title="Lokasi Taman Cibaduyut Indah II"
+                  className="absolute inset-0 w-full h-full"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5 — FORMULIR INQUIRY */}
+      <InquiryForm defaultProyek="TCI 2" />
+
+      <CTABanner />
+    </>
+  );
+}

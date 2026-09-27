@@ -1,10 +1,16 @@
+import PreviewNotice from "@/components/content/PreviewNotice";
+import { getPageContent } from "@/lib/content/server";
+import { type ContentPageProps } from "@/lib/content/values";
+export { contentMetadata as generateMetadata } from "@/lib/content/server";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 
-export default function ProyekIndexPage() {
+export default async function ProyekIndexPage({ searchParams }: ContentPageProps) {
+  const { content, preview } = await getPageContent(searchParams);
   return (
     <>
+      <PreviewNotice preview={preview} />
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[55vh] flex items-center justify-center bg-[#0D1B2A] overflow-hidden">
         <div
@@ -43,14 +49,14 @@ export default function ProyekIndexPage() {
               </div>
 
               <div className="p-6 flex flex-col flex-grow space-y-3">
-                <h3 className="text-xl font-semibold text-[#111827]">Taman Cibaduyut Indah</h3>
+                <h3 className="text-xl font-semibold text-[#111827]">{content["tci"]["hero.title"]}</h3>
 
                 <div className="flex items-center gap-1.5 text-xs text-[#6B7280]">
                   <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                  <span>Cibaduyut, Kota Bandung</span>
+                  <span>{content["tci"]["hero.text"]}</span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">Pilihan hunian terlengkap dengan berbagai tipe unit di pusat kota.</p>
+                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">{content["tci"]["card.description"]}</p>
 
                 <div className="pt-2">
                   <Link
@@ -70,14 +76,14 @@ export default function ProyekIndexPage() {
               </div>
 
               <div className="p-6 flex flex-col flex-grow space-y-3">
-                <h3 className="text-xl font-semibold text-[#111827]">Rancamanyar Indah</h3>
+                <h3 className="text-xl font-semibold text-[#111827]">{content["rancamanyar"]["hero.title"]}</h3>
 
                 <div className="flex items-center gap-1.5 text-xs text-[#6B7280]">
                   <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                  <span>Baleendah, Kabupaten Bandung</span>
+                  <span>{content["rancamanyar"]["hero.text"]}</span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">Komplek perumahan dengan harga terjangkau dan berbagai pilihan unit.</p>
+                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">{content["rancamanyar"]["card.description"]}</p>
 
                 <div className="pt-2">
                   <Link
@@ -97,14 +103,14 @@ export default function ProyekIndexPage() {
               </div>
 
               <div className="p-6 flex flex-col flex-grow space-y-3">
-                <h3 className="text-xl font-semibold text-[#111827]">Permata Buah Batu</h3>
+                <h3 className="text-xl font-semibold text-[#111827]">{content["permata-buah-batu"]["hero.title"]}</h3>
 
                 <div className="flex items-center gap-1.5 text-xs text-[#6B7280]">
                   <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                  <span>Bojongsoang, Bandung</span>
+                  <span>{content["permata-buah-batu"]["hero.text"]}</span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">Gaya hidup urban modern ditengah kota dengan harga terjangkau.</p>
+                <p className="text-xs sm:text-sm text-[#6B7280] line-clamp-2 leading-relaxed flex-grow">{content["permata-buah-batu"]["card.description"]}</p>
 
                 <div className="pt-2">
                   <Link

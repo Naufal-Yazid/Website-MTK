@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { BarChart3, Bell, CheckCircle2, LayoutDashboard, Loader2, Search, Settings, Users } from 'lucide-react';
+import { BarChart3, Bell, CheckCircle2, LayoutDashboard, Loader2, Search, Settings, Users, ScrollText, FilePenLine } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { id as localeId } from 'date-fns/locale';
 import { useAuth } from '@/lib/hooks/useAuth';
@@ -29,6 +29,8 @@ const adminPages = [
   { name: 'Website Analytics', description: 'Detail traffic dan pengunjung', href: '/admin/analytics', icon: BarChart3 },
   { name: 'Leads / Inquiry', description: 'Kelola seluruh inquiry', href: '/admin/leads', icon: Users },
   { name: 'Pengaturan', description: 'Akun dan konfigurasi website', href: '/admin/settings', icon: Settings },
+  { name: 'Logs', description: 'Riwayat perubahan admin dan error aplikasi', href: '/admin/logs', icon: ScrollText },
+  { name: 'Konten Website', description: 'Edit teks, draft, preview, dan publikasi', href: '/admin/content', icon: FilePenLine },
 ];
 
 export default function AdminHeader() {

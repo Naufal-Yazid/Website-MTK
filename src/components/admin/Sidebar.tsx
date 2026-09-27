@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { cn } from '@/lib/utils';
-import { LayoutDashboard, BarChart3, Users, Settings, LogOut, ChevronLeft, ChevronRight, Menu, Loader2 } from 'lucide-react';
+import { LayoutDashboard, BarChart3, Users, Settings, LogOut, ChevronLeft, ChevronRight, Menu, Loader2, ScrollText, FilePenLine } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -37,7 +37,9 @@ export default function Sidebar({ className, isMobile = false }: SidebarProps) {
     { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
     { name: 'Website Analytics', href: '/admin/analytics', icon: BarChart3 },
     { name: 'Leads / Inquiry', href: '/admin/leads', icon: Users, badge: unreadCount },
+    { name: 'Konten Website', href: '/admin/content', icon: FilePenLine },
     { name: 'Pengaturan', href: '/admin/settings', icon: Settings },
+    { name: 'Logs', href: '/admin/logs', icon: ScrollText },
   ];
 
   const renderSidebarContent = () => (
