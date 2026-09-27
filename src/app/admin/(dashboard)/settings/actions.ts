@@ -122,6 +122,50 @@ export async function createAdminAccount(email: string, fullName: string, role: 
   }
 }
 
+export async function updateAdminAccount(
+  adminId: string,
+  email: string,
+  fullName: string,
+  role: AdminRole,
+  isActive: boolean
+) {
+  try {
+    const { user } = await requireAdmin(true)
+    const parsed = profileSchema.safeParse({ full_name: fullName })
+    if (!parsed.success || !/^\S+@\S+\.\S+$/.test(email)) {
+      return { success: false, error: 'Nama atau email tidak valid.' }
+    }
+    if (adminId === user.id && (role !== 'super_admin' || !isActive)) {
+      return { success: false, error: 'Akun sendiri harus tetap aktif sebagai Super Admin.' }
+    }
+
+    const adminClient = createAdminClient()
+    const { error: authError } = await adminClient.auth.admin.updateUserById(adminId, {
+      email,
+      user_metadata: { full_name: parsed.data.full_name, role },
+    })
+    if (authError) return { success: false, error: authError.message }
+
+    const { error } = await adminClient
+      .from('admins')
+      .update({
+        email,
+        full_name: parsed.data.full_name,
+        role,
+        is_active: isActive,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', adminId)
+
+    if (error) return { success: false, error: error.message }
+    if (!isActive) await adminClient.auth.admin.signOut(adminId, 'global')
+    revalidatePath('/admin/settings')
+    return { success: true }
+  } catch {
+    return { success: false, error: 'Hanya super admin yang dapat mengubah akun.' }
+  }
+}
+
 export async function toggleAdminActive(adminId: string, isActive: boolean) {
   try {
     const { user } = await requireAdmin(true)
@@ -141,7 +185,18 @@ export async function deleteAdminAccount(adminId: string) {
   try {
     const { user } = await requireAdmin(true)
     if (adminId === user.id) return { success: false, error: 'Akun sendiri tidak dapat dihapus.' }
-    const { error } = await createAdminClient().auth.admin.deleteUser(adminId)
+    const adminClient = createAdminClient()
+    const { data: targetAdmin } = await adminClient
+      .from('admins')
+      .select('role')
+      .eq('id', adminId)
+      .single()
+    if (!targetAdmin) return { success: false, error: 'Akun admin tidak ditemukan.' }
+    if (targetAdmin.role === 'super_admin') {
+      return { success: false, error: 'Akun Super Admin tidak dapat dihapus.' }
+    }
+
+    const { error } = await adminClient.auth.admin.deleteUser(adminId)
     if (error) return { success: false, error: error.message }
     revalidatePath('/admin/settings')
     return { success: true }
