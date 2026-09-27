@@ -38,7 +38,6 @@ export default function Sidebar({ className, isMobile = false }: SidebarProps) {
     { name: 'Website Analytics', href: '/admin/analytics', icon: BarChart3 },
     { name: 'Leads / Inquiry', href: '/admin/leads', icon: Users, badge: unreadCount },
     { name: 'Konten Website', href: '/admin/content', icon: FilePenLine },
-    { name: 'Pengaturan', href: '/admin/settings', icon: Settings },
     { name: 'Logs', href: '/admin/logs', icon: ScrollText },
   ];
 
@@ -107,7 +106,22 @@ export default function Sidebar({ className, isMobile = false }: SidebarProps) {
         </nav>
       </div>
 
-      <div className="border-t border-white/10 p-4">
+      <div className="space-y-2 border-t border-white/10 p-2">
+        <Link
+          href="/admin/settings"
+          className={cn(
+            "group flex items-center rounded-md px-2 py-2 text-sm font-medium transition-colors",
+            pathname.startsWith('/admin/settings')
+              ? "bg-white/10 text-white"
+              : "text-white/70 hover:bg-white/5 hover:text-white",
+            collapsed && !isMobile ? "justify-center" : "justify-start"
+          )}
+          title={collapsed && !isMobile ? 'Pengaturan' : undefined}
+        >
+          <Settings className={cn("h-5 w-5 shrink-0", (!collapsed || isMobile) && "mr-3")} aria-hidden="true" />
+          {(!collapsed || isMobile) && <span className="truncate">Pengaturan</span>}
+        </Link>
+
         <Button
           variant="ghost"
           className={cn(
