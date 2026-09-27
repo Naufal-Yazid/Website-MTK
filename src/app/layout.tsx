@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import FloatingWA from "@/components/layout/FloatingWA";
+import PublicLayoutWrapper from "@/components/layout/PublicLayoutWrapper";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-poppins",
+  display: "swap",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-plus-jakarta-sans",
   display: "swap",
 });
 
@@ -33,12 +39,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className={`${poppins.variable} h-full`}>
+    <html lang="id" className={`${poppins.variable} ${plusJakartaSans.variable} h-full`}>
       <body className="min-h-full flex flex-col font-sans bg-white text-[#6B7280] antialiased selection:bg-[#0B5EAA] selection:text-white">
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <FloatingWA />
+        <PublicLayoutWrapper>
+          {children}
+        </PublicLayoutWrapper>
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );

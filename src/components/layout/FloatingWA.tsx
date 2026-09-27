@@ -1,12 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import { buildWAUrl } from "@/lib/wa";
+import { useContactSettings } from "@/hooks/use-contact-settings";
 
 export default function FloatingWA() {
+  const contactSettings = useContactSettings();
   const waUrl = buildWAUrl({
     nama: "Pengunjung Website",
     wa: "",
     pertanyaan: "Halo, saya ingin bertanya tentang hunian di Marga Tirta Kencana.",
-  });
+  }, contactSettings.waNumber);
 
   return (
     <a

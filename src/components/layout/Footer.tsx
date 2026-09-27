@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
+import { useContactSettings } from "@/hooks/use-contact-settings";
 
 // Instagram SVG Icon
 const InstagramIcon = ({ className }: { className?: string }) => (
@@ -23,6 +26,8 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 );
 
 export default function Footer() {
+  const contactSettings = useContactSettings();
+
   return (
     <footer className="bg-[#0D1B2A] text-white pt-16 pb-8 border-t border-[#1E3A5F]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,7 +92,7 @@ export default function Footer() {
             </h4>
             <div className="flex items-center gap-4">
               <a
-                href="https://www.instagram.com/marketing.mtk140?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+                href={contactSettings.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[#1E3A5F] flex items-center justify-center text-[#8EA8C3] hover:text-white hover:bg-[#0B5EAA] transition-all"
@@ -96,7 +101,7 @@ export default function Footer() {
                 <InstagramIcon className="w-5 h-5" />
               </a>
               <a
-                href="https://www.tiktok.com/@rumahmurah.project?is_from_webapp=1&sender_device=pc" 
+                href={contactSettings.tiktokUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[#1E3A5F] flex items-center justify-center text-[#8EA8C3] hover:text-white hover:bg-[#0B5EAA] transition-all"
@@ -105,7 +110,7 @@ export default function Footer() {
                 <TikTokIcon className="w-5 h-5" />
               </a>
               <a
-                href="https://wa.me/6285759072321"
+                href={`https://wa.me/${contactSettings.waNumber.replace(/\D/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[#1E3A5F] flex items-center justify-center text-[#8EA8C3] hover:text-white hover:bg-[#25D366] transition-all"

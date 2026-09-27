@@ -21,6 +21,7 @@
   --color-footer-text: #8EA8C3;
   --color-footer-border: #1E3A5F;
   --font-poppins: "Poppins", sans-serif;
+  --font-plus-jakarta-sans: "Plus Jakarta Sans", sans-serif;
 }
 
 /* Base Styles */
@@ -39,6 +40,18 @@ body {
 /* Smooth transitions for interactive elements */
 a, button {
   transition: all 0.3s ease;
+}
+
+button:not(:disabled),
+a[href],
+select:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+[role="menuitem"]:not([data-disabled]) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
 
 /* Custom scrollbar */

@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Send, ChevronDown } from "lucide-react";
+import { Send, ChevronDown, Loader2 } from "lucide-react";
 import { buildWAUrl } from "@/lib/wa";
+import { createInquiry } from "@/app/actions/inquiry";
+import { toast } from "sonner";
+import { useContactSettings } from "@/hooks/use-contact-settings";
 
 interface InquiryFormProps {
   defaultProyek?: string;
@@ -10,22 +13,41 @@ interface InquiryFormProps {
 }
 
 export default function InquiryForm({ defaultProyek = "Pilih Proyek", defaultTipe = "Pilih Tipe" }: InquiryFormProps) {
+  const contactSettings = useContactSettings();
   const [nama, setNama] = useState("");
   const [wa, setWa] = useState("");
   const [proyek, setProyek] = useState(defaultProyek);
   const [tipe, setTipe] = useState(defaultTipe);
   const [pertanyaan, setPertanyaan] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    const result = await createInquiry({
+      full_name: nama,
+      whatsapp_number: wa,
+      selected_project: proyek === "Pilih Proyek" ? null : proyek,
+      selected_type: tipe === "Pilih Tipe" ? null : tipe,
+      message: pertanyaan || null,
+    });
     const url = buildWAUrl({
       nama,
       wa,
       proyek,
       tipe,
       pertanyaan,
-    });
+    }, contactSettings.waNumber);
     window.open(url, "_blank");
+    setIsSubmitting(false);
+    if (result.success) {
+      toast.success("Inquiry berhasil dikirim");
+      setNama("");
+      setWa("");
+      setPertanyaan("");
+    } else {
+      toast.error(result.error);
+    }
   };
 
   return (
@@ -122,8 +144,8 @@ export default function InquiryForm({ defaultProyek = "Pilih Proyek", defaultTip
               </div>
 
               {/* Submit Button */}
-              <button type="submit" className="w-full h-12 rounded-lg bg-[#0B5EAA] text-white font-semibold text-sm hover:bg-[#0A4F91] transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.99]">
-                <Send className="w-4 h-4" />
+              <button type="submit" disabled={isSubmitting} className="w-full h-12 rounded-lg bg-[#0B5EAA] text-white font-semibold text-sm hover:bg-[#0A4F91] transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60">
+                {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                 <span>Kirim ke WhatsApp</span>
               </button>
             </form>

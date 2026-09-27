@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Building2, MapPin, Phone, Mail } from "lucide-react";
+import { Building2, MapPin, Phone } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
+import { useContactSettings } from "@/hooks/use-contact-settings";
 
 // Instagram SVG Icon
 const InstagramIcon = ({ className }: { className?: string }) => (
@@ -21,6 +22,7 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 );
 
 export default function KontakPage() {
+  const contactSettings = useContactSettings();
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [wa, setWa] = useState("");
@@ -81,7 +83,7 @@ export default function KontakPage() {
                 <div className="space-y-1 text-xs sm:text-sm">
                   <div className="font-bold text-[#111827]">Kantor Pusat</div>
                   <div className="text-[#6B7280] leading-relaxed">
-                    Jl. BKR No.140, Cigereleng, Kec. Regol, Kota Bandung, Jawa Barat 40253
+                    {contactSettings.companyAddress}
                   </div>
                 </div>
               </div>
@@ -118,10 +120,10 @@ export default function KontakPage() {
                 <div className="space-y-1 text-xs sm:text-sm">
                   <div className="font-bold text-[#111827]">Telepon & Email</div>
                   <div className="text-[#6B7280]">
-                    Telepon: <a href="tel:+6285759072321" className="text-[#0B5EAA] hover:underline">+62 857 5907 2321</a>
+                    Telepon: <a href={`tel:${contactSettings.companyPhone.replace(/\s/g, '')}`} className="text-[#0B5EAA] hover:underline">{contactSettings.companyPhone}</a>
                   </div>
                   <div className="text-[#6B7280]">
-                    Email: <a href="mailto:marketingmtk140@gmail.com" className="text-[#0B5EAA] hover:underline">marketingmtk140@gmail.com</a>
+                    Email: <a href={`mailto:${contactSettings.companyEmail}`} className="text-[#0B5EAA] hover:underline">{contactSettings.companyEmail}</a>
                   </div>
                 </div>
               </div>
@@ -131,7 +133,7 @@ export default function KontakPage() {
                 <div className="text-xs font-semibold text-gray-600 mb-2">Ikuti Kami:</div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="https://www.tiktok.com/@rumahmurah.project?is_from_webapp=1&sender_device=pc"
+                    href={contactSettings.tiktokUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-[#6B7280] hover:text-[#0B5EAA] hover:bg-[#EFF6FF] transition-all"
@@ -139,7 +141,7 @@ export default function KontakPage() {
                     <TikTokIcon className="w-4 h-4" />
                   </a>
                   <a
-                    href="https://www.instagram.com/marketing.mtk140?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+                    href={contactSettings.instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-[#6B7280] hover:text-[#0B5EAA] hover:bg-[#EFF6FF] transition-all"
