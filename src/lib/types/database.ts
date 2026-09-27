@@ -9,6 +9,46 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      site_content_drafts: {
+        Row: { document_key: string; content: Json; revision: number; updated_at: string; updated_by: string | null }
+        Insert: { document_key: string; content: Json; revision: number; updated_at?: string; updated_by?: string | null }
+        Update: { content?: Json; revision?: number; updated_at?: string; updated_by?: string | null }
+        Relationships: []
+      }
+      site_content_published: {
+        Row: { document_key: string; content: Json; revision: number; published_at: string }
+        Insert: { document_key: string; content: Json; revision: number; published_at?: string }
+        Update: { content?: Json; revision?: number; published_at?: string }
+        Relationships: []
+      }
+      admin_logs: {
+        Row: {
+          id: string
+          created_at: string
+          kind: 'audit' | 'error'
+          source: 'admin_action' | 'server'
+          actor_id: string | null
+          actor_name: string
+          action: string
+          target_id: string | null
+          summary: string
+          details: Json
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          kind: 'audit' | 'error'
+          source: 'admin_action' | 'server'
+          actor_id?: string | null
+          actor_name?: string
+          action: string
+          target_id?: string | null
+          summary: string
+          details?: Json
+        }
+        Update: { [_ in never]: never }
+        Relationships: []
+      }
       admins: {
         Row: {
           id: string
@@ -184,7 +224,14 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      save_content_draft: {
+        Args: { p_key: string; p_values: Json; p_expected_revision: number }
+        Returns: number
+      }
+      publish_content_draft: {
+        Args: { p_key: string; p_expected_revision: number }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never

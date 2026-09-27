@@ -1,30 +1,35 @@
+import PreviewNotice from "@/components/content/PreviewNotice";
+import { getPageContent } from "@/lib/content/server";
+import { shortPrice, type ContentPageProps } from "@/lib/content/values";
+export { contentMetadata as generateMetadata } from "@/lib/content/server";
 import Link from "next/link";
 import { ArrowRight, MapPin, Shield, Zap, Home as HomeIcon } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 
-export default function Home() {
+export default async function Home({ searchParams }: ContentPageProps) {
+  const { content, preview } = await getPageContent(searchParams);
   const featuredProjects = [
     {
       id: "tci",
-      title: "Taman Cibaduyut Indah",
-      location: "Cibaduyut, Bandung",
-      price: "Mulai Rp 400 Jt",
+      title: content["tci"]["hero.title"],
+      location: content["tci"]["hero.text"],
+      price: "Mulai " + shortPrice(content["tci"]["price"]),
       image: "/images/proyek/tci/tci-icon-banner.webp",
       href: "/proyek/tci",
     },
     {
       id: "rancamanyar",
-      title: "Rancamanyar Indah",
-      location: "Kabupaten Bandung",
-      price: "Mulai Rp 200 Jt",
+      title: content["rancamanyar"]["hero.title"],
+      location: content["rancamanyar"]["hero.text"],
+      price: "Mulai " + shortPrice(content["rancamanyar"]["price"]),
       image: "/images/proyek/rancamanyar/rancamanyar-banner.webp",
       href: "/proyek/rancamanyar-indah",
     },
     {
       id: "permata-buah-batu",
-      title: "Permata Buah Batu",
-      location: "Buah Batu, Bandung",
-      price: "Mulai Rp 450 Jt",
+      title: content["permata-buah-batu"]["hero.title"],
+      location: content["permata-buah-batu"]["hero.text"],
+      price: "Mulai " + shortPrice(content["permata-buah-batu"]["price"]),
       image: "/images/proyek/permata-buah-batu/permatabb-gate-banner.webp",
       href: "/proyek/permata-buah-batu",
     },
@@ -50,6 +55,7 @@ export default function Home() {
 
   return (
     <>
+      <PreviewNotice preview={preview} />
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-start overflow-hidden bg-[#0D1B2A]">
         {/* Background Image with Dark Overlay */}

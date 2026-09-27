@@ -1,5 +1,6 @@
 'use server'
 
+import { runAdminAction } from '@/lib/logs/server'
 import { revalidatePath } from 'next/cache'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { createClient } from '@/lib/supabase/server'
@@ -32,7 +33,7 @@ async function saveSiteSettings(updates: SettingsUpdate) {
     : adminClient.from('site_settings').insert(updates)
 }
 
-export async function updateContactSettings(formData: FormData) {
+async function updateContactSettingsImpl(formData: FormData) {
   try {
     const { user } = await requireAdmin(true)
     const parsed = contactSettingsSchema.safeParse(Object.fromEntries(formData))
@@ -46,7 +47,7 @@ export async function updateContactSettings(formData: FormData) {
   }
 }
 
-export async function updateIntegrationSettings(gaMeasurementId: string, metaPixelId: string) {
+async function updateIntegrationSettingsImpl(gaMeasurementId: string, metaPixelId: string) {
   try {
     const { user } = await requireAdmin(true)
     const parsed = integrationSettingsSchema.safeParse({ ga_measurement_id: gaMeasurementId, meta_pixel_id: metaPixelId })
@@ -60,7 +61,7 @@ export async function updateIntegrationSettings(gaMeasurementId: string, metaPix
   }
 }
 
-export async function updateProfile(fullName: string, avatarUrl?: string) {
+async function updateProfileImpl(fullName: string, avatarUrl?: string) {
   try {
     const { user } = await requireAdmin()
     const parsed = profileSchema.safeParse({ full_name: fullName })
@@ -70,7 +71,7 @@ export async function updateProfile(fullName: string, avatarUrl?: string) {
       updated_at: new Date().toISOString(),
     }
     if (avatarUrl !== undefined) updates.avatar_url = avatarUrl || null
-    const { error } = await createAdminClient().from('admins').update(updates).eq('id', user.id)
+    const { error } = await createAdminClient().from('admins').update(updates).eq('id', user.id).select('id').single()
     if (error) return { success: false, error: error.message }
     revalidatePath('/admin/settings')
     return { success: true }
@@ -79,7 +80,7 @@ export async function updateProfile(fullName: string, avatarUrl?: string) {
   }
 }
 
-export async function changePassword(currentPassword: string, newPassword: string) {
+async function changePasswordImpl(currentPassword: string, newPassword: string) {
   try {
     const { supabase, user } = await requireAdmin()
     if (!user.email) return { success: false, error: 'Email akun tidak tersedia.' }
@@ -95,7 +96,7 @@ export async function changePassword(currentPassword: string, newPassword: strin
   }
 }
 
-export async function createAdminAccount(email: string, fullName: string, role: AdminRole) {
+async function createAdminAccountImpl(email: string, fullName: string, role: AdminRole) {
   try {
     await requireAdmin(true)
     const parsed = profileSchema.safeParse({ full_name: fullName })
@@ -122,7 +123,7 @@ export async function createAdminAccount(email: string, fullName: string, role: 
   }
 }
 
-export async function updateAdminAccount(
+async function updateAdminAccountImpl(
   adminId: string,
   email: string,
   fullName: string,
@@ -156,6 +157,8 @@ export async function updateAdminAccount(
         updated_at: new Date().toISOString(),
       })
       .eq('id', adminId)
+      .select('id')
+      .single()
 
     if (error) return { success: false, error: error.message }
     if (!isActive) await adminClient.auth.admin.signOut(adminId, 'global')
@@ -166,12 +169,12 @@ export async function updateAdminAccount(
   }
 }
 
-export async function toggleAdminActive(adminId: string, isActive: boolean) {
+async function toggleAdminActiveImpl(adminId: string, isActive: boolean) {
   try {
     const { user } = await requireAdmin(true)
     if (adminId === user.id) return { success: false, error: 'Akun sendiri tidak dapat dinonaktifkan.' }
     const adminClient = createAdminClient()
-    const { error } = await adminClient.from('admins').update({ is_active: isActive }).eq('id', adminId)
+    const { error } = await adminClient.from('admins').update({ is_active: isActive }).eq('id', adminId).select('id').single()
     if (error) return { success: false, error: error.message }
     if (!isActive) await adminClient.auth.admin.signOut(adminId, 'global')
     revalidatePath('/admin/settings')
@@ -181,7 +184,7 @@ export async function toggleAdminActive(adminId: string, isActive: boolean) {
   }
 }
 
-export async function deleteAdminAccount(adminId: string) {
+async function deleteAdminAccountImpl(adminId: string) {
   try {
     const { user } = await requireAdmin(true)
     if (adminId === user.id) return { success: false, error: 'Akun sendiri tidak dapat dihapus.' }
@@ -203,4 +206,45 @@ export async function deleteAdminAccount(adminId: string) {
   } catch {
     return { success: false, error: 'Hanya super admin yang dapat menghapus akun.' }
   }
+}
+
+
+export async function updateContactSettings(formData: FormData) {
+  return runAdminAction({ action: 'settings.contact', summary: 'Mengubah pengaturan kontak', targetId: undefined, details: { fields: ['wa_number', 'wa_greeting_template', 'company_email', 'company_phone', 'company_address', 'instagram_url', 'tiktok_url'] } },
+    () => updateContactSettingsImpl(formData))
+}
+
+export async function updateIntegrationSettings(gaMeasurementId: string, metaPixelId: string) {
+  return runAdminAction({ action: 'settings.integration', summary: 'Mengubah integrasi analytics', targetId: undefined, details: { fields: ['ga_measurement_id', 'meta_pixel_id'] } },
+    () => updateIntegrationSettingsImpl(gaMeasurementId, metaPixelId))
+}
+
+export async function updateProfile(fullName: string, avatarUrl?: string) {
+  return runAdminAction({ action: 'admin.profile', summary: 'Mengubah profil sendiri', targetId: undefined, details: { fields: ['full_name', 'avatar_url'] } },
+    () => updateProfileImpl(fullName, avatarUrl))
+}
+
+export async function changePassword(currentPassword: string, newPassword: string) {
+  return runAdminAction({ action: 'admin.password', summary: 'Mengubah password sendiri', targetId: undefined, details: {} },
+    () => changePasswordImpl(currentPassword, newPassword))
+}
+
+export async function createAdminAccount(email: string, fullName: string, role: AdminRole) {
+  return runAdminAction({ action: 'admin.invite', summary: 'Mengundang akun admin', targetId: undefined, details: { role: role === 'super_admin' ? 'super_admin' : 'admin' } },
+    () => createAdminAccountImpl(email, fullName, role))
+}
+
+export async function updateAdminAccount(adminId: string, email: string, fullName: string, role: AdminRole, isActive: boolean) {
+  return runAdminAction({ action: 'admin.update', summary: 'Mengubah akun admin', targetId: adminId, details: { role: role === 'super_admin' ? 'super_admin' : 'admin', is_active: Boolean(isActive), fields: ['email', 'full_name', 'role', 'is_active'] } },
+    () => updateAdminAccountImpl(adminId, email, fullName, role, isActive))
+}
+
+export async function toggleAdminActive(adminId: string, isActive: boolean) {
+  return runAdminAction({ action: 'admin.active', summary: 'Mengubah status aktif admin', targetId: adminId, details: { is_active: Boolean(isActive) } },
+    () => toggleAdminActiveImpl(adminId, isActive))
+}
+
+export async function deleteAdminAccount(adminId: string) {
+  return runAdminAction({ action: 'admin.delete', summary: 'Menghapus akun admin', targetId: adminId, details: {} },
+    () => deleteAdminAccountImpl(adminId))
 }

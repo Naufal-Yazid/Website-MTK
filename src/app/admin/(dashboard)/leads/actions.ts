@@ -1,5 +1,6 @@
 'use server'
 
+import { runAdminAction } from '@/lib/logs/server'
 import { createClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { updateInquiryStatusSchema } from '@/lib/validations/inquiry'
@@ -13,7 +14,7 @@ async function requireAdmin() {
   return { supabase, user, admin }
 }
 
-export async function updateInquiryStatus(id: string, status: 'baru' | 'diproses' | 'sudah_dihubungi' | 'batal') {
+async function updateInquiryStatusImpl(id: string, status: 'baru' | 'diproses' | 'sudah_dihubungi' | 'batal') {
   const parsed = updateInquiryStatusSchema.safeParse({ id, status })
   if (!parsed.success) throw new Error('Data status tidak valid')
   const { supabase } = await requireAdmin()
@@ -25,6 +26,8 @@ export async function updateInquiryStatus(id: string, status: 'baru' | 'diproses
       updated_at: new Date().toISOString() 
     })
     .eq('id', id)
+    .select('id')
+    .single()
 
   if (error) {
     throw new Error('Gagal memperbarui status')
@@ -33,7 +36,7 @@ export async function updateInquiryStatus(id: string, status: 'baru' | 'diproses
   revalidatePath('/admin/leads')
 }
 
-export async function markInquiryAsRead(id: string) {
+async function markInquiryAsReadImpl(id: string) {
   if (!/^[0-9a-f-]{36}$/i.test(id)) throw new Error('ID inquiry tidak valid')
   const { supabase } = await requireAdmin()
 
@@ -44,6 +47,8 @@ export async function markInquiryAsRead(id: string) {
       updated_at: new Date().toISOString()
     })
     .eq('id', id)
+    .select('id')
+    .single()
 
   if (error) {
     throw new Error('Gagal menandai telah dibaca')
@@ -52,7 +57,7 @@ export async function markInquiryAsRead(id: string) {
   revalidatePath('/admin/leads')
 }
 
-export async function logWaClick(inquiryId: string) {
+async function logWaClickImpl(inquiryId: string) {
   if (!/^[0-9a-f-]{36}$/i.test(inquiryId)) throw new Error('ID inquiry tidak valid')
   const { supabase, admin } = await requireAdmin()
 
@@ -63,20 +68,27 @@ export async function logWaClick(inquiryId: string) {
       admin_id: admin.id,
     })
 
-  // Mark inquiry as wa_clicked
-  await supabase
+  if (logError) {
+    throw new Error('Gagal mencatat log WA')
+  }
+
+  // Check both writes so a partial failure is not recorded as a successful action.
+  const { error: updateError } = await supabase
     .from('inquiries')
     .update({ wa_clicked: true })
     .eq('id', inquiryId)
+    .select('id')
+    .single()
 
-  if (logError) {
-    throw new Error('Gagal mencatat log WA')
+  if (updateError) {
+    throw new Error('Gagal memperbarui status WhatsApp inquiry')
   }
 
   revalidatePath('/admin/leads')
 }
 
-export async function deleteInquiry(id: string) {
+async function deleteInquiryImpl(id: string) {
+  if (!/^[0-9a-f-]{36}$/i.test(id)) throw new Error('ID inquiry tidak valid')
   const { supabase, admin } = await requireAdmin()
 
   if (admin?.role !== 'super_admin') {
@@ -87,10 +99,33 @@ export async function deleteInquiry(id: string) {
     .from('inquiries')
     .delete()
     .eq('id', id)
+    .select('id')
+    .single()
 
   if (error) {
     throw new Error('Gagal menghapus inquiry')
   }
 
   revalidatePath('/admin/leads')
+}
+
+
+export async function updateInquiryStatus(id: string, status: 'baru' | 'diproses' | 'sudah_dihubungi' | 'batal') {
+  return runAdminAction({ action: 'inquiry.status', summary: 'Mengubah status inquiry', targetId: id, details: { status: ['baru', 'diproses', 'sudah_dihubungi', 'batal'].includes(status) ? status : 'invalid' } },
+    () => updateInquiryStatusImpl(id, status))
+}
+
+export async function markInquiryAsRead(id: string) {
+  return runAdminAction({ action: 'inquiry.read', summary: 'Menandai inquiry telah dibaca', targetId: id, details: {} },
+    () => markInquiryAsReadImpl(id))
+}
+
+export async function logWaClick(inquiryId: string) {
+  return runAdminAction({ action: 'inquiry.whatsapp', summary: 'Membuka tautan WhatsApp inquiry', targetId: inquiryId, details: {} },
+    () => logWaClickImpl(inquiryId))
+}
+
+export async function deleteInquiry(id: string) {
+  return runAdminAction({ action: 'inquiry.delete', summary: 'Menghapus inquiry', targetId: id, details: {} },
+    () => deleteInquiryImpl(id))
 }
