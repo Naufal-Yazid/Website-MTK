@@ -6,8 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { Loader2, Plus, Trash2, Shield, User, Power, Upload } from 'lucide-react';
-import { updateProfile, changePassword, createAdminAccount, toggleAdminActive, deleteAdminAccount } from '@/app/admin/(dashboard)/settings/actions';
+import { Loader2, Pencil, Plus, Trash2, Shield, User, Upload } from 'lucide-react';
+import { updateProfile, changePassword, createAdminAccount, updateAdminAccount, deleteAdminAccount } from '@/app/admin/(dashboard)/settings/actions';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -20,13 +20,17 @@ type AccountSettingsProps = {
   admins: Database['public']['Tables']['admins']['Row'][];
 };
 
+type AdminRow = Database['public']['Tables']['admins']['Row'];
+
 export default function AccountSettings({ admins }: AccountSettingsProps) {
   const { admin, isSuperAdmin } = useAuth();
   
   const [profilePending, setProfilePending] = useState(false);
   const [passwordPending, setPasswordPending] = useState(false);
   const [createPending, setCreatePending] = useState(false);
+  const [editPending, setEditPending] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [editingAdmin, setEditingAdmin] = useState<AdminRow | null>(null);
 
   const [avatarUrl, setAvatarUrl] = useState(admin?.avatar_url || '');
 
@@ -122,11 +126,23 @@ export default function AccountSettings({ admins }: AccountSettingsProps) {
     }
   };
 
-  const handleToggleActive = async (adminId: string, currentStatus: boolean) => {
-    if (!isSuperAdmin) return;
-    const res = await toggleAdminActive(adminId, !currentStatus);
+  const handleEditAdmin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!isSuperAdmin || !editingAdmin) return;
+
+    const formData = new FormData(event.currentTarget);
+    const email = String(formData.get('email') || '');
+    const fullName = String(formData.get('full_name') || '');
+    const role = String(formData.get('role') || 'admin') as 'admin' | 'super_admin';
+    const isActive = formData.get('status') === 'active';
+
+    setEditPending(true);
+    const res = await updateAdminAccount(editingAdmin.id, email, fullName, role, isActive);
+    setEditPending(false);
+
     if (res.success) {
-      toast.success('Status admin berhasil diubah');
+      toast.success('Akun admin berhasil diperbarui');
+      setEditingAdmin(null);
     } else {
       toast.error(res.error || 'Terjadi kesalahan');
     }
@@ -234,13 +250,12 @@ export default function AccountSettings({ admins }: AccountSettingsProps) {
         </CardContent>
       </Card>
 
-      {isSuperAdmin && (
-        <Card>
+      <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <div>
               <CardTitle>Daftar Akun Admin</CardTitle>
             </div>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            {isSuperAdmin && <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button size="sm" className="bg-[#1E3A5F] text-white hover:bg-[#294f7d] hover:text-white">
                   <Plus className="mr-2 h-4 w-4" />
@@ -283,18 +298,18 @@ export default function AccountSettings({ admins }: AccountSettingsProps) {
                   </DialogFooter>
                 </form>
               </DialogContent>
-            </Dialog>
+            </Dialog>}
           </CardHeader>
           <CardContent>
-            <div className="mt-4 rounded-md border border-gray-200">
-              <Table>
+            <div className="mt-4 overflow-hidden rounded-md border border-gray-200">
+              <Table className="min-w-[1000px]">
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Nama</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead className="text-right">Aksi</TableHead>
+                    <TableHead className="min-w-[240px]">Nama</TableHead>
+                    <TableHead className="min-w-[320px]">Email</TableHead>
+                    <TableHead className="min-w-[180px]">Role</TableHead>
+                    <TableHead className="min-w-[140px]">Status</TableHead>
+                    {isSuperAdmin && <TableHead className="min-w-[140px] pr-6 text-right">Aksi</TableHead>}
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -327,33 +342,31 @@ export default function AccountSettings({ admins }: AccountSettingsProps) {
                           {item.is_active ? 'Aktif' : 'Nonaktif'}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-right">
-                        {item.id !== admin?.id && (
+                      {isSuperAdmin && (
+                        <TableCell className="pr-6 text-right">
                           <div className="flex justify-end gap-2">
-                            <Button
-                              variant="outline"
-                              size="icon"
-                              title={item.is_active ? 'Nonaktifkan' : 'Aktifkan'}
-                              onClick={() => handleToggleActive(item.id, item.is_active)}
-                            >
-                              <Power className={`h-4 w-4 ${item.is_active ? 'text-red-500' : 'text-green-500'}`} />
+                            <Button variant="outline" size="icon" title="Edit" onClick={() => setEditingAdmin(item)}>
+                              <Pencil className="h-4 w-4 text-[#1E3A5F]" />
                             </Button>
-                            <Button
-                              variant="outline"
-                              size="icon"
-                              title="Hapus"
-                              onClick={() => handleDeleteAdmin(item.id)}
-                            >
-                              <Trash2 className="h-4 w-4 text-red-500" />
-                            </Button>
+                            {item.role === 'admin' && (
+                              <Button
+                                variant="outline"
+                                size="icon"
+                                title="Hapus"
+                                onClick={() => handleDeleteAdmin(item.id)}
+                                className="hover:border-red-200 hover:bg-red-50"
+                              >
+                                <Trash2 className="h-4 w-4 text-red-500" />
+                              </Button>
+                            )}
                           </div>
-                        )}
-                      </TableCell>
+                        </TableCell>
+                      )}
                     </TableRow>
                   ))}
                   {(!admins || admins.length === 0) && (
                     <TableRow>
-                      <TableCell colSpan={5} className="text-center py-4 text-muted-foreground">
+                      <TableCell colSpan={isSuperAdmin ? 5 : 4} className="text-center py-4 text-muted-foreground">
                         Tidak ada data admin.
                       </TableCell>
                     </TableRow>
@@ -363,7 +376,62 @@ export default function AccountSettings({ admins }: AccountSettingsProps) {
             </div>
           </CardContent>
         </Card>
-      )}
+
+      <Dialog open={Boolean(editingAdmin)} onOpenChange={(open) => !open && setEditingAdmin(null)}>
+        <DialogContent className="bg-white">
+          <DialogHeader>
+            <DialogTitle>Edit Akun Admin</DialogTitle>
+            <DialogDescription>Perbarui identitas, role, dan status akun admin.</DialogDescription>
+          </DialogHeader>
+          {editingAdmin && (
+            <form key={editingAdmin.id} onSubmit={handleEditAdmin} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="edit_full_name">Nama Lengkap</Label>
+                <Input id="edit_full_name" name="full_name" defaultValue={editingAdmin.full_name} required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="edit_email">Email</Label>
+                <Input id="edit_email" name="email" type="email" defaultValue={editingAdmin.email} required />
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="edit_role">Role</Label>
+                  <Select name="role" defaultValue={editingAdmin.role}>
+                    <SelectTrigger id="edit_role">
+                      <SelectValue placeholder="Pilih Role" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="admin">Admin</SelectItem>
+                      <SelectItem value="super_admin">Super Admin</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="edit_status">Status</Label>
+                  <Select name="status" defaultValue={editingAdmin.is_active ? 'active' : 'inactive'}>
+                    <SelectTrigger id="edit_status">
+                      <SelectValue placeholder="Pilih Status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="active">Aktif</SelectItem>
+                      <SelectItem value="inactive">Nonaktif</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <DialogFooter>
+                <Button type="button" variant="outline" onClick={() => setEditingAdmin(null)} disabled={editPending}>
+                  Batal
+                </Button>
+                <Button type="submit" disabled={editPending} className="bg-[#1E3A5F] text-white hover:bg-[#294f7d] hover:text-white">
+                  {editPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  Simpan Perubahan
+                </Button>
+              </DialogFooter>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
