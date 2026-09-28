@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { BarChart3, Bell, CheckCircle2, LayoutDashboard, Loader2, Search, Settings, Users, ScrollText, FilePenLine } from 'lucide-react';
+import { BarChart3, Bell, CheckCircle2, LayoutDashboard, Loader2, Search, Settings, Users, ScrollText, FilePenLine, BookOpen } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { id as localeId } from 'date-fns/locale';
 import { useAuth } from '@/lib/hooks/useAuth';
@@ -25,6 +25,8 @@ type InquirySearchResult = Pick<
 >;
 
 const adminPages = [
+  { name: 'Brosur dan Lokasi', description: 'Unggah PDF dan kelola link peta proyek', href: '/admin/brosur-lokasi', icon: BookOpen },
+  { name: 'Status Ketersediaan Unit', description: 'Tersedia, hampir habis, atau habis', href: '/admin/content?tab=ketersediaan', icon: CheckCircle2 },
   { name: 'Dashboard', description: 'Ringkasan performa website', href: '/admin/dashboard', icon: LayoutDashboard },
   { name: 'Website Analytics', description: 'Detail traffic dan pengunjung', href: '/admin/analytics', icon: BarChart3 },
   { name: 'Leads / Inquiry', description: 'Kelola seluruh inquiry', href: '/admin/leads', icon: Users },

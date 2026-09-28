@@ -1,4 +1,7 @@
+import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
+import AvailabilityBadge from "@/components/content/AvailabilityBadge";
+import { availabilityFor } from "@/lib/content/availability";
 import { Home as HomeIcon, MapPin, ShieldCheck, Trees } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
@@ -30,12 +33,14 @@ export default function PermataBuahBatuPage({ content }: { content: ContentBundl
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">{text("hero.title")}</h1>
+            <AvailabilityBadge status={availabilityFor(content, "permata-buah-batu")} />
 
             <div className="flex items-center gap-2 text-sm sm:text-base text-white/50">
               <MapPin className="w-4 h-4 text-white" />
               <span>{text("hero.text")}</span>
             </div>
             <p className="text-sm sm:text-base text-[rgb(246,247,248)] line-clamp-2 leading-relaxed flex-grow">{text("hero.description")}</p>
+            <ProjectActions values={content["permata-buah-batu"]} />
           </div>
         </div>
       </section>
@@ -49,7 +54,7 @@ export default function PermataBuahBatuPage({ content }: { content: ContentBundl
 
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#111827]">{text("section2.heading")}</h2>
 
-              <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">{text("section2.description")}</p>
+              <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">{availabilityFor(content, "permata-buah-batu") === "sold_out" ? text("section2.description") : text("section2.description").replace(" Seluruh unit pada fase ini telah habis terjual.", "")}</p>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <span className="inline-flex items-center gap-2 bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-semibold px-4 py-2 rounded-full">
@@ -108,15 +113,15 @@ export default function PermataBuahBatuPage({ content }: { content: ContentBundl
 
             <div className="lg:col-span-7">
               <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-[#E5E7EB] bg-gray-100 shadow-sm">
-                <iframe
-                  src="https://www.google.com/maps?q=Permata%20Buah%20Batu%2C%20Bojongsoang%2C%20Bandung&output=embed"
+                {text("location.embed") ? <iframe
+                  src={text("location.embed")}
                   title="Lokasi Permata Buah Batu"
                   className="absolute inset-0 w-full h-full"
                   style={{ border: 0 }}
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="strict-origin-when-cross-origin"
-                />
+                /> : <div className="absolute inset-0 flex items-center justify-center p-6 text-sm text-gray-500">Peta belum tersedia.</div>}
               </div>
             </div>
           </div>

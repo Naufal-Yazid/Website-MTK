@@ -1,4 +1,7 @@
+import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
+import AvailabilityBadge from "@/components/content/AvailabilityBadge";
+import { availabilityFor } from "@/lib/content/availability";
 import Image from "next/image";
 import { Home as HomeIcon, MapPin, ShieldCheck, Trees } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
@@ -31,12 +34,14 @@ export default function RancamanyarIndahPage({ content }: { content: ContentBund
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">{text("hero.title")}</h1>
+            <AvailabilityBadge status={availabilityFor(content, "rancamanyar")} />
 
             <div className="flex items-center gap-2 text-sm sm:text-base text-white/50">
               <MapPin className="w-4 h-4 text-white" />
               <span>{text("hero.text")}</span>
             </div>
             <p className="text-sm sm:text-base text-[rgb(246,247,248)] line-clamp-2 leading-relaxed flex-grow">{text("hero.description")}</p>
+            <ProjectActions values={content["rancamanyar"]} />
           </div>
         </div>
       </section>
@@ -153,15 +158,15 @@ export default function RancamanyarIndahPage({ content }: { content: ContentBund
 
             <div className="lg:col-span-7">
               <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-[#E5E7EB] bg-gray-100 shadow-sm">
-                <iframe
-                  src="https://www.google.com/maps?q=Rancamanyar%20Indah%2C%20Baleendah%2C%20Bandung&output=embed"
+                {text("location.embed") ? <iframe
+                  src={text("location.embed")}
                   title="Lokasi Rancamanyar Indah"
                   className="absolute inset-0 w-full h-full"
                   style={{ border: 0 }}
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="strict-origin-when-cross-origin"
-                />
+                /> : <div className="absolute inset-0 flex items-center justify-center p-6 text-sm text-gray-500">Peta belum tersedia.</div>}
               </div>
             </div>
           </div>

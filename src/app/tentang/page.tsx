@@ -46,28 +46,17 @@ export default function TentangPage() {
       {/* SECTION 2 — PROFIL PERUSAHAAN */}
       <section className="bg-white py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-8 lg:gap-y-5 items-center">
+            <div className="lg:col-span-7 lg:col-start-1 lg:row-start-1 lg:self-end space-y-5">
               <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
                 TENTANG KAMI
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111827] leading-tight">
                 Membangun Kepercayaan, Mewujudkan Impian
               </h2>
-              <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">
-                PT Marga Tirta Kencana adalah perusahaan pengembang properti yang berfokus pada penyediaan hunian berkualitas dan terjangkau di wilayah Bandung dan sekitarnya.
-              </p>
-              <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">
-                Kami hadir untuk menjawab kebutuhan akan rumah yang nyaman, aman, dan memiliki lokasi strategis tanpa mengorbankan kualitas bangunan. Dengan pengalaman dalam mengembangkan kawasan perumahan, kami berkomitmen membangun lingkungan hunian yang rapi, fungsional, dan mendukung kualitas hidup penghuni.
-              </p>
-              <div className="pt-2">
-                
-              </div>
             </div>
 
-            {/* Right Image */}
-            <div className="lg:col-span-5 relative">
+            <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
                 <img
                   src="/images/tentang/about1.webp"
@@ -75,8 +64,15 @@ export default function TentangPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
+            </div>
 
-              
+            <div className="lg:col-span-7 lg:col-start-1 lg:row-start-2 lg:self-start space-y-5">
+              <p className="text-justify text-sm sm:text-base text-[#6B7280] leading-relaxed">
+                PT Marga Tirta Kencana adalah perusahaan pengembang properti yang berfokus pada penyediaan hunian berkualitas dan terjangkau di wilayah Bandung dan sekitarnya.
+              </p>
+              <p className="text-justify text-sm sm:text-base text-[#6B7280] leading-relaxed">
+                Kami hadir untuk menjawab kebutuhan akan rumah yang nyaman, aman, dan memiliki lokasi strategis tanpa mengorbankan kualitas bangunan. Dengan pengalaman dalam mengembangkan kawasan perumahan, kami berkomitmen membangun lingkungan hunian yang rapi, fungsional, dan mendukung kualitas hidup penghuni.
+              </p>
             </div>
           </div>
         </div>
@@ -85,9 +81,18 @@ export default function TentangPage() {
       {/* SECTION 3 — VISI & MISI */}
       <section className="bg-white py-20 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-8 items-center">
+            <div className="space-y-5 lg:col-span-7 lg:col-start-6 lg:row-start-1 lg:self-end">
+              <span className="text-xs uppercase tracking-widest font-semibold text-[#0B5EAA]">
+                VISI &amp; MISI
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111827] leading-tight">
+                Arah dan Komitmen Kami untuk Hunian yang Lebih Baik
+              </h2>
+            </div>
+
             {/* Left Image */}
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:row-span-2">
               <div className="rounded-2xl overflow-hidden shadow-md aspect-[4/3]">
                 <img
                   src="/images/tentang/about2.webp"
@@ -98,7 +103,7 @@ export default function TentangPage() {
             </div>
 
             {/* Right Content */}
-            <div className="lg:col-span-7 space-y-8">
+            <div className="lg:col-span-7 lg:col-start-6 lg:row-start-2 lg:self-start space-y-8">
               {/* Visi */}
               <div className="space-y-3">
                 <h3 className="text-2xl font-bold text-[#111827]">Visi Kami</h3>

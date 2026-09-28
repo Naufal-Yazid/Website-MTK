@@ -1,4 +1,6 @@
 import PreviewNotice from "@/components/content/PreviewNotice";
+import AvailabilityBadge from "@/components/content/AvailabilityBadge";
+import { availabilityFor } from "@/lib/content/availability";
 import { getPageContent } from "@/lib/content/server";
 import { type ContentPageProps } from "@/lib/content/values";
 export { contentMetadata as generateMetadata } from "@/lib/content/server";
@@ -46,6 +48,7 @@ export default async function ProyekIndexPage({ searchParams }: ContentPageProps
             <div className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs flex flex-col transition-all hover:shadow-md hover:border-gray-300">
               <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                 <img src="/images/proyek/tci/tci-icon-banner.webp" alt="Taman Cibaduyut Indah" className="w-full h-full object-cover" />
+                <AvailabilityBadge placement="card" status={availabilityFor(content, "tci")} />
               </div>
 
               <div className="p-6 flex flex-col flex-grow space-y-3">
@@ -73,6 +76,7 @@ export default async function ProyekIndexPage({ searchParams }: ContentPageProps
             <div className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs flex flex-col transition-all hover:shadow-md hover:border-gray-300">
               <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                 <img src="/images/proyek/rancamanyar/rancamanyar-banner.webp" alt="Rancamanyar Indah" className="w-full h-full object-cover" />
+                <AvailabilityBadge placement="card" status={availabilityFor(content, "rancamanyar")} />
               </div>
 
               <div className="p-6 flex flex-col flex-grow space-y-3">
@@ -100,6 +104,7 @@ export default async function ProyekIndexPage({ searchParams }: ContentPageProps
             <div className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs flex flex-col transition-all hover:shadow-md hover:border-gray-300">
               <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                 <img src="/images/proyek/permata-buah-batu/permatabb-gate-banner.webp" alt="Permata Buah Batu" className="w-full h-full object-cover" />
+                <AvailabilityBadge placement="card" status={availabilityFor(content, "permata-buah-batu")} />
               </div>
 
               <div className="p-6 flex flex-col flex-grow space-y-3">

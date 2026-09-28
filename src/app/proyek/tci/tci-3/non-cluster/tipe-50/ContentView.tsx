@@ -1,7 +1,9 @@
+import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
+import AvailabilityBadge from "@/components/content/AvailabilityBadge";
+import { availabilityFor } from "@/lib/content/availability";
 import Image from "next/image";
 import {
-  Download,
   MapPin,
   Ruler,
   Home as HomeIcon,
@@ -62,29 +64,14 @@ export default function TCI3NonClusterTipe50Page({ content }: { content: Content
             <div className="text-xs sm:text-sm font-bold tracking-[0.2em] text-[#60A5FA] uppercase">{text("hero.text")}</div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">{text("hero.title")}</h1>
+            <AvailabilityBadge status={availabilityFor(content, "non-cluster-50")} />
 
             <div className="flex items-center gap-2 text-sm sm:text-base text-white/80">
               <MapPin className="w-4 h-4 text-white" />
               <span>{text("hero.text2")}</span>
             </div>
 
-            <div className="flex flex-wrap gap-3 pt-3">
-              <a
-                href="#brosur"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white bg-white/10 text-white font-semibold text-sm hover:bg-white hover:text-[#0D1B2A] transition-all"
-              >
-                <Download className="w-4 h-4" />
-                Download Brosur
-              </a>
-
-              <a
-                href="#lokasi"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white bg-white/10 text-white font-semibold text-sm hover:bg-white hover:text-[#0D1B2A] transition-all"
-              >
-                <MapPin className="w-4 h-4" />
-                Lihat Lokasi
-              </a>
-            </div>
+            <ProjectActions values={content["non-cluster-50"]} />
           </div>
         </div>
       </section>
