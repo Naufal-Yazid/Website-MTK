@@ -80,14 +80,14 @@ export default function InstagramSection() {
               </div>
 
               <div
-                className="flex min-h-[510px] items-center justify-center bg-[#FAFAFA] p-3 sm:min-h-[560px] sm:p-4"
+                className="flex items-center justify-center bg-[#FAFAFA] p-3 sm:p-4"
                 aria-live="polite"
               >
                 <iframe
                   key={currentPost.embedUrl}
                   src={currentPost.embedUrl}
                   title={`Postingan Instagram ${activePost + 1} dari ${instagramPosts.length}`}
-                  className="h-[9500px] w-full max-w-[460px] rounded-xl border-0 bg-white sm:h-[530px]"
+                  className="block h-[510px] w-full min-w-0 max-w-[460px] rounded-xl border-0 bg-white sm:h-[530px]"
                   loading="lazy"
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                   allowFullScreen

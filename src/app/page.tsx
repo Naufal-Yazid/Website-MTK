@@ -1,4 +1,6 @@
 import PreviewNotice from "@/components/content/PreviewNotice";
+import AvailabilityBadge from "@/components/content/AvailabilityBadge";
+import { availabilityFor } from "@/lib/content/availability";
 import { getPageContent } from "@/lib/content/server";
 import { shortPrice, type ContentPageProps } from "@/lib/content/values";
 export { contentMetadata as generateMetadata } from "@/lib/content/server";
@@ -130,6 +132,7 @@ export default async function Home({ searchParams }: ContentPageProps) {
                 {/* Project Image */}
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <AvailabilityBadge placement="card" status={availabilityFor(content, project.id)} />
                 </div>
 
                 {/* Card Content */}

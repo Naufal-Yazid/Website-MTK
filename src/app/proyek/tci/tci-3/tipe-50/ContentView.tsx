@@ -1,5 +1,8 @@
+import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
-import { Download, MapPin, Ruler, Home as HomeIcon, BedDouble, Bath, Car, Zap } from "lucide-react";
+import AvailabilityBadge from "@/components/content/AvailabilityBadge";
+import { availabilityFor } from "@/lib/content/availability";
+import { Ruler, Home as HomeIcon, BedDouble, Bath, Car, Zap } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
 import KPRCalculator from "@/components/sections/KPRCalculator";
@@ -53,30 +56,12 @@ export default function TCI3Tipe50Page({ content }: { content: ContentBundle }) 
             <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">{text("hero.text")}</span>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">{text("hero.title")}</h1>
+            <AvailabilityBadge status={availabilityFor(content, "tipe-50")} />
 
             <p className="text-sm sm:text-base text-white/80 max-w-xl leading-relaxed">{text("hero.description")}</p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <a
-                href="/brosur/brosur-cluster-tci.pdf"
-                download="brosur-cluster-tci.pdf"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download Brosur</span>
-              </a>
-
-              <a
-                href="https://maps.app.goo.gl/vswkS5vy8ATpDWPt5"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors"
-              >
-                <MapPin className="w-4 h-4" />
-                <span>Lihat Lokasi</span>
-              </a>
-            </div>
+            <ProjectActions values={content["tipe-50"]} />
           </div>
         </div>
       </section>

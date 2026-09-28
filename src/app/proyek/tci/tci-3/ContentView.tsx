@@ -1,6 +1,9 @@
 "use client";
 import { shortPrice } from "@/lib/content/values";
+import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
+import AvailabilityBadge from "@/components/content/AvailabilityBadge";
+import { availabilityFor } from "@/lib/content/availability";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,6 +18,7 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
 
   const rumahTypes = [
     {
+      id: "tipe-36",
       title: content["tipe-36"]["card.title"],
       description: content["tipe-36"]["card.description"],
       price: shortPrice(content["tipe-36"]["price"]),
@@ -22,6 +26,7 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
       href: "/proyek/tci/tci-3/tipe-36",
     },
     {
+      id: "tipe-45",
       title: content["tipe-45"]["card.title"],
       description: content["tipe-45"]["card.description"],
       price: shortPrice(content["tipe-45"]["price"]),
@@ -29,6 +34,7 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
       href: "/proyek/tci/tci-3/tipe-45",
     },
     {
+      id: "tipe-50",
       title: content["tipe-50"]["card.title"],
       description: content["tipe-50"]["card.description"],
       price: shortPrice(content["tipe-50"]["price"]),
@@ -39,6 +45,7 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
 
   const nonClusterTypes = [
     {
+      id: "non-cluster-50",
       title: content["non-cluster-50"]["card.title"],
       description: content["non-cluster-50"]["card.description"],
       price: shortPrice(content["non-cluster-50"]["price"]),
@@ -49,6 +56,7 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
 
   const rukoTypes = [
     {
+      id: "teranova",
       title: content["teranova"]["card.title"],
       description: content["teranova"]["card.description"],
       price: shortPrice(content["teranova"]["price"]),
@@ -101,12 +109,14 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">{text("hero.title")}</h1>
+            <AvailabilityBadge status={availabilityFor(content, "tci-3")} />
 
             <div className="flex items-center gap-2 text-sm sm:text-base text-white/50">
               <MapPin className="w-4 h-4 text-white" />
               <span>{text("hero.text")}</span>  
             </div>
             <p className="text-sm sm:text-base text-[rgb(246,247,248)] line-clamp-2 leading-relaxed flex-grow">{text("hero.description")}</p>
+            <ProjectActions values={content["tci-3"]} />
           </div>
         </div>
       </section>
@@ -197,6 +207,7 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
                 <div key={item.title} className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col group">
                   <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                     <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
+                    <AvailabilityBadge placement="card" status={availabilityFor(content, item.id)} />
                   </div>
 
                   <div className="p-5 flex flex-col flex-grow space-y-3">
@@ -222,8 +233,9 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
             <div className="max-w-sm mx-auto">
               {nonClusterTypes.map((item) => (
                 <div key={item.title} className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col">
-                  <div className="aspect-[16/10] bg-gray-100 overflow-hidden">
+                  <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                     <img key={item.image} src={item.image} alt="Rumah merah TCI 3 Tipe 50 Non-Cluster" className="w-full h-full object-cover" />
+                    <AvailabilityBadge placement="card" status={availabilityFor(content, item.id)} />
                   </div>
 
                   <div className="p-5 flex flex-col flex-grow space-y-3">
@@ -251,6 +263,7 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
                 <div key={item.title} className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col group">
                   <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                     <img key={item.image} src={item.image} alt="Deretan ruko Terranova Arcade TCI 3" className="w-full h-full object-cover object-[center_65%] group-hover:scale-105 transition-transform duration-500" />
+                    <AvailabilityBadge placement="card" status={availabilityFor(content, item.id)} />
                   </div>
 
                   <div className="p-5 flex flex-col flex-grow space-y-3">
@@ -352,15 +365,15 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
             {/* Google Maps Embed */}
             <div className="lg:col-span-7">
               <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-[#E5E7EB] bg-gray-100 shadow-sm">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.350894603069!2d107.59729969999998!3d-6.967866599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e8dfcd2b8919%3A0xb935531870acc41!2sTaman%20Cibaduyut%20Indah%20III%2C%20Cangkuang%20Kulon%2C%20Kec.%20Dayeuhkolot%2C%20Kabupaten%20Bandung%2C%20Jawa%20Barat%2040239!5e0!3m2!1sen!2sid!4v1787558768072!5m2!1sen!2sid"
+                {text("location.embed") ? <iframe
+                  src={text("location.embed")}
                   title="Lokasi Taman Cibaduyut Indah III"
                   className="absolute inset-0 w-full h-full"
                   style={{ border: 0 }}
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="strict-origin-when-cross-origin"
-                />
+                /> : <div className="absolute inset-0 flex items-center justify-center p-6 text-sm text-gray-500">Peta belum tersedia.</div>}
               </div>
             </div>
           </div>

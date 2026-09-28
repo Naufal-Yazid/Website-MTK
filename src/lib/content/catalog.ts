@@ -1,8 +1,10 @@
 import type { ContentDocument } from './model'
+import { availabilityDefaults } from './availability'
+import { resourceFields } from './resources'
 
 // Fixed page catalogue. Paths, images, forms and layouts are intentionally not editable.
 // Defaults preserve the existing website until the first publication.
-export const contentDocuments: ContentDocument[] = [
+const pageDocuments: ContentDocument[] = [
   {
     id: "tci", label: "Taman Cibaduyut Indah", path: "/proyek/tci", category: "Komplek",
     fields: [
@@ -65,7 +67,7 @@ export const contentDocuments: ContentDocument[] = [
       {"key":"hero.description","label":"Deskripsi — Gaya hidup urban modern di tengah kota dengan…","group":"HERO","defaultValue":"Gaya hidup urban modern di tengah kota dengan harga terjangkau dan lokasi yang nyaman.","kind":"textarea","maxLength":3000},
       {"key":"section2.text","label":"Teks / label — PERMATA BUAH BATU","group":"INTRO KOMPLEK","defaultValue":"PERMATA BUAH BATU","kind":"text","maxLength":180},
       {"key":"section2.heading","label":"Judul bagian — Hunian Urban dalam Lingkungan Tertata","group":"INTRO KOMPLEK","defaultValue":"Hunian Urban dalam Lingkungan Tertata","kind":"text","maxLength":180},
-      {"key":"section2.description","label":"Deskripsi — Gaya hidup urban yang modern menyatu dengan k…","group":"INTRO KOMPLEK","defaultValue":"Gaya hidup urban yang modern menyatu dengan kenyamanan lingkungan perumahan yang tertata rapi di kawasan Bojongsoang, Bandung. Seluruh unit pada fase ini telah habis terjual.","kind":"textarea","maxLength":3000},
+      {"key":"section2.description","label":"Deskripsi — Gaya hidup urban yang modern menyatu dengan k…","group":"INTRO KOMPLEK","defaultValue":"Gaya hidup urban yang modern menyatu dengan kenyamanan lingkungan perumahan yang tertata rapi di kawasan Bojongsoang, Bandung.","kind":"textarea","maxLength":3000},
       {"key":"section2.text2","label":"Teks / label 2 — Kawasan Hunian Mapan","group":"INTRO KOMPLEK","defaultValue":"Kawasan Hunian Mapan","kind":"text","maxLength":180},
       {"key":"section2.text3","label":"Teks / label 3 — Lingkungan Tertata","group":"INTRO KOMPLEK","defaultValue":"Lingkungan Tertata","kind":"text","maxLength":180},
       {"key":"section2.text4","label":"Teks / label 4 — Keamanan Satu Pintu","group":"INTRO KOMPLEK","defaultValue":"Keamanan Satu Pintu","kind":"text","maxLength":180},
@@ -325,3 +327,11 @@ export const contentDocuments: ContentDocument[] = [
     ],
   },
 ]
+
+export const contentDocuments: ContentDocument[] = pageDocuments.map(doc => ({
+  ...doc,
+  fields: [...resourceFields(doc.id), ...(availabilityDefaults[doc.id] ? [
+    { key: 'availability', label: 'Status ketersediaan unit', group: 'Ketersediaan unit', kind: 'availability' as const, defaultValue: availabilityDefaults[doc.id], maxLength: 20 },
+    ...doc.fields,
+  ] : doc.fields)],
+}))

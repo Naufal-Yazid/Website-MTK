@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { findDocument, validateValues } from '@/lib/content/model'
 import { requireContentAdmin } from '@/lib/content/server'
+import { BROCHURE_BUCKET, CLUSTER_BROCHURE } from '@/lib/content/resources'
 import { runAdminAction } from '@/lib/logs/server'
 import type { ContentValues } from '@/lib/content/values'
 
@@ -24,9 +25,17 @@ export async function saveContentDraft(id: string, values: ContentValues, expect
       const client = await requireContentAdmin()
       const parsed = validateValues(doc, values)
       if (parsed.error) return { success: false as const, error: parsed.error }
+      const brochure = parsed.values!['brochure.path']
+      if (brochure && brochure !== CLUSTER_BROCHURE) {
+        const file = await client.storage.from(BROCHURE_BUCKET).exists(brochure)
+        if (file.error || !file.data) return { success: false as const, error: 'PDF tidak ditemukan atau belum dapat diperiksa. Unggah ulang atau coba lagi.' }
+      }
       const { data, error } = await client.rpc('save_content_draft', { p_key: doc.id, p_values: parsed.values!, p_expected_revision: expectedRevision })
       if (error) return { success: false as const, error: errorMessage(error) }
+      revalidatePath('/admin/brosur-lokasi')
+      revalidatePath(`/admin/brosur-lokasi/${doc.id}`)
       revalidatePath('/admin/content')
+      revalidatePath('/admin/content/ketersediaan')
       revalidatePath(`/admin/content/${doc.id}`)
       return { success: true as const, revision: data }
     })
@@ -44,12 +53,17 @@ export async function publishContentDraft(id: string, expectedRevision: number):
       const draft = await client.from('site_content_drafts').select('content, revision').eq('document_key', doc.id).single()
       if (draft.error) return { success: false as const, error: errorMessage(draft.error) }
       if (draft.data.revision !== expectedRevision) return { success: false as const, error: errorMessage({ message: 'content_conflict' }) }
-      const parsed = validateValues(doc, draft.data.content)
+      const parsed = validateValues(doc, draft.data.content, { allowLegacyAvailability: true })
       if (parsed.error) return { success: false as const, error: 'Draft tidak sesuai format terbaru. Buka editor dan simpan ulang terlebih dahulu.' }
+      const brochure = parsed.values!['brochure.path']
+      if (brochure && brochure !== CLUSTER_BROCHURE) {
+        const file = await client.storage.from(BROCHURE_BUCKET).exists(brochure)
+        if (file.error || !file.data) return { success: false as const, error: 'Brosur pada draft belum tersedia. Unggah ulang dan simpan draft sebelum publikasi.' }
+      }
       // DB copies this exact saved revision atomically, never an unsaved browser payload.
       const { data, error } = await client.rpc('publish_content_draft', { p_key: doc.id, p_expected_revision: expectedRevision })
       if (error) return { success: false as const, error: errorMessage(error) }
-      for (const path of ['/', '/proyek', '/proyek/tci', '/proyek/tci/tci-3', doc.path, '/admin/content', `/admin/content/${doc.id}`]) revalidatePath(path)
+      for (const path of ['/', '/proyek', '/proyek/tci', '/proyek/tci/tci-3', doc.path, '/admin/brosur-lokasi', `/admin/brosur-lokasi/${doc.id}`, '/admin/content', '/admin/content/ketersediaan', `/admin/content/${doc.id}`]) revalidatePath(path)
       return { success: true as const, revision: data }
     })
   } catch {

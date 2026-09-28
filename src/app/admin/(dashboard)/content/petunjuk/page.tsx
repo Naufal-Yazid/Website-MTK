@@ -98,6 +98,12 @@ export default function ContentGuidePage() {
         </ol>
       </section>
 
+      <section className="space-y-3 rounded-xl border border-gray-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-gray-900">Cara mengubah ketersediaan unit</h2>
+        <p className="text-sm leading-relaxed text-gray-600">Buka <Link href="/admin/content?tab=ketersediaan" className="font-semibold text-[#0B5EAA] underline">Status ketersediaan unit</Link>, klik “Ubah status”, lalu pilih hijau Tersedia, kuning Hampir habis, atau merah Habis. Simpan Draft → cek Preview → Publikasikan, sama seperti mengubah teks.</p>
+        <p className="text-sm leading-relaxed text-gray-600">Status TCI 3 dan jenis bangunannya mengikuti unit-unit di dalamnya. Jika ada draft teks/harga pada halaman yang sama, perubahan itu juga ikut diterbitkan. Baca peringatan dan perbandingan sebelum konfirmasi.</p>
+      </section>
+
       <section aria-labelledby="guide-tips" className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
         <h2 id="guide-tips" className="text-lg font-semibold text-gray-900">Supaya tidak bingung saat mengisi</h2>
         <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-relaxed text-gray-600">

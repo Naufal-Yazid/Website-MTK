@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
+import { resolveBuildInfo } from "./src/lib/build-info";
+
+const buildInfo = resolveBuildInfo();
 
 const nextConfig: NextConfig = {
+  experimental: { serverActions: { bodySizeLimit: "4mb" } },
+  // Only non-secret release metadata. Values are frozen into the build.
+  env: {
+    MTK_BUILD_BRANCH: buildInfo.branch,
+    MTK_BUILD_COMMIT: buildInfo.commit,
+  },
   serverExternalPackages: ["@google-analytics/data"],
   async redirects() {
     return [
