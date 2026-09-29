@@ -42,8 +42,8 @@ export const helpTopics: HelpTopic[] = [
   },
   {
     id: 'gambar', title: 'Kelola Gambar', question: 'Bagaimana cara mengganti banner, galeri, atau denah?', description: 'Mengganti banner, foto, galeri, dan denah; otomatis WebP.', href: '/admin/content?tab=gambar', guide: '/admin/content/gambar/petunjuk',
-    steps: ['Buka Konten Website → Kelola Gambar. Pilih sub-tab halaman; pada TCI 3 pilih juga tipe unit bila diperlukan.', 'Klik Kelola gambar. Periksa bagian Dipakai di agar tahu halaman mana saja yang ikut berubah.', 'Pilih JPG, PNG, atau WebP maksimal 3 MB, lalu Unggah & simpan draft. Sistem mengonversi gambar menjadi WebP.', 'Bandingkan versi publik dengan preview draft, lalu Publikasikan gambar jika sudah sesuai.'],
-    notes: ['Foto yang dipakai bersama muncul pada beberapa sub-tab, tetapi tetap satu gambar yang sama.', 'Unggah hanya gambar untuk publik. Tautan file draft bisa diakses jika diketahui orang lain.', 'Gambar tidak menambah slot baru atau mengubah layout. Foto Instagram dan avatar admin tidak dikelola di sini.'],
+    steps: ['Buka Konten Website → Kelola Gambar. Pilih kategori pada dropdown Kategori halaman; pada TCI 3 pilih juga tipe unit bila diperlukan.', 'Klik Kelola gambar. Periksa bagian Dipakai di agar tahu halaman mana saja yang ikut berubah.', 'Pilih JPG, PNG, atau WebP maksimal 3 MB, lalu Unggah & simpan draft. Sistem mengonversi gambar menjadi WebP.', 'Bandingkan versi publik dengan preview draft, lalu Publikasikan gambar jika sudah sesuai.'],
+    notes: ['Foto yang dipakai bersama muncul pada beberapa kategori halaman, tetapi tetap satu gambar yang sama.', 'Unggah hanya gambar untuk publik. Tautan file draft bisa diakses jika diketahui orang lain.', 'Gambar tidak menambah slot baru atau mengubah layout. Foto Instagram dan avatar admin tidak dikelola di sini.'],
   },
   {
     id: 'brosur', title: 'Brosur dan Lokasi', question: 'Bagaimana cara mengunggah brosur dan mengatur lokasi?', description: 'Mengunggah PDF dan memperbarui tautan Google Maps.', href: '/admin/brosur-lokasi', guide: '/admin/brosur-lokasi/petunjuk',

@@ -1,6 +1,6 @@
+import HeroAvailability from "@/components/content/HeroAvailability";
 import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
-import AvailabilityBadge from "@/components/content/AvailabilityBadge";
 import { availabilityFor } from "@/lib/content/availability";
 import { ManagedImage as Image } from "@/components/content/ManagedImages";
 import { ManagedBackground } from "@/components/content/ManagedImages";
@@ -57,12 +57,12 @@ export default function TCI3Tipe36Page({ content }: { content: ContentBundle }) 
             <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">{text("hero.text")}</span>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">{text("hero.title")}</h1>
-            <AvailabilityBadge status={availabilityFor(content, "tipe-36")} />
 
             <p className="text-sm sm:text-base text-white/80 max-w-xl leading-relaxed">{text("hero.description")}</p>
 
             {/* Action Buttons */}
             <ProjectActions values={content["tipe-36"]} />
+            <HeroAvailability status={availabilityFor(content, "tipe-36")} />
           </div>
         </div>
       </section>

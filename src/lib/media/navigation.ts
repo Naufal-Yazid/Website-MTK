@@ -25,6 +25,7 @@ export const tciImagePages = [
 ]
 
 export function imagesForPage(id: string): ImageSlot[] {
+  if (id === 'all') return imageSlots
   const tab = imagePageTabs.find(item => item.id === id)
   if (!tab) return []
   return imageSlots.filter(slot => slot.pages.some(path => path === tab.path || (id === 'tci-3' && path.startsWith(tab.path + '/'))))

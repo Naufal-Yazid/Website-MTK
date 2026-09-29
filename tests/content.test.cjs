@@ -79,6 +79,31 @@ const model = load('src/lib/content/model.ts')
 const { contentDocuments: docs } = load('src/lib/content/catalog.ts')
 const availability = load('src/lib/content/availability.ts')
 
+test('hero availability follows actions on all detail pages and leaves the title unobstructed', () => {
+  for (const doc of docs) {
+    const source = fs.readFileSync(path.join(root, 'src/app', doc.path, 'ContentView.tsx'), 'utf8')
+    const hero = source.slice(source.indexOf('<section'), source.indexOf('</section>'))
+    assert.equal((hero.match(/<HeroAvailability /g) || []).length, 1, doc.id)
+    assert.ok(hero.indexOf('<ProjectActions') < hero.indexOf('<HeroAvailability'), doc.id)
+    assert.doesNotMatch(hero, /<AvailabilityBadge /)
+    const Component = viewLoader()(`src/app${doc.path}/ContentView.tsx`).default
+    const html = renderToStaticMarkup(React.createElement(Component, { content: model.resolvePublished([]) }))
+    assert.equal((html.match(/data-hero-availability/g) || []).length, 1)
+    assert.match(html, /Status ketersediaan/)
+  }
+})
+
+test('project hero includes a responsive centered subtitle and Help uses a circle question icon', async () => {
+  const html = renderToStaticMarkup(await viewLoader()('src/app/proyek/page.tsx').default({ searchParams: Promise.resolve({}) }))
+  const hero = html.slice(html.indexOf('<section'), html.indexOf('</section>'))
+  assert.match(hero, /Temukan hunian di Bandung/)
+  assert.match(hero, /mx-auto max-w-2xl text-base sm:text-lg/)
+  const sidebar = fs.readFileSync(path.join(root, 'src/components/admin/Sidebar.tsx'), 'utf8')
+  assert.match(sidebar, /<CircleHelp className=/)
+  const Header = load('src/components/admin/AdminPageHeader.tsx').default
+  assert.match(renderToStaticMarkup(React.createElement(Header, { icon: 'help', title: 'Help', description: 'Petunjuk' })), /lucide-circle(?:-help|-question-mark)/)
+})
+
 test('fixed catalog covers existing projects/phases/types and validates every default', () => {
   assert.equal(docs.length, 11)
   assert.equal(new Set(docs.map(doc => doc.id)).size, docs.length)
@@ -383,13 +408,15 @@ test('availability submenu shows live and draft separately and disables editing 
     })
     const Panel = render('src/components/admin/content/AvailabilityPanel.tsx').default
     const html = renderToStaticMarkup(React.createElement(Panel, { error, drafts: [{ document_key: 'tipe-36', revision: 2, content: { availability: 'sold_out' } }], published: [{ document_key: 'tipe-36', revision: 1, content: { availability: 'available' } }] }))
-    assert.match(html, /Status Ketersediaan Unit/)
-    assert.match(html, /data-availability="sold_out"/)
-    assert.match(html, /data-availability="available"/)
+    assert.doesNotMatch(html, /Status Ketersediaan Unit|Ringkasan TCI 3|Semua unit TCI 3|Hijau: tersedia/)
+    assert.match(html, /Daftar status ketersediaan/)
     if (error) {
       assert.match(html, /role="alert"/)
+      assert.doesNotMatch(html, /data-availability=/)
       assert.doesNotMatch(html, /\?mode=ketersediaan/)
     } else {
+      assert.match(html, /data-availability="sold_out"/)
+      assert.match(html, /data-availability="available"/)
       assert.equal((html.match(/\?mode=ketersediaan/g) || []).length, 9)
       assert.match(html, /Draft belum terbit/)
     }
@@ -459,7 +486,8 @@ test('content tabs use buttons in the same page and the status deep link selects
   assert.doesNotMatch(normal, /Ringkasan TCI 3/)
   const status = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({ tab: 'ketersediaan' }) }))
   assert.match(status, /<button[^>]*aria-selected="true"[^>]*>(?:<svg[\s\S]*?<\/svg>)?Status Ketersediaan<\/button>/)
-  assert.match(status, /Ringkasan TCI 3/)
+  assert.doesNotMatch(status, /Ringkasan TCI 3/)
+  assert.match(status, /Daftar status ketersediaan/)
   assert.equal((status.match(/\?mode=ketersediaan/g) || []).length, 9)
   assert.equal((status.match(/<h1/g) || []).length, 1)
   assert.equal(reads, 2, 'one shared data fetch for both panels per page load')
@@ -645,7 +673,11 @@ test('brochure management lists eleven pages, shows placeholders and disables ed
       '@/lib/content/admin': { getContentAdminData: async () => ({ drafts: [], published: [], error }) },
     })
     const html = renderToStaticMarkup(await render('src/app/admin/(dashboard)/brosur-lokasi/page.tsx').default())
-    assert.equal((html.match(/<article/g) || []).length, 11)
+    assert.equal((html.match(/scope="row"/g) || []).length, 11)
+    assert.match(html, /<table/)
+    assert.match(html, /Brosur publik/)
+    assert.match(html, /Lokasi publik/)
+    assert.doesNotMatch(html, /<article/)
     if (error) {
       assert.match(html, /role="alert"/)
       assert.doesNotMatch(html, /href="\/admin\/brosur-lokasi\/(?!petunjuk)/)
@@ -691,7 +723,7 @@ test('storage migration restricts insert to active admins and preserves immutabl
 })
 
 
-test('admin content, availability and brochure cards share solid accessible actions without nested links', async () => {
+test('admin content, status and brochure tables share accessible actions without nested links', async () => {
   for (const error of [null, 'Database unavailable']) {
     const render = loader({
       'next/link': ({ children, ...props }) => React.createElement('a', props, children),
@@ -705,10 +737,14 @@ test('admin content, availability and brochure cards share solid accessible acti
     const styles = []
     for (const [element, count, label] of pages) {
       const html = renderToStaticMarkup(element)
-      const cards = [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map(match => match[0])
+      const list = html.match(/<tbody\b[^>]*>([\s\S]*?)<\/tbody>/)[1]
+      const cards = [...list.matchAll(/<tr\b[^>]*>[\s\S]*?<\/tr>/g)].map(match => match[0])
       assert.equal(cards.length, count)
+      assert.match(html, /overflow-x-auto/)
+      assert.match(html, /scope="col"/)
+      assert.doesNotMatch(html, /<article\b/)
       for (const card of cards) {
-        assert.match(card, /mt-auto/)
+        assert.match(card, /scope="row"/)
         assert.doesNotMatch(card, /<a\b[^>]*>[\s\S]*<a\b/)
         if (error) {
           assert.match(card, /<button[^>]*disabled=""/)

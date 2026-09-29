@@ -235,6 +235,48 @@ test('image library fails closed, defaults remain visible and images tab uses sa
   assert.match(html,/disabled=""/)
 })
 
+test('image table keeps public thumbnails, usage and draft status while disabling actions on errors', () => {
+  const render = loader({ 'next/link': ({children,...props}) => React.createElement('a',props,children) })
+  const Table = render('src/components/admin/content/ImageLibraryTable.tsx').default
+  const slots = imageSlots.slice(0, 3)
+  const drafts = [{ image_key: slots[0].id, revision: 2, path: null }]
+  const published = [{ image_key: slots[0].id, revision: 1, path: null }]
+  for (const error of [null, 'Unavailable']) {
+    const html = renderToStaticMarkup(React.createElement(Table, {slots, drafts, published, error}))
+    assert.equal((html.match(/scope="row"/g)||[]).length, 3)
+    assert.equal((html.match(/<img /g)||[]).length, 3)
+    assert.doesNotMatch(html, /<article/)
+    assert.match(html, /object-contain/)
+    assert.match(html, /overflow-x-auto/)
+    assert.match(html, /Dipakai di/)
+    for (const slot of slots) assert.ok(html.includes(slot.src.replace(/ /g, '%20')) || html.includes(slot.src))
+    if (error) {
+      assert.match(html, /Belum terhubung/)
+      assert.equal((html.match(/disabled=""/g)||[]).length, 3)
+      assert.doesNotMatch(html, /href=/)
+    } else {
+      assert.match(html, /Ada draft/)
+      assert.match(html, /Gambar bawaan/)
+      assert.equal((html.match(/href="\/admin\/content\/gambar\//g)||[]).length, 3)
+    }
+  }
+})
+
+test('catalog and image filters share a compact left-aligned accessible result summary', () => {
+  const Summary = load('src/components/admin/content/FilterSummary.tsx').default
+  const html = renderToStaticMarkup(React.createElement(Summary, {hint:'Catatan', onReset:()=>{}}, '5 hasil'))
+  assert.match(html, /role="status" aria-live="polite"/)
+  assert.match(html, /gap-x-3 gap-y-1/)
+  assert.doesNotMatch(html, /justify-between|border-t|pt-3/)
+  assert.match(html, /Reset filter/)
+  for (const file of ['ManagementCatalog', 'ImageLibrary']) {
+    const source = fs.readFileSync(path.join(root, 'src/components/admin/content', file+'.tsx'), 'utf8')
+    assert.match(source, /<FilterSummary/)
+    assert.match(source, /space-y-2 rounded-xl/)
+    assert.doesNotMatch(source, /border-t border-gray-100 pt-3/)
+  }
+})
+
 test('page sub-tabs cover all images and separate exact pages from TCI 3 descendants', () => {
   const { imagePageTabs, imagesForPage, tciImagePages } = load('src/lib/media/navigation.ts')
   assert.equal(new Set(imagePageTabs.map(tab => tab.id)).size, imagePageTabs.length)
@@ -250,16 +292,21 @@ test('page sub-tabs cover all images and separate exact pages from TCI 3 descend
   assert.equal(shared, imagesForPage('rancamanyar').find(slot => slot.id === shared.id))
 })
 
-test('image navigation uses accessible local tabs and resets filters when changing pages', () => {
+test('image category dropdown includes all pages and renders a single deduplicated list', () => {
   const render = loader({ 'next/link': ({children,...props}) => React.createElement('a',props,children) })
   const Library = render('src/components/admin/content/ImageLibrary.tsx').default
   const html = renderToStaticMarkup(React.createElement(Library,{drafts:[],published:[],error:null}))
-  assert.equal((html.match(/role="tab"/g)||[]).length, 11)
-  assert.match(html, /aria-label="Halaman gambar"/)
-  assert.match(html, /href="\/admin\/content\/gambar\/rancamanyar-banner"/)
-  assert.doesNotMatch(html, /href="\/admin\/content\/gambar\/tci1-bed"/)
-  const source = fs.readFileSync(path.join(root,'src/components/admin/content/ImageLibrary.tsx'),'utf8')
-  assert.match(source, /onValueChange=\{value => \{ setPage\(value\); setUnit\(''\); setQuery\(''\); setDraftOnly\(false\); setLimit\(12\)/)
+  assert.doesNotMatch(html, /role="tab"|role="tablist"/)
+  assert.equal((html.match(/<select/g)||[]).length, 1)
+  assert.equal((html.match(/<option /g)||[]).length, 12)
+  assert.match(html, /Kategori halaman/)
+  assert.match(html, /value="all" selected=""/)
+  assert.match(html, /Semua halaman \(52\)/)
+  assert.equal((html.match(/scope="row"/g)||[]).length, 12)
+  assert.match(html, /Tampilkan lebih banyak/)
+  const all = render('src/lib/media/navigation.ts').imagesForPage('all')
+  assert.equal(all.length, imageSlots.length)
+  assert.equal(new Set(all.map(slot=>slot.id)).size, all.length)
 })
 
 test('Help covers every admin feature, preserves existing guides and is beneath Settings', () => {
@@ -300,15 +347,49 @@ test('all guides share spaced responsive navigation with distinct Help and featu
   }
 })
 
-test('image tabs use equal responsive grid cells and readable active counts', () => {
-  const render = loader({ 'next/link': ({children,...props}) => React.createElement('a',props,children) })
+test('category changes, TCI unit filtering, search, load more and reset keep image state consistent', () => {
+  const state = []
+  let cursor = 0
+  const render = loader({
+    react: {...React, useState: initial => {
+      const index = cursor++
+      if (!(index in state)) state[index] = initial
+      return [state[index], value => { state[index] = typeof value === 'function' ? value(state[index]) : value }]
+    }},
+    'next/link': ({children,...props}) => React.createElement('a',props,children),
+  })
   const Library = render('src/components/admin/content/ImageLibrary.tsx').default
-  const html = renderToStaticMarkup(React.createElement(Library,{drafts:[],published:[],error:null}))
-  assert.match(html,/grid-cols-2/)
-  assert.match(html,/sm:grid-cols-3/)
-  assert.match(html,/xl:grid-cols-4/)
-  assert.match(html,/whitespace-normal/)
-  assert.match(html,/group-data-\[state=active\]:text-\[#0B5EAA\]/)
+  function draw() { cursor=0; return Library({drafts:[],published:[],error:null}) }
+  function nodes(element) {
+    if (!React.isValidElement(element)) return []
+    return [element, ...React.Children.toArray(element.props.children).flatMap(nodes)]
+  }
+  let tree = draw()
+  nodes(tree).find(node=>node.type==='select').props.onChange({target:{value:'tci-3'}})
+  tree=draw()
+  assert.equal(nodes(tree).filter(node=>node.type==='select').length,2)
+  nodes(tree).find(node=>node.type==='button' && node.props.children==='Tampilkan lebih banyak').props.onClick()
+  assert.equal(state[4],24)
+  tree=draw()
+  nodes(tree).filter(node=>node.type==='select')[1].props.onChange({target:{value:'/proyek/tci/tci-3/ruko/teranova'}})
+  tree=draw()
+  assert.equal(state[4],12)
+  const html=renderToStaticMarkup(tree)
+  assert.match(html,/href="\/admin\/content\/gambar\/ruko-hall"/)
+  assert.doesNotMatch(html,/href="\/admin\/content\/gambar\/tci1-bed"/)
+  nodes(tree).find(node=>node.type==='input' && node.props.type==='search').props.onChange({target:{value:'tidak-ada-gambar-ini'}})
+  tree=draw()
+  assert.match(renderToStaticMarkup(tree),/Tidak ada gambar yang cocok/)
+  nodes(tree).find(node=>node.type==='button' && node.props.children==='Reset filter').props.onClick()
+  tree=draw()
+  assert.deepEqual(state,['','all','',false,12])
+  nodes(tree).find(node=>node.type==='select').props.onChange({target:{value:'beranda'}})
+  tree=draw()
+  nodes(tree).find(node=>node.type==='input' && node.props.type==='checkbox').props.onChange({target:{checked:true}})
+  tree=draw()
+  nodes(tree).find(node=>typeof node.props.onReset==='function').props.onReset()
+  draw()
+  assert.deepEqual(state,['','all','',false,12])
 })
 
 test('Help presents a single-column exclusive FAQ accordion with closed answers initially', () => {

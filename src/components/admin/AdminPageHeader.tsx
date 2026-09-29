@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { LayoutDashboard, BarChart3, Users, FilePenLine, BookOpen, ScrollText, Settings } from 'lucide-react'
+import { LayoutDashboard, BarChart3, Users, FilePenLine, BookOpen, ScrollText, Settings, CircleHelp } from 'lucide-react'
 
 const icons = {
   dashboard: LayoutDashboard,
@@ -9,7 +9,7 @@ const icons = {
   brochures: BookOpen,
   logs: ScrollText,
   settings: Settings,
-  help: BookOpen,
+  help: CircleHelp,
 }
 
 type AdminPageHeaderProps = {

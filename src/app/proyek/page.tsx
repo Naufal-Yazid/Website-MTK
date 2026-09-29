@@ -25,6 +25,10 @@ export default async function ProyekIndexPage({ searchParams }: ContentPageProps
           <span className="text-xs uppercase tracking-[3px] font-semibold text-[#D6E8F7]">PROYEK KAMI</span>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">Hunian untuk Masa Depan Anda</h1>
+          <p className="mx-auto max-w-2xl text-base sm:text-lg font-normal text-white/80 leading-relaxed">
+            Temukan hunian di Bandung dan sekitarnya dengan lingkungan nyaman,
+            lokasi strategis, dan pilihan tipe untuk kebutuhan keluarga Anda.
+          </p>
         </div>
       </section>
 

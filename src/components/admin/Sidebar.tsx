@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { cn } from '@/lib/utils';
-import { LayoutDashboard, BarChart3, Users, Settings, LogOut, ChevronLeft, ChevronRight, Menu, Loader2, ScrollText, FilePenLine, BookOpen } from 'lucide-react';
+import { LayoutDashboard, BarChart3, Users, Settings, LogOut, ChevronLeft, ChevronRight, Menu, Loader2, ScrollText, FilePenLine, BookOpen, CircleHelp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -134,7 +134,7 @@ export default function Sidebar({ className, isMobile = false }: SidebarProps) {
           )}
           title={collapsed && !isMobile ? 'Help' : undefined}
         >
-          <BookOpen className={cn("h-5 w-5 shrink-0", (!collapsed || isMobile) && "mr-3")} aria-hidden="true" />
+          <CircleHelp className={cn("h-5 w-5 shrink-0", (!collapsed || isMobile) && "mr-3")} aria-hidden="true" />
           {(!collapsed || isMobile) && <span className="truncate">Help</span>}
         </Link>
 
