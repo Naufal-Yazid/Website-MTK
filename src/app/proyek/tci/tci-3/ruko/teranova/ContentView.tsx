@@ -1,8 +1,9 @@
+import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
 import AvailabilityBadge from "@/components/content/AvailabilityBadge";
 import { availabilityFor } from "@/lib/content/availability";
-import Image from "next/image";
+import { ManagedImage as Image } from "@/components/content/ManagedImages";
 import {
   Store,
   Layers3,
@@ -52,13 +53,8 @@ export default function TerranovaArcadePage({ content }: { content: ContentBundl
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[60vh] flex items-end justify-start bg-[#0D1B2A] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-[center_65%] opacity-40"
-          style={{
-            backgroundImage:
-              "url('/images/proyek/tci/tci-3/ruko/tci3-ruko-ta-card.webp')",
-          }}
-        />
+        <ManagedBackground
+          className="absolute inset-0 bg-cover bg-[center_65%] opacity-40" src="/images/proyek/tci/tci-3/ruko/tci3-ruko-ta-card.webp" />
 
         <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B2A] via-[#0D1B2A]/70 to-[#0D1B2A]/30" />
 
@@ -113,7 +109,7 @@ export default function TerranovaArcadePage({ content }: { content: ContentBundl
 
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gray-100">
-                <img
+                <ManagedImg
                   src="/images/proyek/tci/tci-3/ruko/ruko-hall2.webp"
                   alt="Eksterior Terranova Arcade TCI 3"
                   className="w-full h-full object-cover object-[center_65%]"

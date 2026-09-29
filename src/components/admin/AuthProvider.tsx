@@ -3,6 +3,8 @@
 import React, { createContext, useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { useInquiryNotifications } from '@/lib/hooks/useInquiryNotifications';
+import type { InquiryNotification } from '@/lib/admin/inquiry-notifications';
 import { useIdleTimeout } from '@/lib/hooks/useIdleTimeout';
 
 export type AdminUser = {
@@ -19,6 +21,9 @@ interface AuthContextType {
   isLoading: boolean;
   isSuperAdmin: boolean;
   unreadCount: number;
+  notifications: InquiryNotification[];
+  notificationsLoading: boolean;
+  notificationsError: string | null;
   refreshUnreadCount: () => Promise<void>;
   logout: () => Promise<void>;
 }
@@ -27,7 +32,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export function AuthProvider({ children, initialAdmin }: { children: React.ReactNode; initialAdmin: AdminUser }) {
   const [admin, setAdmin] = useState<AdminUser | null>(initialAdmin);
-  const [unreadCount, setUnreadCount] = useState(0);
+  const { unreadCount, notifications, loading: notificationsLoading, error: notificationsError, refresh: refreshUnreadCount } = useInquiryNotifications(admin?.is_active ? admin.id : null);
   const supabase = createClient();
   const router = useRouter();
 
@@ -57,16 +62,6 @@ export function AuthProvider({ children, initialAdmin }: { children: React.React
     }
   }, [supabase]);
 
-  const refreshUnreadCount = useCallback(async () => {
-    const { count } = await supabase
-      .from('inquiries')
-      .select('*', { count: 'exact', head: true })
-      .eq('is_read', false);
-      
-    if (count !== null) {
-      setUnreadCount(count);
-    }
-  }, [supabase]);
 
   const logout = useCallback(async () => {
     await supabase.auth.signOut();
@@ -81,36 +76,23 @@ export function AuthProvider({ children, initialAdmin }: { children: React.React
   });
 
   useEffect(() => {
-    const initialRefresh = window.setTimeout(() => {
-      void refreshUnreadCount();
-    }, 0);
-
-    const { data: authListener } = supabase.auth.onAuthStateChange(async (event) => {
-      if (event === 'SIGNED_IN') {
-        fetchUser();
-        refreshUnreadCount();
+    let authRefresh: number | undefined;
+    // Supabase callbacks must return before another auth/database request starts.
+    const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        window.clearTimeout(authRefresh);
+        authRefresh = window.setTimeout(() => {
+          void fetchUser();
+          void refreshUnreadCount();
+        }, 0);
       } else if (event === 'SIGNED_OUT') {
         setAdmin(null);
         router.push('/admin/login');
       }
     });
-
-    // Realtime subscription for unread inquiries
-    const channel = supabase
-      .channel('inquiries_changes')
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'inquiries' },
-        () => {
-          refreshUnreadCount();
-        }
-      )
-      .subscribe();
-
     return () => {
-      window.clearTimeout(initialRefresh);
+      window.clearTimeout(authRefresh);
       authListener.subscription.unsubscribe();
-      supabase.removeChannel(channel);
     };
   }, [fetchUser, refreshUnreadCount, supabase, router]);
 
@@ -121,6 +103,9 @@ export function AuthProvider({ children, initialAdmin }: { children: React.React
         isLoading: false,
         isSuperAdmin: admin?.role === 'super_admin',
         unreadCount,
+        notifications,
+        notificationsLoading,
+        notificationsError,
         refreshUnreadCount,
         logout,
       }}

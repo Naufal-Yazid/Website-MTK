@@ -10,6 +10,7 @@ const { renderToStaticMarkup } = require('react-dom/server')
 const root = path.join(__dirname, '..')
 
 function loader(mocks = {}) {
+  mocks = { '@/lib/media/server': { getImageAdminData: async () => ({ drafts: [], published: [], error: null }), getPublishedImages: async () => ({}) }, ...mocks }
   const cache = new Map()
   function load(relative) {
     const file = path.resolve(root, relative)
@@ -19,7 +20,7 @@ function loader(mocks = {}) {
     const { outputText } = ts.transpileModule(source, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true } })
     vm.runInNewContext(outputText, {
       exports: api, process: { env: { NEXT_PUBLIC_SUPABASE_URL: 'https://example.invalid', NEXT_PUBLIC_SUPABASE_ANON_KEY: 'test-anon' } },
-      console: { warn: () => {} }, URL, FormData, File, Buffer,
+      console: { warn: () => {} }, URL, FormData, File, Buffer, AbortSignal,
       require: name => {
         if (name in mocks) return mocks[name]
         if (name === 'server-only') return {}
@@ -37,6 +38,43 @@ function loader(mocks = {}) {
   return load
 }
 const load = loader()
+
+test('all main admin menus use the shared Help-style header with responsive actions', () => {
+  const Header = load('src/components/admin/AdminPageHeader.tsx').default
+  for (const icon of ['dashboard','analytics','leads','content','brochures','logs','settings','help']) {
+    const html = renderToStaticMarkup(React.createElement(Header, {icon, title: 'Judul '+icon, description: 'Deskripsi menu', actions: React.createElement('button', {type:'button'}, 'Aksi')}))
+    assert.equal((html.match(/<h1 /g)||[]).length,1)
+    assert.match(html,/h-12 w-12 shrink-0/)
+    assert.match(html,/rounded-xl bg-blue-50 text-\[#0B5EAA\]/)
+    assert.match(html,/aria-hidden="true"/)
+    assert.match(html,/sm:flex-row/)
+    assert.match(html,/<button type="button">Aksi<\/button>/)
+  }
+  for (const route of ['dashboard','analytics','leads','logs','settings']) {
+    const source = fs.readFileSync(path.join(root,'src/app/admin/(dashboard)',route,'page.tsx'),'utf8')
+    assert.match(source,new RegExp('<AdminPageHeader icon="'+route+'"'))
+    assert.doesNotMatch(source,/<h1\b/)
+  }
+  for (const route of ['content','brosur-lokasi']) assert.match(fs.readFileSync(path.join(root,'src/app/admin/(dashboard)',route,'page.tsx'),'utf8'),/<ManagementHeader/)
+  assert.match(fs.readFileSync(path.join(root,'src/components/admin/content/ManagementHeader.tsx'),'utf8'),/<AdminPageHeader/)
+  assert.match(fs.readFileSync(path.join(root,'src/components/admin/help/HelpCenter.tsx'),'utf8'),/<AdminPageHeader icon="help"/)
+})
+
+test('lead actions have explicit colors, Logout aligns with menu padding and image guide is full width', () => {
+  const detail = fs.readFileSync(path.join(root, 'src/components/admin/leads/InquiryDetailModal.tsx'), 'utf8')
+  assert.match(detail, /onClick=\{handleWaClick\} className="bg-green-600 text-white hover:bg-green-700 hover:text-white"/)
+  const exports = fs.readFileSync(path.join(root, 'src/components/admin/leads/ExportButton.tsx'), 'utf8')
+  assert.match(exports, /DropdownMenuContent align="end" className="[^"]*bg-white text-gray-700/)
+  assert.equal((exports.match(/focus:bg-gray-100 focus:text-gray-900/g) || []).length, 2)
+  const sidebar = fs.readFileSync(path.join(root, 'src/components/admin/Sidebar.tsx'), 'utf8')
+  assert.match(sidebar, /h-auto w-full px-2 py-2 text-white\/70/)
+  assert.match(sidebar, /aria-label="Logout"/)
+  const render = loader({ 'next/link': ({ children, ...props }) => React.createElement('a', props, children) })
+  const Guide = render('src/app/admin/(dashboard)/content/gambar/petunjuk/page.tsx').default
+  const html = renderToStaticMarkup(React.createElement(Guide))
+  assert.match(html, /^<div class="w-full space-y-6">/)
+  assert.doesNotMatch(html, /max-w-4xl/)
+})
 const model = load('src/lib/content/model.ts')
 const { contentDocuments: docs } = load('src/lib/content/catalog.ts')
 const availability = load('src/lib/content/availability.ts')
@@ -414,13 +452,13 @@ test('content tabs use buttons in the same page and the status deep link selects
   })
   const Page = render('src/app/admin/(dashboard)/content/page.tsx').default
   const normal = renderToStaticMarkup(await Page())
-  assert.equal((normal.match(/role="tab"/g) || []).length, 2)
-  assert.match(normal, /<button[^>]*role="tab"[^>]*>Status Ketersediaan<\/button>/)
+  assert.equal((normal.match(/role="tab"/g) || []).length, 3)
+  assert.match(normal, /<button[^>]*role="tab"[^>]*>(?:<svg[\s\S]*?<\/svg>)?Status Ketersediaan<\/button>/)
   assert.match(normal, /Edit konten/)
   assert.doesNotMatch(normal, /href="\/admin\/content\/ketersediaan"/)
   assert.doesNotMatch(normal, /Ringkasan TCI 3/)
   const status = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({ tab: 'ketersediaan' }) }))
-  assert.match(status, /<button[^>]*aria-selected="true"[^>]*>Status Ketersediaan<\/button>/)
+  assert.match(status, /<button[^>]*aria-selected="true"[^>]*>(?:<svg[\s\S]*?<\/svg>)?Status Ketersediaan<\/button>/)
   assert.match(status, /Ringkasan TCI 3/)
   assert.equal((status.match(/\?mode=ketersediaan/g) || []).length, 9)
   assert.equal((status.match(/<h1/g) || []).length, 1)
@@ -610,9 +648,9 @@ test('brochure management lists eleven pages, shows placeholders and disables ed
     assert.equal((html.match(/<article/g) || []).length, 11)
     if (error) {
       assert.match(html, /role="alert"/)
-      assert.doesNotMatch(html, /href="\/admin\/brosur-lokasi\//)
+      assert.doesNotMatch(html, /href="\/admin\/brosur-lokasi\/(?!petunjuk)/)
     } else {
-      assert.equal((html.match(/href="\/admin\/brosur-lokasi\//g) || []).length, 11)
+      assert.equal((html.match(/href="\/admin\/brosur-lokasi\/(?!petunjuk)/g) || []).length, 11)
       assert.equal((html.match(/Placeholder · Segera tersedia/g) || []).length, 8)
     }
   }
@@ -686,5 +724,170 @@ test('admin content, availability and brochure cards share solid accessible acti
       }
     }
     if (!error) assert.equal(new Set(styles).size, 1)
+  }
+})
+
+
+test('brochure guide is a standalone beginner page and uses the same guide button as content', async () => {
+  const render = loader({
+    'next/link': ({ children, ...props }) => React.createElement('a', props, children),
+    '@/lib/content/admin': { getContentAdminData: async () => ({ drafts: [], published: [], error: null }) },
+  })
+  const brochure = renderToStaticMarkup(await render('src/app/admin/(dashboard)/brosur-lokasi/page.tsx').default())
+  const content = renderToStaticMarkup(await render('src/app/admin/(dashboard)/content/page.tsx').default())
+  assert.doesNotMatch(brochure, /<details/)
+  const guideClass = html => html.match(/href="\/admin\/(?:content|brosur-lokasi)\/petunjuk" class="([^"]+)"/)[1]
+  assert.equal(guideClass(brochure), guideClass(content))
+  const guide = renderToStaticMarkup(React.createElement(render('src/app/admin/(dashboard)/brosur-lokasi/petunjuk/page.tsx').default))
+  for (const text of ['Simpan Draft', 'Preview', 'Publikasikan', '3 MB', 'dokumen rahasia', '005_project_brochures.sql']) assert.ok(guide.includes(text))
+  assert.match(guide, /href="\/admin\/brosur-lokasi"/)
+})
+
+const notificationApi = load('src/lib/admin/inquiry-notifications.ts')
+const tick = () => new Promise(resolve => setImmediate(resolve))
+function notificationHarness(initial = { unreadCount: 0, notifications: [] }) {
+  let data = initial, fail = false, visible = true, calls = 0, stopped = 0
+  const handlers = {}, states = []
+  const sync = notificationApi.startNotificationSync({
+    load: async () => { calls++; if (fail) throw Error('private provider error'); return data },
+    update: state => states.push(state),
+    visible: () => visible,
+    subscribe: refresh => { handlers.realtime = refresh; return () => stopped++ },
+    listenResume: refresh => { handlers.resume = refresh; return () => stopped++ },
+    every: (refresh, ms) => { assert.equal(ms, 15000); handlers.poll = refresh; return () => stopped++ },
+  })
+  return { sync, states, handlers, setData: value => { data = value }, setFail: value => { fail = value }, setVisible: value => { visible = value }, calls: () => calls, stopped: () => stopped }
+}
+
+test('notifications update via polling without realtime, same-count replacements, resume and manual refresh', async () => {
+  const harness = notificationHarness()
+  await tick()
+  assert.equal(harness.states.at(-1).unreadCount, 0)
+  harness.setData({ unreadCount: 1, notifications: [{ id: 'first' }] })
+  harness.handlers.poll(); await tick()
+  assert.equal(harness.states.at(-1).notifications[0].id, 'first')
+  harness.setData({ unreadCount: 1, notifications: [{ id: 'replacement' }] })
+  harness.handlers.realtime(); await tick()
+  assert.equal(harness.states.at(-1).notifications[0].id, 'replacement')
+  const before = harness.calls()
+  harness.setVisible(false); harness.handlers.poll(); harness.handlers.resume(); await tick()
+  assert.equal(harness.calls(), before)
+  harness.setVisible(true); harness.handlers.resume(); await tick()
+  assert.equal(harness.calls(), before + 1)
+  harness.setData({ unreadCount: 0, notifications: [] })
+  await harness.sync.refresh()
+  assert.equal(harness.states.at(-1).unreadCount, 0)
+  harness.sync.stop()
+  assert.equal(harness.stopped(), 3)
+  const last = harness.calls()
+  await harness.sync.refresh(); harness.handlers.poll(); await tick()
+  assert.equal(harness.calls(), last)
+})
+
+test('notification failures preserve the last snapshot and never masquerade as an empty inbox', async () => {
+  const harness = notificationHarness({ unreadCount: 4, notifications: [{ id: 'saved' }] })
+  await tick()
+  harness.setFail(true); await harness.sync.refresh()
+  const failed = harness.states.at(-1)
+  assert.equal(failed.unreadCount, 4)
+  assert.equal(failed.notifications[0].id, 'saved')
+  assert.match(failed.error, /belum dapat diperbarui/)
+  assert.doesNotMatch(failed.error, /private provider/)
+  harness.setFail(false); await harness.sync.refresh()
+  assert.equal(harness.states.at(-1).error, null)
+  harness.sync.stop()
+})
+
+test('notification refresh serializes overlapping requests and ignores responses after cleanup', async () => {
+  const pending = [], updates = []
+  const sync = notificationApi.startNotificationSync({
+    load: () => new Promise(resolve => pending.push(resolve)),
+    update: state => updates.push(state), visible: () => true,
+    subscribe: () => () => {}, listenResume: () => () => {}, every: () => () => {},
+  })
+  const refresh = sync.refresh()
+  void sync.refresh()
+  assert.equal(pending.length, 1)
+  pending.shift()({ unreadCount: 1, notifications: [] }); await tick()
+  assert.equal(pending.length, 1)
+  pending.shift()({ unreadCount: 2, notifications: [] }); await refresh
+  assert.equal(updates.at(-1).unreadCount, 2)
+  const late = sync.refresh()
+  sync.stop()
+  pending.shift()({ unreadCount: 99, notifications: [] }); await late
+  assert.equal(updates.at(-1).unreadCount, 2)
+})
+
+test('notification query requests an exact count and latest unread list together, with timeout', async () => {
+  const calls = []
+  const query = {
+    select: (...args) => { calls.push(['select', ...args]); return query },
+    eq: (...args) => { calls.push(['eq', ...args]); return query },
+    order: (...args) => { calls.push(['order', ...args]); return query },
+    limit: n => { assert.equal(n, 5); return query },
+    abortSignal: signal => { assert.ok(signal instanceof AbortSignal); return Promise.resolve({ data: [{ id: 'latest' }], count: 7, error: null }) },
+  }
+  const snapshot = await notificationApi.loadUnreadNotifications({ from: name => { assert.equal(name, 'inquiries'); return query } })
+  assert.equal(snapshot.unreadCount, 7)
+  assert.equal(snapshot.notifications.length, 1)
+  assert.equal(calls[0][2].count, 'exact')
+  assert.equal(calls[1][1], 'is_read')
+  assert.equal(calls[1][2], false)
+  query.abortSignal = async () => ({ data: null, count: null, error: { code: '42501' } })
+  await assert.rejects(notificationApi.loadUnreadNotifications({ from: () => query }), /unavailable/)
+})
+
+test('contact and project forms save unread inquiries, validate email and report DB errors honestly', async () => {
+  const rows = []
+  let fail = false, throws = false
+  const api = loader({
+    '@/lib/supabase/server': { createClient: async () => ({ from: table => {
+      assert.equal(table, 'inquiries')
+      return { insert: async row => { if (throws) throw Error('network'); if (fail) return { error: { code: '42501' } }; rows.push(row); return { error: null } } }
+    } }) },
+  })('src/app/actions/inquiry.ts')
+  const values = { full_name: 'Test User', whatsapp_number: '081234567890', selected_project: 'TCI 1', message: 'Info unit' }
+  assert.equal((await api.createInquiry({ ...values, is_read: true, status: 'batal' })).success, true)
+  assert.equal(rows[0].is_read, false)
+  assert.equal(rows[0].status, 'baru')
+  assert.equal((await api.createContactInquiry({ ...values, email: 'test@example.com' })).success, true)
+  assert.equal(rows[1].message, 'Email: test@example.com\n\nInfo unit')
+  assert.equal(rows[1].email, undefined)
+  assert.equal((await api.createContactInquiry({ ...values, email: 'bad' })).success, false)
+  assert.equal(rows.length, 2)
+  fail = true
+  assert.equal((await api.createInquiry(values)).success, false)
+  throws = true
+  assert.equal((await api.createContactInquiry({ ...values, email: 'test@example.com' })).success, false)
+  assert.equal(rows.length, 2)
+})
+
+test('bell supports click/touch popover refresh and shows failures instead of false success', () => {
+  const base = { unreadCount: 0, notifications: [], notificationsLoading: false, notificationsError: null }
+  const renderWith = state => {
+    const render = loader({
+      '@/lib/hooks/useAuth': { useAuth: () => ({ ...base, ...state, refreshUnreadCount: async () => {} }) },
+      '@/components/ui/popover': {
+        Popover: ({ children }) => React.createElement('div', null, children),
+        PopoverTrigger: ({ children }) => children,
+        PopoverContent: ({ children }) => React.createElement('div', null, children),
+      },
+      '@/components/ui/button': { Button: ({ children, onClick, disabled, 'aria-label': ariaLabel }) => React.createElement('button', { onClick, disabled, 'aria-label': ariaLabel }, children) },
+      'next/link': ({ children, ...props }) => React.createElement('a', props, children),
+    })
+    return renderToStaticMarkup(React.createElement(render('src/components/admin/NotificationBell.tsx').default))
+  }
+  const html = renderWith({ notificationsError: 'Gagal memuat' })
+  assert.match(html, /role="alert"/)
+  assert.doesNotMatch(html, /Semua inquiry sudah dibaca/)
+  assert.match(renderWith({ notificationsLoading: true }), /Memuat notifikasi/)
+  assert.match(renderWith({}), /Semua inquiry sudah dibaca/)
+  const source = fs.readFileSync(path.join(root, 'src/components/admin/NotificationBell.tsx'), 'utf8')
+  assert.match(source, /onOpenChange=.*refreshUnreadCount/)
+  assert.doesNotMatch(source, /group-hover/)
+  for (const hook of ['useInquiryNotifications.ts', 'useRealtimeInquiries.ts']) {
+    const code = fs.readFileSync(path.join(root, 'src/lib/hooks', hook), 'utf8')
+    for (const name of ['focus', 'online', 'visibilitychange']) assert.ok(code.includes(name))
+    assert.match(code, /clearInterval/)
   }
 })

@@ -3,6 +3,8 @@ import { Poppins, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import PublicLayoutWrapper from "@/components/layout/PublicLayoutWrapper";
 import { Toaster } from "sonner";
+import { ImagesProvider } from "@/components/content/ManagedImages";
+import { getPublishedImages } from "@/lib/media/server";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -33,17 +35,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const images = await getPublishedImages();
   return (
     <html lang="id" className={`${poppins.variable} ${plusJakartaSans.variable} h-full`}>
       <body className="min-h-full flex flex-col font-sans bg-white text-[#6B7280] antialiased selection:bg-[#0B5EAA] selection:text-white">
-        <PublicLayoutWrapper>
+        <ImagesProvider images={images}><PublicLayoutWrapper>
           {children}
-        </PublicLayoutWrapper>
+        </PublicLayoutWrapper></ImagesProvider>
         <Toaster position="top-right" richColors />
       </body>
     </html>

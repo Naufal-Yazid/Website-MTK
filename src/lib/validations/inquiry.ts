@@ -10,6 +10,11 @@ export const inquirySchema = z.object({
 
 export type InquiryInput = z.infer<typeof inquirySchema>
 
+export const contactInquirySchema = inquirySchema.extend({
+  email: z.string().trim().email('Alamat email tidak valid').max(254),
+  message: z.string().trim().min(1, 'Pesan wajib diisi').max(1700, 'Pesan maksimal 1700 karakter'),
+})
+
 export const updateInquiryStatusSchema = z.object({
   id: z.string().uuid('Invalid inquiry ID'),
   status: z.enum(['baru', 'diproses', 'sudah_dihubungi', 'batal']),

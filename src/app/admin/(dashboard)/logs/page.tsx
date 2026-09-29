@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import AdminPageHeader from '@/components/admin/AdminPageHeader'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { normalizeLogFilters } from '@/lib/logs/filters'
@@ -58,18 +59,14 @@ export default async function LogsPage({ searchParams }: {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900">Logs</h1>
-          <p className="mt-1 text-sm text-gray-500">Riwayat aktivitas admin dan error server. Waktu ditampilkan dalam WIB.</p>
-        </div>
+      <AdminPageHeader icon="logs" title="Logs" description="Riwayat aktivitas admin dan error server. Waktu ditampilkan dalam WIB." actions={
         <form action="/admin/logs" method="get">
           {Object.entries({ kind: filters.kind, q: filters.q, from: filters.from, to: filters.to, page: String(filters.page) }).map(([name, value]) => (
             <input key={name} type="hidden" name={name} value={value} />
           ))}
-          <button className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium hover:bg-gray-50">Muat ulang</button>
+          <button className="min-h-11 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium hover:bg-gray-50">Muat ulang</button>
         </form>
-      </div>
+      } />
 
       <nav className="flex gap-2 border-b border-gray-200" aria-label="Kategori log">
         {([{ kind: 'audit', label: 'Riwayat Admin' }, { kind: 'error', label: 'Error Logs' }] as const).map((tab) => (
@@ -141,7 +138,7 @@ export default async function LogsPage({ searchParams }: {
           </div>
         </div>
       )}
-      <p className="text-xs leading-relaxed text-gray-500">Riwayat mencatat hasil aksi admin sejak fitur diaktifkan. Error Logs mencatat aksi yang gagal dan error server pada rute admin; bukan seluruh pesan console browser. Password, token, dan isi formulir tidak disimpan.</p>
+      <Link href="/admin/help#logs" className="inline-flex min-h-11 items-center rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-[#0B5EAA] hover:bg-blue-50">Petunjuk Logs</Link>
     </div>
   )
 }

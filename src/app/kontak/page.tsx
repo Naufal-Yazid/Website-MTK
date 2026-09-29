@@ -1,5 +1,8 @@
 "use client";
 
+import { ManagedBackground } from "@/components/content/ManagedImages";
+
+import { createContactInquiry } from "@/app/actions/inquiry";
 import { useState } from "react";
 import { Building2, MapPin, Phone } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
@@ -30,21 +33,32 @@ export default function KontakPage() {
   const [pesan, setPesan] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    setSubmitError("");
+    try {
+      const result = await createContactInquiry({
+        full_name: nama, email, whatsapp_number: wa,
+        selected_project: proyek === "Pilih Proyek" ? null : proyek,
+        message: pesan,
+      });
+      if (result.success) setSubmitted(true);
+      else setSubmitError(result.error || "Pesan belum dapat disimpan. Coba lagi.");
+    } catch {
+      setSubmitError("Koneksi bermasalah. Pesan belum dapat dipastikan terkirim. Isian Anda tetap tersimpan di formulir.");
+    } finally { setIsSubmitting(false); }
   };
 
   return (
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[45vh] flex items-center justify-center bg-[#0D1B2A] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{
-            backgroundImage: `url('../images/shared/hero image.webp')`,
-          }}
-        />
+        <ManagedBackground
+          className="absolute inset-0 bg-cover bg-center opacity-30" src="/images/shared/hero image.webp" />
         <div className="absolute inset-0 bg-[#0D1B2A]/65" />
 
         <div className="relative z-10 max-w-3xl text-center px-4 py-16 space-y-3">
@@ -246,12 +260,14 @@ export default function KontakPage() {
                       />
                     </div>
 
+                    {submitError && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{submitError}</p>}
                     {/* Submit Button */}
                     <button
                       type="submit"
-                      className="w-full h-12 rounded-lg bg-[#0B5EAA] text-white font-semibold text-sm hover:bg-[#0A4F91] transition-all shadow-sm active:scale-[0.99]"
+                      disabled={isSubmitting}
+                      className="w-full h-12 rounded-lg bg-[#0B5EAA] text-white font-semibold text-sm hover:bg-[#0A4F91] transition-all shadow-sm active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Kirim Pesan
+                      {isSubmitting ? "Sedang mengirim…" : "Kirim Pesan"}
                     </button>
                   </form>
                 )}

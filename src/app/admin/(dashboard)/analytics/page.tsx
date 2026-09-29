@@ -1,3 +1,4 @@
+import AdminPageHeader from '@/components/admin/AdminPageHeader'
 import { Activity, Clock3, Globe2, Laptop, MonitorSmartphone, Smartphone, Tablet, Users } from 'lucide-react';
 import { getAnalyticsSummarySafe } from '@/lib/google-analytics';
 import { MetricCard } from '@/components/admin/dashboard/MetricCard';
@@ -30,10 +31,7 @@ export default async function WebsiteAnalyticsPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-gray-900">Website Analytics</h1>
-        <p className="text-gray-500">Pantau traffic, perilaku pengunjung, perangkat, dan performa halaman website.</p>
-      </div>
+      <AdminPageHeader icon="analytics" title="Website Analytics" description="Pantau traffic, perilaku pengunjung, perangkat, dan performa halaman website." />
 
       {!analytics && (
         <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">

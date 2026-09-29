@@ -1,3 +1,4 @@
+import AdminPageHeader from '@/components/admin/AdminPageHeader'
 import { createClient } from '@/lib/supabase/server';
 import { startOfMonth } from 'date-fns';
 import { Globe2, MousePointerClick, Users } from 'lucide-react';
@@ -49,10 +50,7 @@ export default async function DashboardPage() {
     <div className="space-y-6">
       <RealtimeListener />
       
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-gray-900">Dashboard</h1>
-        <p className="text-gray-500">Ringkasan performa website dan aktivitas terbaru.</p>
-      </div>
+      <AdminPageHeader icon="dashboard" title="Dashboard" description="Ringkasan performa website dan aktivitas terbaru." />
 
       {/* Bento Grid - Row 1 */}
       <div className="grid gap-6 md:grid-cols-3">

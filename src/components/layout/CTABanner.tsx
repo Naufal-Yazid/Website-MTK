@@ -1,6 +1,8 @@
 "use client";
 
-import Image from "next/image";
+import { ManagedBackground } from "@/components/content/ManagedImages";
+
+import { ManagedImage as Image } from "@/components/content/ManagedImages";
 import { buildWAUrl } from "@/lib/wa";
 import { useContactSettings } from "@/hooks/use-contact-settings";
 
@@ -15,12 +17,8 @@ export default function CTABanner() {
   return (
     <section className="relative overflow-hidden bg-[#0D1B2A] py-24 md:py-32">
       {/* Background Image Overlay dari Public */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-25 pointer-events-none"
-        style={{
-          backgroundImage: `url('/images/shared/cta-bg.webp')`,
-        }}
-      />
+      <ManagedBackground
+        className="absolute inset-0 bg-cover bg-center opacity-25 pointer-events-none" src="/images/shared/cta-bg.webp" />
       <div className="absolute inset-0 bg-[#0D1B2A]/80 backdrop-blur-[1px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

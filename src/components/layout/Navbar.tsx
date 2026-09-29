@@ -1,5 +1,7 @@
 "use client";
 
+import { useManagedImage } from "@/components/content/ManagedImages";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -7,6 +9,7 @@ import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const logoSrc = useManagedImage("/images/brand/mtk logo 1.png");
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -47,8 +50,8 @@ export default function Navbar() {
             <div
               className={`w-full h-full transition-all duration-300 group-hover:scale-105 ${useDarkContent ? "bg-[#0B5EAA]" : "bg-white"}`}
               style={{
-                maskImage: 'url("/images/brand/mtk logo 1.png")',
-                WebkitMaskImage: 'url("/images/brand/mtk logo 1.png")',
+                maskImage: 'url(' + JSON.stringify(logoSrc) + ')',
+                WebkitMaskImage: 'url(' + JSON.stringify(logoSrc) + ')',
                 maskSize: "contain",
                 WebkitMaskSize: "contain",
                 maskRepeat: "no-repeat",

@@ -1,3 +1,4 @@
+import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
 import AvailabilityBadge from "@/components/content/AvailabilityBadge";
@@ -41,12 +42,8 @@ export default function TCIOverviewPage({ content }: { content: ContentBundle })
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[60vh] flex items-end justify-start bg-[#0D1B2A] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-35"
-          style={{
-            backgroundImage: "url('/images/proyek/tci/tci-icon-banner.webp')",
-          }}
-        />
+        <ManagedBackground
+          className="absolute inset-0 bg-cover bg-center opacity-35" src="/images/proyek/tci/tci-icon-banner.webp" />
         <div className="absolute inset-0 bg-[#0D1B2A]/65" />
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
@@ -100,7 +97,7 @@ export default function TCIOverviewPage({ content }: { content: ContentBundle })
             {/* Right Column */}
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gray-100">
-                <img src="/images/proyek/tci/KantorPemasaran_TCI.jpg" alt="Interior Mewah Ruang Tamu" className="w-full h-full object-cover" />
+                <ManagedImg src="/images/proyek/tci/KantorPemasaran_TCI.jpg" alt="Interior Mewah Ruang Tamu" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -122,7 +119,7 @@ export default function TCIOverviewPage({ content }: { content: ContentBundle })
             {phases.map((phase) => (
               <div key={phase.id} className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col">
                 <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                  <img src={phase.image} alt={phase.title} className="w-full h-full object-cover" />
+                  <ManagedImg src={phase.image} alt={phase.title} className="w-full h-full object-cover" />
                   <AvailabilityBadge placement="card" status={availabilityFor(content, phase.id)} />
 
                 </div>

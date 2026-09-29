@@ -1,3 +1,4 @@
+import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import PreviewNotice from "@/components/content/PreviewNotice";
 import AvailabilityBadge from "@/components/content/AvailabilityBadge";
 import { availabilityFor } from "@/lib/content/availability";
@@ -61,12 +62,8 @@ export default async function Home({ searchParams }: ContentPageProps) {
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-start overflow-hidden bg-[#0D1B2A]">
         {/* Background Image with Dark Overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
-          style={{
-            backgroundImage: `url('/images/shared/hero image.webp')`,
-          }}
-        />
+        <ManagedBackground
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105" src="/images/shared/hero image.webp" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B2A] via-[#0D1B2A]/75 to-[#0D1B2A]/30" />
 
         {/* Hero Content */}
@@ -93,7 +90,7 @@ export default async function Home({ searchParams }: ContentPageProps) {
             {/* Left Column: Image with Overlapping Badge */}
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
-                <img src="/images/shared/home1.webp" alt="TCI MAIN" className="w-full h-full object-cover" />
+                <ManagedImg src="/images/shared/home1.webp" alt="TCI MAIN" className="w-full h-full object-cover" />
               </div>
             </div>
 
@@ -131,7 +128,7 @@ export default async function Home({ searchParams }: ContentPageProps) {
               <Link key={project.id} href={project.href} className="group bg-white rounded-xl overflow-hidden shadow-[0_1px_4px_rgba(0,0,0,0.08)] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 {/* Project Image */}
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <ManagedImg src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <AvailabilityBadge placement="card" status={availabilityFor(content, project.id)} />
                 </div>
 
