@@ -1,7 +1,7 @@
+import HeroAvailability from "@/components/content/HeroAvailability";
 import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
-import AvailabilityBadge from "@/components/content/AvailabilityBadge";
 import { availabilityFor } from "@/lib/content/availability";
 import { ManagedImage as Image } from "@/components/content/ManagedImages";
 import {
@@ -60,7 +60,6 @@ export default function TCI3NonClusterTipe50Page({ content }: { content: Content
             <div className="text-xs sm:text-sm font-bold tracking-[0.2em] text-[#60A5FA] uppercase">{text("hero.text")}</div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">{text("hero.title")}</h1>
-            <AvailabilityBadge status={availabilityFor(content, "non-cluster-50")} />
 
             <div className="flex items-center gap-2 text-sm sm:text-base text-white/80">
               <MapPin className="w-4 h-4 text-white" />
@@ -68,6 +67,7 @@ export default function TCI3NonClusterTipe50Page({ content }: { content: Content
             </div>
 
             <ProjectActions values={content["non-cluster-50"]} />
+            <HeroAvailability status={availabilityFor(content, "non-cluster-50")} />
           </div>
         </div>
       </section>

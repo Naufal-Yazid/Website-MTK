@@ -1,3 +1,4 @@
+import HeroAvailability from "@/components/content/HeroAvailability";
 import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
@@ -49,7 +50,6 @@ export default function TCIOverviewPage({ content }: { content: ContentBundle })
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
           <div className="max-w-2xl space-y-4">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">{text("hero.title")}</h1>
-            <AvailabilityBadge status={availabilityFor(content, "tci")} />
 
             <div className="flex items-center gap-2 text-sm sm:text-base text-white/50">
               <MapPin className="w-4 h-4 text-white" />
@@ -58,6 +58,7 @@ export default function TCIOverviewPage({ content }: { content: ContentBundle })
 
             <p className="text-sm sm:text-base text-[rgb(246,247,248)] line-clamp-2 leading-relaxed flex-grow">{text("hero.description")}</p>
             <ProjectActions values={content["tci"]} />
+            <HeroAvailability status={availabilityFor(content, "tci")} />
           </div>
         </div>
       </section>
