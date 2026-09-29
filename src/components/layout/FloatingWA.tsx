@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { ManagedImage as Image } from "@/components/content/ManagedImages";
 import { buildWAUrl } from "@/lib/wa";
 import { useContactSettings } from "@/hooks/use-contact-settings";
 

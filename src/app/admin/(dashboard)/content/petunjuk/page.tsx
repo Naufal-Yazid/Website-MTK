@@ -1,5 +1,6 @@
+import GuideNavigation from '@/components/admin/help/GuideNavigation'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react'
+import { ArrowRight, BookOpen } from 'lucide-react'
 
 export const metadata = {
   title: 'Petunjuk Konten Website | MTK Admin',
@@ -59,12 +60,8 @@ const questions = [
 export default function ContentGuidePage() {
   return (
     <div className="mx-auto max-w-4xl space-y-8">
-      <Link href="/admin/content" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#0B5EAA] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B5EAA]">
-        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-        Kembali ke Konten Website
-      </Link>
-
-      <header className="flex items-start gap-4">
+    <GuideNavigation href="/admin/content" label="Buka Konten Website" />
+    <header className="flex items-start gap-4">
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#0B5EAA]">
           <BookOpen className="h-6 w-6" aria-hidden="true" />
         </div>

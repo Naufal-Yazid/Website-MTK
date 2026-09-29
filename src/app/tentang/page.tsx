@@ -1,3 +1,4 @@
+import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import { CheckCircle2 } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InstagramSection from "@/components/sections/InstagramSection";
@@ -22,10 +23,9 @@ export default function TentangPage() {
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[55vh] flex items-center justify-center bg-[#0D1B2A] overflow-hidden">
-        <div
+        <ManagedBackground src="/images/shared/hero image.webp"
           className="absolute inset-0 bg-cover bg-no-repeat opacity-50"
           style={{
-            backgroundImage: "url('/images/shared/hero image.webp')",
             backgroundPosition: "center 35%",
           }}
         />
@@ -58,7 +58,7 @@ export default function TentangPage() {
 
             <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
-                <img
+                <ManagedImg
                   src="/images/tentang/about1.webp"
                   alt="Konstruksi Bangunan"
                   className="w-full h-full object-cover"
@@ -94,7 +94,7 @@ export default function TentangPage() {
             {/* Left Image */}
             <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:row-span-2">
               <div className="rounded-2xl overflow-hidden shadow-md aspect-[4/3]">
-                <img
+                <ManagedImg
                   src="/images/tentang/about2.webp"
                   alt="Tim Marga Tirta Kencana"
                   className="w-full h-full object-cover"

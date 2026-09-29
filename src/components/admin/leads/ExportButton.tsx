@@ -92,11 +92,11 @@ export function ExportButton({ data }: ExportButtonProps) {
           Export CSV/Excel
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48 border-gray-200">
-        <DropdownMenuItem onSelect={handleExportCSV} className="cursor-pointer">
+      <DropdownMenuContent align="end" className="w-48 border-gray-200 bg-white text-gray-700 shadow-lg">
+        <DropdownMenuItem onSelect={handleExportCSV} className="cursor-pointer focus:bg-gray-100 focus:text-gray-900">
           <FileDown className="mr-2 h-4 w-4" /> Export CSV
         </DropdownMenuItem>
-        <DropdownMenuItem onSelect={handleExportExcel} className="cursor-pointer">
+        <DropdownMenuItem onSelect={handleExportExcel} className="cursor-pointer focus:bg-gray-100 focus:text-gray-900">
           <FileSpreadsheet className="mr-2 h-4 w-4" /> Export Excel
         </DropdownMenuItem>
       </DropdownMenuContent>

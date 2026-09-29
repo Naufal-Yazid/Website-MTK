@@ -21,33 +21,28 @@ export default function InquiryForm({ defaultProyek = "Pilih Proyek", defaultTip
   const [pertanyaan, setPertanyaan] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [submittedWaUrl, setSubmittedWaUrl] = useState("");
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setIsSubmitting(true);
-    const result = await createInquiry({
-      full_name: nama,
-      whatsapp_number: wa,
-      selected_project: proyek === "Pilih Proyek" ? null : proyek,
-      selected_type: tipe === "Pilih Tipe" ? null : tipe,
-      message: pertanyaan || null,
-    });
-    const url = buildWAUrl({
-      nama,
-      wa,
-      proyek,
-      tipe,
-      pertanyaan,
-    }, contactSettings.waNumber);
-    window.open(url, "_blank");
-    setIsSubmitting(false);
-    if (result.success) {
+    setSubmittedWaUrl("");
+    try {
+      const result = await createInquiry({
+        full_name: nama, whatsapp_number: wa,
+        selected_project: proyek === "Pilih Proyek" ? null : proyek,
+        selected_type: tipe === "Pilih Tipe" ? null : tipe,
+        message: pertanyaan || null,
+      });
+      if (!result.success) { toast.error(result.error); return; }
+      const url = buildWAUrl({ nama, wa, proyek, tipe, pertanyaan }, contactSettings.waNumber);
+      setSubmittedWaUrl(url);
+      window.open(url, "_blank", "noopener,noreferrer");
       toast.success("Inquiry berhasil dikirim");
-      setNama("");
-      setWa("");
-      setPertanyaan("");
-    } else {
-      toast.error(result.error);
-    }
+      setNama(""); setWa(""); setPertanyaan("");
+    } catch {
+      toast.error("Koneksi bermasalah. Inquiry belum dapat dipastikan tersimpan. Silakan coba lagi.");
+    } finally { setIsSubmitting(false); }
   };
 
   return (
@@ -148,6 +143,7 @@ export default function InquiryForm({ defaultProyek = "Pilih Proyek", defaultTip
                 {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                 <span>Kirim ke WhatsApp</span>
               </button>
+              {submittedWaUrl && <p role="status" className="rounded-lg bg-green-50 p-3 text-sm text-green-800">Inquiry tersimpan. Jika WhatsApp tidak terbuka, <a href={submittedWaUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline">lanjutkan ke WhatsApp di sini</a>.</p>}
             </form>
           </div>
         </div>

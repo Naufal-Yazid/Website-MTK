@@ -1,3 +1,4 @@
+import AdminPageHeader from '@/components/admin/AdminPageHeader'
 import { createClient } from '@/lib/supabase/server'
 import { LeadsClient } from '@/components/admin/leads/LeadsClient'
 import { ExportButton } from '@/components/admin/leads/ExportButton'
@@ -54,15 +55,7 @@ export default async function LeadsPage({ searchParams }: PageProps) {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-            Manajemen Leads
-          </h2>
-          <p className="mt-1 text-gray-500">Kelola inquiry, status, dan tindak lanjut calon pelanggan.</p>
-        </div>
-        <ExportButton data={inquiries || []} />
-      </div>
+      <AdminPageHeader icon="leads" title="Manajemen Leads" description="Kelola inquiry, status, dan tindak lanjut calon pelanggan." actions={<ExportButton data={inquiries || []} />} />
       
       <LeadsClient 
         initialData={inquiries || []} 

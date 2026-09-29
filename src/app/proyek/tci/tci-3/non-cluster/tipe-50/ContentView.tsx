@@ -1,8 +1,9 @@
+import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
 import AvailabilityBadge from "@/components/content/AvailabilityBadge";
 import { availabilityFor } from "@/lib/content/availability";
-import Image from "next/image";
+import { ManagedImage as Image } from "@/components/content/ManagedImages";
 import {
   MapPin,
   Ruler,
@@ -50,13 +51,8 @@ export default function TCI3NonClusterTipe50Page({ content }: { content: Content
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[70vh] flex items-end justify-start bg-[#0D1B2A] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-45"
-          style={{
-            backgroundImage:
-              "url('/images/proyek/tci/tci-3/non-cluster/tci3-t50-nc-detail.webp')",
-          }}
-        />
+        <ManagedBackground
+          className="absolute inset-0 bg-cover bg-center opacity-45" src="/images/proyek/tci/tci-3/non-cluster/tci3-t50-nc-detail.webp" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2A]/95 via-[#0D1B2A]/70 to-[#0D1B2A]/30" />
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-32">
@@ -112,7 +108,7 @@ export default function TCI3NonClusterTipe50Page({ content }: { content: Content
             </div>
 
             <div className="relative rounded-2xl overflow-hidden min-h-[360px] lg:min-h-[460px] shadow-lg">
-              <img
+              <ManagedImg
                 src="/images/proyek/tci/tci-3/non-cluster/tci3-t50-nc-detail.webp"
                 alt="Rumah TCI 3 Tipe 50 Non-Cluster"
                 className="absolute inset-0 w-full h-full object-cover"
@@ -134,7 +130,7 @@ export default function TCI3NonClusterTipe50Page({ content }: { content: Content
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
             <div className="lg:col-span-6 bg-white border border-[#E5E7EB] rounded-2xl p-5 sm:p-8 shadow-sm aspect-square flex items-center justify-center relative overflow-hidden">
-              <img
+              <ManagedImg
                 src="/images/proyek/tci/tci-3/denah/50-90.webp"
                 alt="Denah Rumah TCI 3 Tipe 50 Non-Cluster"
                 className="w-full h-full object-contain"

@@ -2,7 +2,8 @@ import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
 import AvailabilityBadge from "@/components/content/AvailabilityBadge";
 import { availabilityFor } from "@/lib/content/availability";
-import Image from "next/image";
+import { ManagedImage as Image } from "@/components/content/ManagedImages";
+import { ManagedBackground } from "@/components/content/ManagedImages";
 import { Ruler, Home as HomeIcon, BedDouble, Bath, Car, Zap } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
@@ -42,10 +43,9 @@ export default function TCI3Tipe36Page({ content }: { content: ContentBundle }) 
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[60vh] flex items-end justify-start bg-[#0D1B2A] overflow-hidden">
-        <div
+        <ManagedBackground src="/images/proyek/tci/tci-3/cluster/tipe-36/tci3-tipe36-hero.webp"
           className="absolute inset-0 bg-cover opacity-40"
           style={{
-            backgroundImage: "url('/images/proyek/tci/tci-3/cluster/tipe-36/tci3-tipe36-hero.webp')",
             backgroundPosition: "center 70%", 
           }}
         />

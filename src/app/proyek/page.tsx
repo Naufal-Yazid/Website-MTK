@@ -1,3 +1,4 @@
+import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import PreviewNotice from "@/components/content/PreviewNotice";
 import AvailabilityBadge from "@/components/content/AvailabilityBadge";
 import { availabilityFor } from "@/lib/content/availability";
@@ -15,12 +16,8 @@ export default async function ProyekIndexPage({ searchParams }: ContentPageProps
       <PreviewNotice preview={preview} />
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[55vh] flex items-center justify-center bg-[#0D1B2A] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 transition-transform duration-1000 scale-105"
-          style={{
-            backgroundImage: "url('/images/shared/hero image.webp')",
-          }}
-        />
+        <ManagedBackground
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 transition-transform duration-1000 scale-105" src="/images/shared/hero image.webp" />
 
         <div className="absolute inset-0 bg-[#0D1B2A]/55" />
 
@@ -47,7 +44,7 @@ export default async function ProyekIndexPage({ searchParams }: ContentPageProps
             {/* KARTU 1 — TAMAN CIBADUYUT INDAH */}
             <div className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs flex flex-col transition-all hover:shadow-md hover:border-gray-300">
               <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                <img src="/images/proyek/tci/tci-icon-banner.webp" alt="Taman Cibaduyut Indah" className="w-full h-full object-cover" />
+                <ManagedImg src="/images/proyek/tci/tci-icon-banner.webp" alt="Taman Cibaduyut Indah" className="w-full h-full object-cover" />
                 <AvailabilityBadge placement="card" status={availabilityFor(content, "tci")} />
               </div>
 
@@ -75,7 +72,7 @@ export default async function ProyekIndexPage({ searchParams }: ContentPageProps
             {/* KARTU 2 — RANCAMANYAR INDAH */}
             <div className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs flex flex-col transition-all hover:shadow-md hover:border-gray-300">
               <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                <img src="/images/proyek/rancamanyar/rancamanyar-banner.webp" alt="Rancamanyar Indah" className="w-full h-full object-cover" />
+                <ManagedImg src="/images/proyek/rancamanyar/rancamanyar-banner.webp" alt="Rancamanyar Indah" className="w-full h-full object-cover" />
                 <AvailabilityBadge placement="card" status={availabilityFor(content, "rancamanyar")} />
               </div>
 
@@ -103,7 +100,7 @@ export default async function ProyekIndexPage({ searchParams }: ContentPageProps
             {/* KARTU 3 — PERMATA BUAH BATU */}
             <div className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs flex flex-col transition-all hover:shadow-md hover:border-gray-300">
               <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                <img src="/images/proyek/permata-buah-batu/permatabb-gate-banner.webp" alt="Permata Buah Batu" className="w-full h-full object-cover" />
+                <ManagedImg src="/images/proyek/permata-buah-batu/permatabb-gate-banner.webp" alt="Permata Buah Batu" className="w-full h-full object-cover" />
                 <AvailabilityBadge placement="card" status={availabilityFor(content, "permata-buah-batu")} />
               </div>
 

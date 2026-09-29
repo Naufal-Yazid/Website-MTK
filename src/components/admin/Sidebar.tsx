@@ -43,7 +43,7 @@ export default function Sidebar({ className, isMobile = false }: SidebarProps) {
   ];
 
   const renderSidebarContent = () => (
-    <div className="flex h-full flex-col justify-between bg-[#1E3A5F] text-white">
+    <div className="flex h-full flex-col justify-between overflow-y-auto bg-[#1E3A5F] text-white">
       <div>
         <div className={cn("flex h-20 items-center border-b border-white/10", collapsed && !isMobile ? "justify-center px-2" : "justify-between px-4")}>
           <div className="flex items-center gap-3 overflow-hidden">
@@ -74,7 +74,7 @@ export default function Sidebar({ className, isMobile = false }: SidebarProps) {
 
         <nav className="flex-1 space-y-1 p-2">
           {navItems.map((item) => {
-            const isActive = pathname.startsWith(item.href);
+            const isActive = pathname.startsWith(item.href) && !pathname.includes('/petunjuk');
             return (
               <Link
                 key={item.name}
@@ -123,16 +123,33 @@ export default function Sidebar({ className, isMobile = false }: SidebarProps) {
           {(!collapsed || isMobile) && <span className="truncate">Pengaturan</span>}
         </Link>
 
+        <Link
+          href="/admin/help"
+          className={cn(
+            "group flex items-center rounded-md px-2 py-2 text-sm font-medium transition-colors",
+            pathname.startsWith('/admin/help') || pathname.includes('/petunjuk')
+              ? "bg-white/10 text-white"
+              : "text-white/70 hover:bg-white/5 hover:text-white",
+            collapsed && !isMobile ? "justify-center" : "justify-start"
+          )}
+          title={collapsed && !isMobile ? 'Help' : undefined}
+        >
+          <BookOpen className={cn("h-5 w-5 shrink-0", (!collapsed || isMobile) && "mr-3")} aria-hidden="true" />
+          {(!collapsed || isMobile) && <span className="truncate">Help</span>}
+        </Link>
+
         <Button
           variant="ghost"
           className={cn(
-            "w-full text-white/70 hover:bg-white/10 hover:text-white",
-            collapsed && !isMobile ? "px-0 justify-center" : "justify-start"
+            "h-auto w-full px-2 py-2 text-white/70 hover:bg-white/10 hover:text-white",
+            collapsed && !isMobile ? "justify-center" : "justify-start"
           )}
           onClick={() => setIsLogoutDialogOpen(true)}
           disabled={isLoggingOut}
+          aria-label="Logout"
+          title={collapsed && !isMobile ? 'Logout' : undefined}
         >
-          <LogOut className={cn("h-5 w-5", (!collapsed || isMobile) && "mr-3")} />
+          <LogOut className={cn("h-5 w-5 shrink-0", (!collapsed || isMobile) && "mr-3")} aria-hidden="true" />
           {(!collapsed || isMobile) && (isLoggingOut ? 'Logging out...' : 'Logout')}
         </Button>
       </div>

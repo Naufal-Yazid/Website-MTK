@@ -1,8 +1,9 @@
+import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
 import AvailabilityBadge from "@/components/content/AvailabilityBadge";
 import { availabilityFor } from "@/lib/content/availability";
-import Image from "next/image";
+import { ManagedImage as Image } from "@/components/content/ManagedImages";
 import { Ruler, Home as HomeIcon, BedDouble, Bath, Car, Zap } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
@@ -42,12 +43,8 @@ export default function TCI3Tipe45Page({ content }: { content: ContentBundle }) 
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[60vh] flex items-end justify-start bg-[#0D1B2A] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{
-            backgroundImage: "url('/images/proyek/tci/tci-3/cluster/tipe-45/Tipe45_Depannn.webp')",
-          }}
-        />
+        <ManagedBackground
+          className="absolute inset-0 bg-cover bg-center opacity-40" src="/images/proyek/tci/tci-3/cluster/tipe-45/Tipe45_Depannn.webp" />
 
         <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B2A] via-[#0D1B2A]/70 to-[#0D1B2A]/30" />
 
@@ -98,7 +95,7 @@ export default function TCI3Tipe45Page({ content }: { content: ContentBundle }) 
             {/* Right Column Image */}
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gray-100">
-                <img src="/images/proyek/tci/tci-3/cluster/tipe-45/Tipe45_DepanSamping.webp" alt="TCI 3 Tipe 45 Eksterior" className="w-full h-full object-cover" />
+                <ManagedImg src="/images/proyek/tci/tci-3/cluster/tipe-45/Tipe45_DepanSamping.webp" alt="TCI 3 Tipe 45 Eksterior" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -120,7 +117,7 @@ export default function TCI3Tipe45Page({ content }: { content: ContentBundle }) 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-5xl mx-auto">
             {/* Left Floor Plan Image */}
             <div className="lg:col-span-6 bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 shadow-sm aspect-square flex items-center justify-center overflow-hidden">
-              <img src="/images/proyek/tci/tci-3/denah/45-84.webp" alt="Denah rumah TCI 3 Tipe 45" className="w-full h-full object-contain" />
+              <ManagedImg src="/images/proyek/tci/tci-3/denah/45-84.webp" alt="Denah rumah TCI 3 Tipe 45" className="w-full h-full object-contain" />
             </div>
 
             {/* Right Floor Plan Points */}

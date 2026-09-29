@@ -9,6 +9,18 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      site_image_drafts: {
+        Row: { image_key: string; path: string; revision: number; width: number; height: number; bytes: number; updated_at: string; updated_by: string | null }
+        Insert: { image_key: string; path: string; revision: number; width?: number; height?: number; bytes?: number; updated_at?: string; updated_by?: string | null }
+        Update: { path?: string; revision?: number; width?: number; height?: number; bytes?: number; updated_at?: string; updated_by?: string | null }
+        Relationships: []
+      }
+      site_image_published: {
+        Row: { image_key: string; path: string; revision: number; width: number; height: number; bytes: number; published_at: string }
+        Insert: { image_key: string; path: string; revision: number; width?: number; height?: number; bytes?: number; published_at?: string }
+        Update: { path?: string; revision?: number; width?: number; height?: number; bytes?: number; published_at?: string }
+        Relationships: []
+      }
       site_content_drafts: {
         Row: { document_key: string; content: Json; revision: number; updated_at: string; updated_by: string | null }
         Insert: { document_key: string; content: Json; revision: number; updated_at?: string; updated_by?: string | null }
@@ -224,6 +236,14 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
+      save_image_draft: {
+        Args: { p_key: string; p_path: string; p_width: number; p_height: number; p_bytes: number; p_expected_revision: number }
+        Returns: number
+      }
+      publish_image_draft: {
+        Args: { p_key: string; p_expected_revision: number }
+        Returns: number
+      }
       save_content_draft: {
         Args: { p_key: string; p_values: Json; p_expected_revision: number }
         Returns: number

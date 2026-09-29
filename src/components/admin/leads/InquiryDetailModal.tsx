@@ -19,6 +19,7 @@ import {
 import { format } from 'date-fns'
 import { id } from 'date-fns/locale'
 import { Copy, MessageCircle, Loader2 } from 'lucide-react'
+import { useAuth } from '@/lib/hooks/useAuth'
 import { toast } from 'sonner'
 import { Database } from '@/lib/types/database'
 import { updateInquiryStatus, markInquiryAsRead, logWaClick } from '@/app/admin/(dashboard)/leads/actions'
@@ -36,16 +37,17 @@ interface InquiryDetailModalProps {
 }
 
 export function InquiryDetailModal({ inquiry, isOpen, onClose, siteSettings }: InquiryDetailModalProps) {
+  const { refreshUnreadCount } = useAuth()
   const [status, setStatus] = useState<Status>(inquiry?.status || 'baru')
   const [isUpdating, setIsUpdating] = useState(false)
 
   useEffect(() => {
     if (inquiry && isOpen) {
       if (!inquiry.is_read) {
-        markInquiryAsRead(inquiry.id).catch(console.error)
+        markInquiryAsRead(inquiry.id).then(() => refreshUnreadCount()).catch(() => toast.error('Belum berhasil menandai pesan sebagai dibaca. Coba buka kembali.'))
       }
     }
-  }, [inquiry, isOpen])
+  }, [inquiry, isOpen, refreshUnreadCount])
 
   if (!inquiry) return null
 
@@ -131,7 +133,7 @@ export function InquiryDetailModal({ inquiry, isOpen, onClose, siteSettings }: I
                   <SelectItem value="batal">Batal</SelectItem>
                 </SelectContent>
               </Select>
-              <Button onClick={handleStatusChange} disabled={isUpdating || status === inquiry.status}>
+              <Button onClick={handleStatusChange} disabled={isUpdating || status === inquiry.status} className="text-white hover:text-white">
                 {isUpdating ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
                 Simpan
               </Button>
@@ -140,7 +142,7 @@ export function InquiryDetailModal({ inquiry, isOpen, onClose, siteSettings }: I
         </div>
 
         <div className="flex justify-end border-t border-gray-200 pt-4">
-          <Button onClick={handleWaClick} className="bg-green-600 hover:bg-green-700">
+          <Button onClick={handleWaClick} className="bg-green-600 text-white hover:bg-green-700 hover:text-white">
             <MessageCircle className="w-4 h-4 mr-2" />
             Hubungi via WhatsApp
           </Button>

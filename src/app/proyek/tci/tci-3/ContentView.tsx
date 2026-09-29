@@ -1,4 +1,6 @@
 "use client";
+
+import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import { shortPrice } from "@/lib/content/values";
 import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
@@ -6,7 +8,7 @@ import AvailabilityBadge from "@/components/content/AvailabilityBadge";
 import { availabilityFor } from "@/lib/content/availability";
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { ManagedImage as Image } from "@/components/content/ManagedImages";
 import { MapPin, Zap, Users, Home as HomeIcon, ArrowRight } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
@@ -98,12 +100,8 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[60vh] flex items-end justify-start bg-[#0D1B2A] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-35"
-          style={{
-            backgroundImage: "url('/images/proyek/tci/tci-3/tci3-gate-banner.webp')",
-          }}
-        />
+        <ManagedBackground
+          className="absolute inset-0 bg-cover bg-center opacity-35" src="/images/proyek/tci/tci-3/tci3-gate-banner.webp" />
         <div className="absolute inset-0 bg-[#0D1B2A]/65" />
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-28">
@@ -155,7 +153,7 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
             {/* Right Image */}
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-gray-100">
-                <img src="/images/proyek/tci/tci-3/Rumah-TCI3.jpg" alt="Interior Ruang Tamu Modern Clean" className="w-full h-full object-cover" />
+                <ManagedImg src="/images/proyek/tci/tci-3/Rumah-TCI3.jpg" alt="Interior Ruang Tamu Modern Clean" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -234,7 +232,7 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
               {nonClusterTypes.map((item) => (
                 <div key={item.title} className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col">
                   <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                    <img key={item.image} src={item.image} alt="Rumah merah TCI 3 Tipe 50 Non-Cluster" className="w-full h-full object-cover" />
+                    <ManagedImg key={item.image} src={item.image} alt="Rumah merah TCI 3 Tipe 50 Non-Cluster" className="w-full h-full object-cover" />
                     <AvailabilityBadge placement="card" status={availabilityFor(content, item.id)} />
                   </div>
 
@@ -262,7 +260,7 @@ export default function TCI3OverviewPage({ content }: { content: ContentBundle }
               {rukoTypes.map((item) => (
                 <div key={item.title} className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col group">
                   <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                    <img key={item.image} src={item.image} alt="Deretan ruko Terranova Arcade TCI 3" className="w-full h-full object-cover object-[center_65%] group-hover:scale-105 transition-transform duration-500" />
+                    <ManagedImg key={item.image} src={item.image} alt="Deretan ruko Terranova Arcade TCI 3" className="w-full h-full object-cover object-[center_65%] group-hover:scale-105 transition-transform duration-500" />
                     <AvailabilityBadge placement="card" status={availabilityFor(content, item.id)} />
                   </div>
 

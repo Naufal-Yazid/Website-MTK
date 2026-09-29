@@ -1,3 +1,5 @@
+import AdminPageHeader from '@/components/admin/AdminPageHeader'
+import Link from 'next/link'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import ContactSettings from '@/components/admin/settings/ContactSettings'
 import AccountSettings from '@/components/admin/settings/AccountSettings'
@@ -15,10 +17,7 @@ export default async function SettingsPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-gray-900">Pengaturan</h1>
-        <p className="text-gray-500">Kelola profil admin, informasi kontak, integrasi, dan versi website.</p>
-      </div>
+      <AdminPageHeader icon="settings" title="Pengaturan" description="Kelola profil admin, informasi kontak, integrasi, dan versi website." />
 
       <Tabs defaultValue="contact" className="space-y-5">
         <TabsList className="grid h-auto w-full grid-cols-2 justify-start rounded-none border-0 border-b border-gray-200 bg-transparent p-0 sm:flex sm:flex-wrap">
@@ -52,8 +51,7 @@ export default async function SettingsPage() {
               <div className="min-w-0 rounded-lg bg-gray-50 p-4"><dt className="text-xs font-medium text-gray-500">Versi / nama branch</dt><dd className="mt-2 break-all font-mono text-lg font-semibold text-[#0B5EAA]">{process.env.MTK_BUILD_BRANCH || 'Tidak tersedia'}</dd></div>
               <div className="min-w-0 rounded-lg bg-gray-50 p-4"><dt className="text-xs font-medium text-gray-500">Revisi kode (commit)</dt><dd className="mt-2 break-all font-mono text-lg font-semibold text-gray-900">{process.env.MTK_BUILD_COMMIT || 'Tidak tersedia'}</dd></div>
             </dl>
-            <p className="text-sm leading-relaxed text-gray-500">Nama branch dibaca ketika server development dimulai atau website di-build. Setelah pindah branch, restart server lokal atau build dan deploy ulang. Perubahan draft/konten admin tidak mengubah versi kode ini.</p>
-            <p className="text-xs leading-relaxed text-gray-500">Jika muncul “Tidak tersedia”, lingkungan build tidak menyediakan informasi Git. Developer dapat mengatur APP_GIT_BRANCH dan APP_GIT_COMMIT sebelum build.</p>
+            <Link href="/admin/help#settings" className="inline-flex min-h-11 items-center rounded-lg border border-gray-200 px-4 text-sm font-semibold text-[#0B5EAA] hover:bg-blue-50">Petunjuk versi website</Link>
           </section>
         </TabsContent>
       </Tabs>

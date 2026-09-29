@@ -1,8 +1,9 @@
+import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
 import AvailabilityBadge from "@/components/content/AvailabilityBadge";
 import { availabilityFor } from "@/lib/content/availability";
-import Image from "next/image";
+import { ManagedImage as Image } from "@/components/content/ManagedImages";
 import { ImageIcon, Home as HomeIcon, MapPin, ShieldCheck, Trees } from "lucide-react";
 import CTABanner from "@/components/layout/CTABanner";
 import InquiryForm from "@/components/sections/InquiryForm";
@@ -23,12 +24,8 @@ export default function TCI1OverviewPage({ content }: { content: ContentBundle }
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[60vh] flex items-end justify-start bg-[#0D1B2A] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-35"
-          style={{
-            backgroundImage: "url('/images/proyek/tci/tci-1/tci1-gate.webp')",
-          }}
-        />
+        <ManagedBackground
+          className="absolute inset-0 bg-cover bg-center opacity-35" src="/images/proyek/tci/tci-1/tci1-gate.webp" />
 
         <div className="absolute inset-0 bg-[#0D1B2A]/65" />
 
@@ -81,7 +78,7 @@ export default function TCI1OverviewPage({ content }: { content: ContentBundle }
             {/* Right Image */}
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-gray-100">
-                <img src="/images/proyek/tci/tci-1/tci1-house-card.webp" alt="Lingkungan hunian Taman Cibaduyut Indah 1" className="w-full h-full object-cover" />
+                <ManagedImg src="/images/proyek/tci/tci-1/tci1-house-card.webp" alt="Lingkungan hunian Taman Cibaduyut Indah 1" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>

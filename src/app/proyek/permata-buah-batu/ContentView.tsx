@@ -1,3 +1,4 @@
+import { ManagedImg, ManagedBackground } from "@/components/content/ManagedImages";
 import ProjectActions from "@/components/content/ProjectActions";
 import type { ContentBundle } from "@/lib/content/values";
 import AvailabilityBadge from "@/components/content/AvailabilityBadge";
@@ -20,13 +21,8 @@ export default function PermataBuahBatuPage({ content }: { content: ContentBundl
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[60vh] flex items-end justify-start bg-[#0D1B2A] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-35"
-          style={{
-            backgroundImage:
-              "url('/images/proyek/permata-buah-batu/permatabb-gate-banner.webp')",
-          }}
-        />
+        <ManagedBackground
+          className="absolute inset-0 bg-cover bg-center opacity-35" src="/images/proyek/permata-buah-batu/permatabb-gate-banner.webp" />
 
         <div className="absolute inset-0 bg-[#0D1B2A]/65" />
 
@@ -76,7 +72,7 @@ export default function PermataBuahBatuPage({ content }: { content: ContentBundl
 
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-gray-100">
-                <img
+                <ManagedImg
                   src="/images/proyek/permata-buah-batu/permatabuahbatu-detail.webp"
                   alt="Gerbang Permata Buah Batu"
                   className="w-full h-full object-cover"
