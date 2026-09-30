@@ -13,7 +13,7 @@ const steps = [
 ]
 
 export default function BrochureGuidePage() {
-  return <div className="mx-auto max-w-4xl space-y-8">
+  return <div className="w-full space-y-6">
     <GuideNavigation href="/admin/brosur-lokasi" label="Buka Brosur dan Lokasi" />
     <header className="flex items-start gap-4">
       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#0B5EAA]"><BookOpen className="h-6 w-6" aria-hidden="true" /></div>

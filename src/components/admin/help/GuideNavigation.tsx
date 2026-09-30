@@ -6,11 +6,11 @@ const buttonClass = 'inline-flex min-h-11 items-center justify-center gap-2 roun
 export default function GuideNavigation({ href, label }: { href: string; label: string }) {
   return (
     <nav aria-label="Navigasi petunjuk" className="flex flex-col gap-3 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:justify-between">
-      <Link href="/admin/help" className={buttonClass + ' border border-gray-200 bg-white text-gray-700 hover:bg-gray-50'}>
+      <Link href="/admin/help" className={buttonClass + ' self-start border border-gray-200 bg-white text-gray-700 hover:bg-gray-50'}>
         <ArrowLeft className="h-4 w-4 shrink-0" aria-hidden="true" />
         Semua petunjuk
       </Link>
-      <Link href={href} className={buttonClass + ' bg-[#0B5EAA] text-white hover:bg-[#094c89] hover:text-white'}>
+      <Link href={href} className={buttonClass + ' self-end bg-[#0B5EAA] text-white hover:bg-[#094c89] hover:text-white sm:ml-auto'}>
         {label}
         <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
       </Link>
