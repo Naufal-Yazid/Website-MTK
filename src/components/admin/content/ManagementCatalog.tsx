@@ -7,7 +7,7 @@ import { availabilityOptions } from '@/lib/content/availability'
 import FilterSummary from './FilterSummary'
 import ManagementTable from './ManagementTable'
 
-const control = 'min-h-11 w-full rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-900 outline-none focus:border-[#0B5EAA] focus:ring-2 focus:ring-blue-100'
+const control = 'h-12 w-full rounded-lg border border-gray-200 bg-white px-4 text-sm font-normal text-gray-900 outline-none transition-colors focus:border-[#0B5EAA] focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-400'
 const categories = ['Komplek', 'Fase TCI', 'Tipe unit']
 
 export default function ManagementCatalog({ items, mode, error }: { items: CatalogItem[]; mode: CatalogMode; error: string | null }) {
@@ -36,10 +36,10 @@ export default function ManagementCatalog({ items, mode, error }: { items: Catal
 
     <div className="space-y-3">
     <div className="space-y-2 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-      <div className="grid items-end gap-3 xl:grid-cols-[minmax(0,1fr)_180px_200px]">
+      <div className="grid items-end gap-3 md:grid-cols-[minmax(0,1.5fr)_minmax(180px,0.7fr)_minmax(200px,0.8fr)]">
         <label className="min-w-0 space-y-2 text-xs font-semibold text-gray-600">
           <span>Cari halaman</span>
-          <div className="relative"><Search className="pointer-events-none absolute left-3 top-3.5 h-4 w-4 text-gray-400" aria-hidden="true" /><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Cari nama proyek atau tipe unit…" className={`${control} pl-10`} /></div>
+          <div className="relative"><Search className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-gray-400" aria-hidden="true" /><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Cari nama proyek atau tipe unit…" className={`${control} !pl-12`} /></div>
         </label>
         <label className="space-y-2 text-xs font-semibold text-gray-600"><span>Kategori</span><select value={category} onChange={event => setCategory(event.target.value)} className={control}><option value="all">Semua kategori</option>{categories.map(name => <option key={name} value={name}>{name}</option>)}</select></label>
         <label className="space-y-2 text-xs font-semibold text-gray-600"><span>{isAvailability ? 'Status publik / draft' : 'Tampilkan'}</span><select value={status} onChange={event => setStatus(event.target.value)} className={control} disabled={Boolean(error)}>

@@ -11,8 +11,8 @@ import ManagementCatalog from '@/components/admin/content/ManagementCatalog'
 export const metadata = { title: 'Konten Website | MTK Admin' }
 const tabClass = 'min-h-12 gap-2 whitespace-normal rounded-none border-0 border-b-[3px] border-transparent bg-transparent px-3 text-sm font-medium text-gray-500 shadow-none hover:text-gray-900 data-[state=active]:border-[#1E3A5F] data-[state=active]:bg-transparent data-[state=active]:font-semibold data-[state=active]:text-[#1E3A5F] data-[state=active]:shadow-none sm:px-6'
 
-export default async function ContentPage({ searchParams }: { searchParams?: Promise<{ tab?: string }> } = {}) {
-  const tab = (await searchParams)?.tab
+export default async function ContentPage({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
+  const tab = (await searchParams).tab
   const initialTab = tab === 'gambar' ? 'gambar' : tab === 'ketersediaan' ? 'ketersediaan' : 'konten'
   const { drafts, published, error } = await getContentAdminData()
   const imageData = await getImageAdminData()
