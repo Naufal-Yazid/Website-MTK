@@ -12,6 +12,7 @@ import { availabilityFor, availabilityLabel, availabilityOptions } from '@/lib/c
 import BrochureField from '@/components/admin/content/BrochureField'
 import { isMapUrl } from '@/lib/content/resources'
 import AvailabilityBadge from '@/components/content/AvailabilityBadge'
+import EditorDetailLayout from '@/components/admin/content/EditorDetailLayout'
 
 type Props = { document: ContentDocument; initialValues: ContentValues; publishedValues: ContentValues; draftRevision: number; publishedRevision: number; updatedAt: string | null; statusOnly?: boolean; resourcesOnly?: boolean }
 const button = 'inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B5EAA] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'
@@ -86,29 +87,27 @@ export default function ContentEditor({ document: doc, initialValues, publishedV
       </header>
       {(statusOnly || resourcesOnly) && otherChanges > 0 && <div role="note" className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">Draft halaman ini juga berisi {otherChanges} perubahan di luar bagian ini. Publikasi menerbitkan seluruh draft, bukan hanya isian yang sedang ditampilkan. Periksa semua perubahan pada konfirmasi, atau <Link href={`/admin/content/${doc.id}`} className="font-semibold underline">buka editor lengkap</Link> terlebih dahulu.</div>}
 
-      <div className={resourcesOnly ? 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start xl:grid-cols-[minmax(0,1fr)_380px]' : 'contents'}>
-      <ol aria-label="Alur pengelolaan" className={resourcesOnly ? 'grid gap-4 rounded-xl border border-gray-200 bg-white p-5 shadow-sm lg:col-start-2 lg:row-start-2' : 'grid gap-3 rounded-xl border border-gray-200 bg-white p-4 sm:grid-cols-3 sm:p-5'}>
-        {[['Simpan Draft', 'Simpan perubahan tanpa mengubah website.'], ['Preview', 'Periksa tampilan sebelum ditayangkan.'], ['Publikasikan', 'Tampilkan draft kepada pengunjung.']].map(([title, detail], index) => <li key={title} className="flex gap-3"><span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold text-[#0B5EAA]">{index + 1}</span><div><p className="text-sm font-semibold text-gray-900">{title}</p><p className="mt-1 text-xs leading-relaxed text-gray-500">{detail}</p></div></li>)}
-      </ol>
-      <div className={resourcesOnly ? 'z-20 space-y-4 rounded-xl border border-gray-200 bg-white p-5 shadow-sm lg:col-start-2 lg:row-start-1' : 'z-20 space-y-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5 lg:sticky lg:top-0'}>
-        <div className={resourcesOnly ? 'flex flex-col gap-4' : 'flex flex-wrap items-center justify-between gap-4'}>
-          <div className="min-w-0 text-sm">{resourcesOnly && <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">Status konten</p>}<strong className={dirty ? 'text-amber-800' : 'text-gray-900'}>{dirty ? 'Perubahan belum disimpan' : draftRevision > publishedRevision ? `Draft tersimpan · revisi ${draftRevision}` : publishedRevision ? `Sudah dipublikasikan · revisi ${publishedRevision}` : 'Konten bawaan website'}</strong><p className="mt-1 text-xs leading-relaxed text-gray-500">{differences.length} isian berbeda dari versi publik.{updatedAt ? ` Disimpan ${new Date(updatedAt).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })} WIB.` : ''}</p></div>
-          <div className={resourcesOnly ? 'grid w-full grid-cols-1 gap-2' : 'grid w-full grid-cols-1 gap-2 sm:flex sm:w-auto sm:flex-wrap'}>
-            <button type="submit" form="content-editor" disabled={pending || (!dirty && draftRevision > 0)} className={`${button} border border-gray-200 bg-white hover:bg-gray-50`}>{pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}Simpan Draft</button>
+      <EditorDetailLayout
+        title={resourcesOnly ? 'File & tautan proyek' : statusOnly ? 'Ketersediaan unit' : 'Isi halaman'}
+        summary={`${fieldGroups.length} bagian · ${editableFields.length} isian`}
+        sidebar={<>
+        <div className="flex flex-col gap-4">
+          <div className="min-w-0 text-sm"><p className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">Status konten</p><strong className={dirty ? 'text-amber-800' : 'text-gray-900'}>{dirty ? 'Perubahan belum disimpan' : draftRevision > publishedRevision ? `Draft tersimpan · revisi ${draftRevision}` : publishedRevision ? `Sudah dipublikasikan · revisi ${publishedRevision}` : 'Konten bawaan website'}</strong><p className="mt-1 text-xs leading-relaxed text-gray-500">{differences.length} isian berbeda dari versi publik.{updatedAt ? ` Disimpan ${new Date(updatedAt).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })} WIB.` : ''}</p></div>
+          <div className="grid w-full grid-cols-1 gap-2">
+            <button type="submit" form="content-editor" disabled={pending || (!dirty && draftRevision > 0)} className={`${button} border border-gray-200 bg-white text-gray-900 hover:bg-gray-50`}>{pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}Simpan Draft</button>
             <button type="button" onClick={() => setConfirmPublish(true)} disabled={pending || dirty || draftRevision === 0 || draftRevision === publishedRevision} className={`${button} bg-[#0B5EAA] text-white hover:bg-[#094c89]`}><Send className="h-4 w-4" />Publikasikan</button>
           </div>
         </div>
-        <div className={resourcesOnly ? 'flex flex-col items-start gap-2 border-t border-gray-100 pt-4 text-xs' : 'flex flex-wrap items-center gap-3 border-t border-gray-100 pt-3 text-xs'}>
+        <div className="flex flex-col items-start gap-2 border-t border-gray-100 pt-4 text-xs">
           <span className="inline-flex items-center gap-1 font-semibold"><Eye className="h-4 w-4" />Preview draft:</span>
           {previewPaths.map((path, index) => dirty || !draftRevision || pending ? <span key={path} className="text-gray-400">{index === 0 ? 'Halaman detail' : path === '/' ? 'Kartu beranda' : 'Kartu ringkasan'}</span> : <a key={path} href={`${path}?preview=${doc.id}`} target="_blank" rel="noopener noreferrer" className="text-[#0B5EAA] underline">{index === 0 ? 'Halaman detail' : path === '/' ? 'Kartu beranda' : 'Kartu ringkasan'} ↗</a>)}
           {(dirty || !draftRevision) && <span className="text-amber-700">Simpan draft dahulu agar preview sesuai isian.</span>}
-          <a href={doc.path} target="_blank" rel="noopener noreferrer" className={resourcesOnly ? 'mt-1 text-gray-500 underline' : 'ml-auto text-gray-500 underline'}>Lihat versi publik ↗</a>
+          <a href={doc.path} target="_blank" rel="noopener noreferrer" className="mt-1 text-gray-500 underline">Lihat versi publik ↗</a>
         </div>
         {message && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{message}</p>}
-      </div>
-
-      <form id="content-editor" noValidate onSubmit={event => { event.preventDefault(); save() }} className={resourcesOnly ? 'space-y-4 lg:col-start-1 lg:row-span-2 lg:row-start-1' : 'space-y-4'}>
-        <div className="flex flex-wrap items-center justify-between gap-2"><h2 className="text-base font-semibold text-gray-900">{resourcesOnly ? 'File & tautan proyek' : statusOnly ? 'Ketersediaan unit' : 'Isi halaman'}</h2><p className="text-xs text-gray-500">{fieldGroups.length} bagian · {editableFields.length} isian</p></div>
+        </>}
+      >
+      <form id="content-editor" noValidate onSubmit={event => { event.preventDefault(); save() }} className="space-y-4">
         <fieldset disabled={pending} className="space-y-4">
           {fieldGroups.map((group, index) => <details key={group.label} open={index < 3} className="group rounded-xl border border-gray-200 bg-white shadow-sm">
             <summary className="flex min-h-16 cursor-pointer list-none items-center gap-3 rounded-xl px-4 py-4 font-semibold text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B5EAA] sm:px-5 [&::-webkit-details-marker]:hidden"><span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-xs text-gray-500">{String(index + 1).padStart(2, '0')}</span><span className="min-w-0 flex-1 text-sm">{group.label}</span><ChevronDown className="h-4 w-4 shrink-0 text-gray-400 transition-transform group-open:rotate-180" aria-hidden="true" /></summary>
@@ -124,7 +123,7 @@ export default function ContentEditor({ document: doc, initialValues, publishedV
           </details>)}
         </fieldset>
       </form>
-      </div>
+      </EditorDetailLayout>
 
       <Dialog open={confirmPublish} onOpenChange={value => { if (!pending) setConfirmPublish(value) }}>
         <DialogContent className="max-h-[85vh] overflow-y-auto">
