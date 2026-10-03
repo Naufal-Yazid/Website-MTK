@@ -24,15 +24,7 @@ export default function KebijakanPrivasi() {
               Kebijakan Privasi ini menjelaskan kebijakan dan prosedur Kami mengenai pengumpulan, penggunaan, dan pengungkapan informasi Anda saat Anda menggunakan Layanan, serta memberi tahu Anda tentang hak-hak privasi Anda dan bagaimana hukum melindungi Anda.
             </p>
             <p>
-              Kami menggunakan Data Pribadi Anda untuk menyediakan dan meningkatkan Layanan. Kami mengumpulkan, menggunakan, dan mengungkapkan informasi Anda sebagaimana dijelaskan dalam Kebijakan Privasi ini dan, jika diwajibkan oleh hukum yang berlaku, hanya jika Kami memiliki dasar hukum yang sah untuk melakukannya, termasuk persetujuan Anda (jika persetujuan diperlukan). Kebijakan Privasi ini dibuat dengan bantuan{" "}
-              <a 
-                href="https://www.termsfeed.com/privacy-policy-generator/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-[#0B5EAA] hover:underline font-medium"
-              >
-                Pembuat Kebijakan Privasi
-              </a>.
+              Kami menggunakan Data Pribadi Anda untuk menyediakan dan meningkatkan Layanan. Kami mengumpulkan, menggunakan, dan mengungkapkan informasi Anda sebagaimana dijelaskan dalam Kebijakan Privasi ini dan, jika diwajibkan oleh hukum yang berlaku, hanya jika Kami memiliki dasar hukum yang sah untuk melakukannya, termasuk persetujuan Anda (jika persetujuan diperlukan).
             </p>
           </div>
 
