@@ -49,7 +49,7 @@ export default async function SettingsPage() {
             <header><h2 className="text-lg font-semibold text-gray-900">Versi Website</h2><p className="mt-1 text-sm text-gray-500">Informasi versi kode yang digunakan website ini. Hanya untuk dilihat, tidak dapat diubah dari admin.</p></header>
             <dl className="grid gap-4 sm:grid-cols-2">
               <div className="min-w-0 rounded-lg bg-gray-50 p-4"><dt className="text-xs font-medium text-gray-500">Versi / nama branch</dt><dd className="mt-2 break-all font-mono text-lg font-semibold text-[#0B5EAA]">{process.env.MTK_BUILD_BRANCH || 'Tidak tersedia'}</dd></div>
-              <div className="min-w-0 rounded-lg bg-gray-50 p-4"><dt className="text-xs font-medium text-gray-500">Revisi kode (commit)</dt><dd className="mt-2 break-all font-mono text-lg font-semibold text-gray-900">{process.env.MTK_BUILD_COMMIT || 'Tidak tersedia'}</dd></div>
+              <div className="min-w-0 rounded-lg bg-gray-50 p-4"><dt className="text-xs font-medium text-gray-500">Revisi kode (commit)</dt><dd className="mt-2 break-all font-mono text-lg font-semibold text-gray-900" aria-label="Revisi kode disembunyikan">••••••••</dd></div>
             </dl>
             <Link href="/admin/help#settings" className="inline-flex min-h-11 items-center rounded-lg border border-gray-200 px-4 text-sm font-semibold text-[#0B5EAA] hover:bg-blue-50">Petunjuk versi website</Link>
           </section>
