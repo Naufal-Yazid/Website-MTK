@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   description: "Pengembang perumahan terpercaya di Bandung. Wujudkan impian memiliki rumah modern minimalis dengan aksesibilitas terbaik dan lingkungan asri.",
   keywords: ["Marga Tirta Kencana", "Perumahan Bandung", "Taman Cibaduyut Indah", "Rancamanyar Indah", "Permata Buah Batu", "Rumah KPR Bandung"],
   authors: [{ name: "Marga Tirta Kencana" }],
+  icons: {
+    icon: [{ url: "/images/brand/mtk%20logo%201.png", type: "image/png" }],
+    apple: [{ url: "/images/brand/mtk%20logo%201.png", type: "image/png" }],
+  },
   openGraph: {
     title: "Marga Tirta Kencana — Hunian Berkualitas di Bandung",
     description: "Wujudkan impian memiliki rumah dengan desain arsitektur modern di Bandung & sekitarnya.",
